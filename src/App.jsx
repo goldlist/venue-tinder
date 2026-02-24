@@ -8,10 +8,16 @@ export default function App() {
   const [screen, setScreen] = useState('onboarding')
   const [userLocation, setUserLocation] = useState(null) // { lat, lng, label }
   const [likes, setLikes] = useState([])
+  const [passes, setPasses] = useState([])
   const [selectedArtist, setSelectedArtist] = useState(null)
 
   const handleLikeFlash = (flashItem) => {
     setLikes(prev => prev.find(f => f.id === flashItem.id) ? prev : [...prev, flashItem])
+    setPasses(prev => prev.filter(f => f.id !== flashItem.id))
+  }
+
+  const handlePassFlash = (flashItem) => {
+    setPasses(prev => prev.find(f => f.id === flashItem.id) ? prev : [...prev, flashItem])
   }
 
   const handleBook = (artist) => {
@@ -31,6 +37,7 @@ export default function App() {
           userLocation={userLocation}
           onLocationChange={setUserLocation}
           onLikeFlash={handleLikeFlash}
+          onPassFlash={handlePassFlash}
           likedCount={likes.length}
           onViewLiked={() => setScreen('liked')}
         />
@@ -38,6 +45,8 @@ export default function App() {
       {screen === 'liked' && (
         <LikedScreen
           likes={likes}
+          passes={passes}
+          onLikeFlash={handleLikeFlash}
           onBook={handleBook}
           onBack={() => setScreen('swipe')}
         />

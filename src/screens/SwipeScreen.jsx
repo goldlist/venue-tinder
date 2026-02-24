@@ -15,7 +15,7 @@ function preloadImages(feed, startIdx, count) {
   }
 }
 
-export default function SwipeScreen({ userLocation, onLocationChange, onLikeFlash, likedCount, onViewLiked }) {
+export default function SwipeScreen({ userLocation, onLocationChange, onLikeFlash, onPassFlash, likedCount, onViewLiked }) {
   const [feed, setFeed] = useState(() =>
     buildFeed(artistsData, userLocation?.lat, userLocation?.lng)
   )
@@ -42,6 +42,10 @@ export default function SwipeScreen({ userLocation, onLocationChange, onLikeFlas
   const advance = useCallback((direction) => {
     if (!current) return
     setShowDetail(false)
+
+    if (direction === 'left') {
+      onPassFlash(current)
+    }
 
     if (direction === 'right') {
       const handle = current.artistHandle
