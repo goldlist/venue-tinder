@@ -105,16 +105,27 @@ function ArtistList({ groups, countLabel, emptyIcon, emptyTitle, emptyBody, onBo
                     <div className="flex gap-2 overflow-x-auto pb-1" style={{ scrollbarWidth: 'none' }}>
                       {artist.flash.map(flash => (
                         <div key={flash.id} className="flex-shrink-0 w-20 flex flex-col gap-1">
-                          <div className="w-20 h-20 rounded-xl overflow-hidden relative" style={{ background: '#0a0a0a' }}>
+                          <a
+                            href={`https://venue.ink/@${artist.handle}/flash/${flash.id}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block w-20 h-20 rounded-xl overflow-hidden relative group"
+                            style={{ background: '#0a0a0a' }}
+                            onClick={(e) => e.stopPropagation()}
+                          >
                             <img
                               src={flash.imageUrl}
                               alt={flash.title}
                               className="w-full h-full object-contain"
                               loading="lazy"
                             />
+                            {/* Book overlay on hover/tap */}
+                            <div className="absolute inset-0 flex items-center justify-center rounded-xl opacity-0 group-active:opacity-100 transition-opacity" style={{ background: 'rgba(0,0,0,0.6)' }}>
+                              <span className="text-[10px] font-bold text-white">Book →</span>
+                            </div>
                             {actionButton && (
                               <button
-                                onClick={(e) => { e.stopPropagation(); actionButton.onClick(flash) }}
+                                onClick={(e) => { e.preventDefault(); e.stopPropagation(); actionButton.onClick(flash) }}
                                 className="absolute bottom-1 right-1 w-6 h-6 rounded-full flex items-center justify-center text-xs"
                                 style={{ background: 'rgba(0,0,0,0.7)' }}
                                 title={actionButton.label}
@@ -122,7 +133,7 @@ function ArtistList({ groups, countLabel, emptyIcon, emptyTitle, emptyBody, onBo
                                 {actionButton.icon}
                               </button>
                             )}
-                          </div>
+                          </a>
                           <p className="text-[#888] text-[10px] truncate leading-tight">{flash.title || '—'}</p>
                           {flash.priceMin > 0 && (
                             <p className="text-cream text-[10px]">
