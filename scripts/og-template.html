@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      width: 1200px;
+      height: 630px;
+      background: #080808;
+      overflow: hidden;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      position: relative;
+    }
+
+    /* Noise overlay */
+    body::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      background-size: 200px 200px;
+      opacity: 0.6;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Ambient glow left */
+    .glow-left {
+      position: absolute;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(212, 168, 83, 0.18) 0%, transparent 65%);
+      top: -200px;
+      left: -100px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Ambient glow right */
+    .glow-right {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(233, 251, 41, 0.07) 0%, transparent 65%);
+      bottom: -200px;
+      right: -100px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Divider line */
+    .divider {
+      position: absolute;
+      left: 680px;
+      top: 60px;
+      bottom: 60px;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.06) 30%, rgba(255,255,255,0.06) 70%, transparent);
+      z-index: 2;
+    }
+
+    /* LEFT CONTENT */
+    .left {
+      position: absolute;
+      left: 72px;
+      top: 0;
+      bottom: 0;
+      width: 580px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0;
+      z-index: 10;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+
+    .brand-name {
+      font-size: 17px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.02em;
+    }
+
+    h1 {
+      font-size: 108px;
+      font-weight: 900;
+      line-height: 0.92;
+      letter-spacing: -0.04em;
+      margin-bottom: 28px;
+    }
+
+    h1 .line1 { color: #fff; display: block; }
+    h1 .line2 {
+      display: block;
+      background: linear-gradient(135deg, #d4a853 0%, #f0c97a 50%, #d4a853 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    h1 .line3 { color: #fff; display: block; }
+
+    .subtitle {
+      font-size: 22px;
+      color: rgba(255,255,255,0.38);
+      font-weight: 400;
+      line-height: 1.5;
+      margin-bottom: 36px;
+      max-width: 440px;
+    }
+
+    .pills {
+      display: flex;
+      gap: 10px;
+    }
+
+    .pill {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 100px;
+      padding: 8px 16px;
+      color: rgba(255,255,255,0.5);
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .pill-gold {
+      background: rgba(212, 168, 83, 0.10);
+      border-color: rgba(212, 168, 83, 0.25);
+      color: #d4a853;
+    }
+
+    /* RIGHT CARDS AREA */
+    .right {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 480px;
+      height: 630px;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .cards-stack {
+      position: relative;
+      width: 220px;
+      height: 320px;
+    }
+
+    .flash-card {
+      position: absolute;
+      width: 200px;
+      background: #141414;
+      border: 1px solid #2a2a2a;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.8), 0 4px 16px rgba(0,0,0,0.4);
+    }
+
+    .flash-card-inner {
+      padding: 14px 14px 16px;
+    }
+
+    .flash-card-image {
+      width: 100%;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .flash-card-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .card-title-line {
+      height: 9px;
+      border-radius: 5px;
+    }
+
+    .card-sub-line {
+      height: 7px;
+      border-radius: 4px;
+      width: 55%;
+    }
+
+    .card-price {
+      margin-top: 8px;
+      height: 20px;
+      width: 45px;
+      border-radius: 6px;
+      background: rgba(212, 168, 83, 0.2);
+    }
+
+    /* Card 1 - back */
+    .card-3 {
+      transform: rotate(-8deg) translate(-30px, 30px);
+      opacity: 0.4;
+    }
+    /* Card 2 - middle */
+    .card-2 {
+      transform: rotate(5deg) translate(25px, 10px);
+      opacity: 0.65;
+    }
+    /* Card 1 - front */
+    .card-1 {
+      transform: rotate(-2deg) translate(0px, -10px);
+      opacity: 1;
+    }
+
+    /* LIKE stamp on front card */
+    .stamp {
+      position: absolute;
+      top: 20px;
+      left: 14px;
+      border: 2.5px solid #22c55e;
+      border-radius: 6px;
+      padding: 3px 8px;
+      color: #22c55e;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      transform: rotate(-15deg);
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <div class="glow-left"></div>
+  <div class="glow-right"></div>
+  <div class="divider"></div>
+
+  <!-- LEFT: Main content -->
+  <div class="left">
+    <div class="brand">
+      <!-- Flame icon -->
+      <svg width="22" height="22" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M26.1161 20.6687C25.1953 18.9477 23.9927 16.9983 23.1383 15.3281C22.5729 14.0805 22.0632 12.9471 21.5588 11.6469C21.3183 10.9905 21.0849 10.2923 20.8516 9.63039C20.6434 9.14439 20.6685 8.8071 20.3418 8.497C20.157 8.35556 19.8913 8.34649 19.6975 8.47887C19.3672 8.73637 19.3564 9.18247 19.1931 9.54516C18.9346 10.2723 18.5326 11.5036 18.1862 12.3396C17.75 13.3443 17.3461 14.3199 16.8866 15.3064C16.3876 16.3092 15.7864 17.2975 15.2317 18.2949C13.9932 20.4619 12.6129 22.5329 12.9576 25.1986C13.6791 31.8683 22.2409 33.9882 25.9079 28.4283C27.4389 26.1651 27.4659 23.0533 26.1304 20.6977L26.1161 20.6687Z" fill="rgba(255,255,255,0.35)"/>
+      </svg>
+      <span class="brand-name">venue.ink / discover</span>
+    </div>
+
+    <h1>
+      <span class="line1">Swipe</span>
+      <span class="line2">tattoo</span>
+      <span class="line3">flash.</span>
+    </h1>
+
+    <p class="subtitle">Browse flash from artists near you. Like what you love. Book instantly.</p>
+
+    <div class="pills">
+      <div class="pill pill-gold">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+          <circle cx="12" cy="10" r="3"/>
+        </svg>
+        Near you
+      </div>
+      <div class="pill">5,000+ flash pieces</div>
+      <div class="pill">434 artists</div>
+    </div>
+  </div>
+
+  <!-- RIGHT: Stacked flash cards -->
+  <div class="right">
+    <div class="cards-stack">
+
+      <!-- Card 3 (back) -->
+      <div class="flash-card card-3">
+        <div class="flash-card-inner">
+          <div class="flash-card-image">
+            <svg width="172" height="220" viewBox="0 0 172 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="172" height="220" rx="10" fill="#1a1a1a"/>
+              <!-- Abstract tattoo shape -->
+              <ellipse cx="86" cy="100" rx="42" ry="58" fill="none" stroke="#2a2a2a" stroke-width="1.5"/>
+              <path d="M60 80 Q86 40 112 80 Q130 110 86 150 Q42 110 60 80Z" fill="#222" stroke="#333" stroke-width="1"/>
+            </svg>
+          </div>
+          <div class="flash-card-meta">
+            <div class="card-title-line" style="background:#2a2a2a;"></div>
+            <div class="card-sub-line" style="background:#222;"></div>
+            <div class="card-price"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 (middle) -->
+      <div class="flash-card card-2">
+        <div class="flash-card-inner">
+          <div class="flash-card-image">
+            <svg width="172" height="220" viewBox="0 0 172 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="172" height="220" rx="10" fill="#1e1c1a"/>
+              <!-- Rose-like shape -->
+              <circle cx="86" cy="95" r="50" fill="none" stroke="#2d2a26" stroke-width="1.5"/>
+              <path d="M86 50 C60 60, 50 80, 55 100 C50 120, 60 140, 86 150 C112 140, 122 120, 117 100 C122 80, 112 60, 86 50Z" fill="#231f1b" stroke="#3a3530" stroke-width="1.5"/>
+              <path d="M86 65 C70 72, 65 85, 68 100 C65 115, 72 128, 86 135 C100 128, 107 115, 104 100 C107 85, 102 72, 86 65Z" fill="#2a2520" stroke="#433d35" stroke-width="1"/>
+              <circle cx="86" cy="100" r="12" fill="#332d25"/>
+            </svg>
+          </div>
+          <div class="flash-card-meta">
+            <div class="card-title-line" style="background:#2e2a24;"></div>
+            <div class="card-sub-line" style="background:#262218;"></div>
+            <div class="card-price"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 1 (front) - with LIKE stamp -->
+      <div class="flash-card card-1">
+        <div class="stamp">LIKE</div>
+        <div class="flash-card-inner">
+          <div class="flash-card-image">
+            <svg width="172" height="220" viewBox="0 0 172 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="172" height="220" rx="10" fill="#1a1a20"/>
+              <!-- Snake-like design -->
+              <path d="M86 30 C110 40, 120 60, 110 80 C100 100, 75 100, 70 120 C65 140, 80 160, 86 185" stroke="#3a3a4a" stroke-width="14" stroke-linecap="round" fill="none"/>
+              <path d="M86 30 C110 40, 120 60, 110 80 C100 100, 75 100, 70 120 C65 140, 80 160, 86 185" stroke="#d4a853" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.5"/>
+              <!-- Head -->
+              <ellipse cx="92" cy="26" rx="10" ry="8" fill="#2a2a38" stroke="#3a3a4a" stroke-width="1.5"/>
+              <circle cx="89" cy="24" r="2" fill="#d4a853" opacity="0.6"/>
+              <!-- Diamond pattern -->
+              <path d="M84 75 L90 68 L96 75 L90 82Z" fill="#d4a853" opacity="0.3"/>
+              <path d="M72 105 L78 98 L84 105 L78 112Z" fill="#d4a853" opacity="0.25"/>
+              <path d="M76 135 L82 128 L88 135 L82 142Z" fill="#d4a853" opacity="0.2"/>
+            </svg>
+          </div>
+          <div class="flash-card-meta">
+            <div class="card-title-line" style="background:#2a2a35;"></div>
+            <div class="card-sub-line" style="background:#222230;"></div>
+            <div class="card-price" style="background: rgba(212,168,83,0.25);"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "generate-og": "node scripts/generate-og.mjs",
+    "build": "node scripts/generate-og.mjs && vite build",
     "preview": "vite preview",
     "scrape": "node --experimental-vm-modules scripts/scraper.mjs"
   },
