@@ -1,3 +1,11 @@
+// Build a Venue flash URL — falls back to artist page for synthetic IDs
+export function flashUrl(handle, flashId) {
+  if (flashId && /^fli-[A-Za-z0-9]{8,}/.test(flashId)) {
+    return `https://venue.ink/@${handle}/flash/${flashId}`
+  }
+  return `https://venue.ink/@${handle}`
+}
+
 // Haversine distance in miles
 export function haversine(lat1, lon1, lat2, lon2) {
   const R = 3958.8

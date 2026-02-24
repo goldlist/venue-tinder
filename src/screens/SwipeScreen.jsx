@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import FlashCard from '../components/FlashCard'
 import LocationModal from '../components/LocationModal'
 import VenueLogo from '../components/VenueLogo'
-import { buildFeed, formatDistance } from '../utils/geo'
+import { buildFeed, formatDistance, flashUrl } from '../utils/geo'
 import artistsData from '../data/artists.json'
 
 function preloadImages(feed, startIdx, count) {
@@ -315,7 +315,7 @@ export default function SwipeScreen({ userLocation, onLocationChange, onLikeFlas
               {/* Book this flash */}
               <motion.a
                 whileTap={{ scale: 0.97 }}
-                href={`https://venue.ink/@${current.artistHandle}/flash/${current.id}`}
+                href={flashUrl(current.artistHandle, current.id)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl font-bold text-base mb-3"

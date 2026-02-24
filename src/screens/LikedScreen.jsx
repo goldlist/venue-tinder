@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { flashUrl } from '../utils/geo'
 
 function groupByArtist(items) {
   return Object.values(
@@ -106,7 +107,7 @@ function ArtistList({ groups, countLabel, emptyIcon, emptyTitle, emptyBody, onBo
                       {artist.flash.map(flash => (
                         <div key={flash.id} className="flex-shrink-0 w-20 flex flex-col gap-1">
                           <a
-                            href={`https://venue.ink/@${artist.handle}/flash/${flash.id}`}
+                            href={flashUrl(artist.handle, flash.id)}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="block w-20 h-20 rounded-xl overflow-hidden relative group"
