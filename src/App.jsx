@@ -5,52 +5,46 @@ import LikedScreen from './screens/LikedScreen'
 import BookingScreen from './screens/BookingScreen'
 
 export default function App() {
-  const [screen, setScreen] = useState('onboarding') // 'onboarding' | 'swipe' | 'liked' | 'booking'
-  const [likedArtists, setLikedArtists] = useState([])
+  const [screen, setScreen] = useState('onboarding')
+  // likes: array of flash items with artist context attached
+  const [likes, setLikes] = useState([])
   const [selectedArtist, setSelectedArtist] = useState(null)
 
-  const handleLocationGranted = () => setScreen('swipe')
-
-  const handleLike = (artist) => {
-    setLikedArtists(prev => {
-      if (prev.find(a => a.handle === artist.handle)) return prev
-      return [...prev, artist]
+  const handleLikeFlash = (flashItem) => {
+    setLikes(prev => {
+      if (prev.find(f => f.id === flashItem.id)) return prev
+      return [...prev, flashItem]
     })
   }
-
-  const handleViewLiked = () => setScreen('liked')
 
   const handleBook = (artist) => {
     setSelectedArtist(artist)
     setScreen('booking')
   }
 
-  const handleBackToSwipe = () => setScreen('swipe')
-  const handleBackToLiked = () => setScreen('liked')
-
   return (
     <div className="relative w-full min-h-dvh bg-bg overflow-hidden" style={{ maxWidth: '430px', margin: '0 auto' }}>
       {screen === 'onboarding' && (
-        <OnboardingScreen onGranted={handleLocationGranted} />
+        <OnboardingScreen onGranted={() => setScreen('swipe')} />
       )}
       {screen === 'swipe' && (
         <SwipeScreen
-          onLike={handleLike}
-          likedCount={likedArtists.length}
-          onViewLiked={handleViewLiked}
+          onLikeFlash={handleLikeFlash}
+          likedCount={likes.length}
+          onViewLiked={() => setScreen('liked')}
         />
       )}
       {screen === 'liked' && (
         <LikedScreen
-          artists={likedArtists}
+          likes={likes}
           onBook={handleBook}
-          onBack={handleBackToSwipe}
+          onBack={() => setScreen('swipe')}
         />
       )}
       {screen === 'booking' && selectedArtist && (
         <BookingScreen
           artist={selectedArtist}
-          onBack={handleBackToLiked}
+          onBack={() => setScreen('liked')}
         />
       )}
     </div>
