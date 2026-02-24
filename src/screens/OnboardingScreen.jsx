@@ -177,7 +177,7 @@ export default function OnboardingScreen({ onComplete }) {
               <motion.button
                 onClick={handleFindArtists}
                 whileTap={{ scale: 0.97 }}
-                className="w-full py-4 px-8 rounded-full font-bold text-base tracking-tight"
+                className="w-full py-4 rounded-full font-bold text-base tracking-tight text-center"
                 style={{ background: '#d4f542', color: '#0a0a0a' }}
               >
                 Find artists near me
@@ -227,7 +227,7 @@ export default function OnboardingScreen({ onComplete }) {
               <motion.button
                 onClick={handleConfirm}
                 whileTap={{ scale: 0.97 }}
-                className="w-full py-4 rounded-full font-bold text-base"
+                className="w-full py-4 rounded-full font-bold text-base text-center"
                 style={{ background: '#d4f542', color: '#0a0a0a' }}
               >
                 See artists near me →
