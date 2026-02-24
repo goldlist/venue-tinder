@@ -22,7 +22,11 @@ export default function SwipeScreen({ userLocation, onLocationChange, onLikeFlas
   const [currentIdx, setCurrentIdx] = useState(0)
   const [showDetail, setShowDetail] = useState(false)
   const [showLocationModal, setShowLocationModal] = useState(false)
+  const [matchedArtist, setMatchedArtist] = useState(null) // { handle, location, distance, profileImageUrl, bookingUrl }
   const likeCountsRef = useRef({})
+  const shownMatchRef = useRef(new Set()) // artists we've already shown a match for
+
+  const MATCH_THRESHOLD = 3
 
   // Rebuild feed when location changes
   useEffect(() => {
@@ -49,8 +53,22 @@ export default function SwipeScreen({ userLocation, onLocationChange, onLikeFlas
 
     if (direction === 'right') {
       const handle = current.artistHandle
-      likeCountsRef.current[handle] = (likeCountsRef.current[handle] || 0) + 1
+      const newCount = (likeCountsRef.current[handle] || 0) + 1
+      likeCountsRef.current[handle] = newCount
       onLikeFlash(current)
+
+      // Trigger match sheet on first time hitting the threshold
+      if (newCount === MATCH_THRESHOLD && !shownMatchRef.current.has(handle)) {
+        shownMatchRef.current.add(handle)
+        setMatchedArtist({
+          handle,
+          likeCount: newCount,
+          location: current.artistLocation,
+          distance: current.artistDistance,
+          profileImageUrl: current.artistProfileImageUrl,
+          bookingUrl: current.bookingUrl,
+        })
+      }
 
       // Inject up to 2 more unseen flash from this artist into next ~10 positions
       setFeed(prev => {
@@ -290,6 +308,85 @@ export default function SwipeScreen({ userLocation, onLocationChange, onLikeFlas
             onClose={() => setShowLocationModal(false)}
             onLocationChange={handleLocationChange}
           />
+        )}
+      </AnimatePresence>
+
+      {/* Artist match sheet */}
+      <AnimatePresence>
+        {matchedArtist && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setMatchedArtist(null)}
+              className="absolute inset-0 bg-black/70 z-40"
+            />
+            <motion.div
+              initial={{ y: '100%' }}
+              animate={{ y: 0 }}
+              exit={{ y: '100%' }}
+              transition={{ type: 'spring', damping: 28, stiffness: 300 }}
+              className="absolute bottom-0 left-0 right-0 z-50 bg-card rounded-t-3xl border-t border-border px-6 pb-12 pt-5"
+            >
+              <div className="w-10 h-1 rounded-full bg-white/15 mx-auto mb-6" />
+
+              {/* Match label */}
+              <div className="flex justify-center mb-5">
+                <span
+                  className="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full"
+                  style={{ background: 'rgba(212,245,66,0.12)', color: '#d4f542' }}
+                >
+                  Artist match
+                </span>
+              </div>
+
+              {/* Artist info */}
+              <div className="flex flex-col items-center text-center mb-6">
+                <div
+                  className="w-20 h-20 rounded-full overflow-hidden mb-4 border-2"
+                  style={{ background: '#222', borderColor: 'rgba(212,245,66,0.3)' }}
+                >
+                  {matchedArtist.profileImageUrl ? (
+                    <img
+                      src={matchedArtist.profileImageUrl}
+                      alt={matchedArtist.handle}
+                      className="w-full h-full object-cover"
+                      onError={e => { e.currentTarget.style.display = 'none' }}
+                    />
+                  ) : null}
+                </div>
+                <h2 className="text-white font-bold text-xl mb-1">@{matchedArtist.handle}</h2>
+                <p className="text-[#666] text-sm">
+                  {matchedArtist.location}
+                  {matchedArtist.distance != null && ` · ${formatDistance(matchedArtist.distance)}`}
+                </p>
+                <p className="text-[#888] text-sm mt-3 max-w-[260px] leading-relaxed">
+                  You've loved {matchedArtist.likeCount} of their pieces — looks like you found your artist.
+                </p>
+              </div>
+
+              {/* Actions */}
+              <div className="flex flex-col gap-3">
+                <motion.a
+                  whileTap={{ scale: 0.97 }}
+                  href={matchedArtist.bookingUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-4 rounded-full font-bold text-base text-center"
+                  style={{ background: '#d4f542', color: '#0a0a0a' }}
+                >
+                  Book @{matchedArtist.handle} →
+                </motion.a>
+                <button
+                  onClick={() => setMatchedArtist(null)}
+                  className="w-full py-3 text-sm font-medium text-[#666] hover:text-white transition-colors"
+                >
+                  Keep swiping
+                </button>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </div>
