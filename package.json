@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "generate-og": "node scripts/generate-og.mjs",
-    "build": "node scripts/generate-og.mjs && vite build",
+    "generate-icons": "node scripts/generate-icons.mjs",
+    "build": "node scripts/generate-icons.mjs && node scripts/generate-og.mjs && vite build",
     "preview": "vite preview",
     "scrape": "node --experimental-vm-modules scripts/scraper.mjs"
   },
