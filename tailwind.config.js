@@ -19,6 +19,11 @@ export default {
         'pass-red': '#f87171',
         // legacy aliases
         gold: '#F5F0E8',
+        // Venue brand ink colors
+        'ink-acid': '#d4f542',
+        'ink-lime': '#b2dd31',
+        'ink-white': '#e6e5dc',
+        'ink-black': '#16181a',
       },
     },
   },

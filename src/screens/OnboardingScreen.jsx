@@ -2,7 +2,6 @@ import { useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { reverseGeocode, haversine } from '../utils/geo'
 import artistsData from '../data/artists.json'
-import VenueLogo from '../components/VenueLogo'
 import LocationAutocomplete from '../components/LocationAutocomplete'
 
 const TOTAL_FLASH = artistsData.reduce((s, a) => s + a.flash.length, 0)
@@ -11,7 +10,6 @@ const TOTAL_ARTISTS = artistsData.length
 function fmt(n) {
   return n.toLocaleString()
 }
-
 
 export default function OnboardingScreen({ onComplete }) {
   const [phase, setPhase] = useState('cta') // 'cta' | 'locating' | 'confirm' | 'manual'
@@ -58,9 +56,14 @@ export default function OnboardingScreen({ onComplete }) {
 
   return (
     <div className="flex flex-col min-h-dvh bg-bg relative overflow-hidden">
-      {/* Subtle radial glow */}
+      {/* Acid glow — top center */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full bg-white/[0.02] blur-3xl" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[480px] h-[480px] rounded-full"
+          style={{ background: 'radial-gradient(circle, rgba(212,245,66,0.07) 0%, transparent 70%)' }}
+        />
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 rounded-full"
+          style={{ background: 'radial-gradient(circle, rgba(212,245,66,0.04) 0%, transparent 70%)' }}
+        />
       </div>
 
       {/* Logo */}
@@ -70,7 +73,14 @@ export default function OnboardingScreen({ onComplete }) {
         transition={{ duration: 0.5 }}
         className="relative flex justify-center pt-16"
       >
-        <VenueLogo />
+        {/* Use the accent logo (wordmark + acid-tinted icon) */}
+        <img
+          src="/logos/venue-light-accent-fixed.svg"
+          alt="Venue"
+          height={22}
+          style={{ height: 22, width: 'auto', display: 'block' }}
+          draggable={false}
+        />
       </motion.div>
 
       {/* Hero text */}
@@ -78,12 +88,15 @@ export default function OnboardingScreen({ onComplete }) {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.1 }}
-        className="relative flex flex-col items-center text-center px-8 mt-16"
+        className="relative flex flex-col items-center text-center px-8 mt-14"
       >
-        <h1 className="text-[2.75rem] font-black tracking-tight text-white leading-[1.05] mb-4">
+        <h1
+          className="text-[3rem] font-black text-white mb-4"
+          style={{ fontFamily: "'Polymath', 'Inter', sans-serif", lineHeight: 0.92, letterSpacing: '-0.02em' }}
+        >
           Find your<br />next tattoo.
         </h1>
-        <p className="text-[#888] text-base font-normal leading-relaxed max-w-[260px]">
+        <p className="text-[#666] text-base font-normal leading-relaxed max-w-[260px]">
           Discover flash from artists near you.
         </p>
       </motion.div>
@@ -106,13 +119,13 @@ export default function OnboardingScreen({ onComplete }) {
               className="flex gap-8"
             >
               <div className="text-center">
-                <p className="text-white font-black text-3xl tracking-tight">{fmt(localStats.flash)}</p>
-                <p className="text-[#888] text-xs mt-0.5 uppercase tracking-wider">flash near you</p>
+                <p className="font-black text-3xl tracking-tight" style={{ color: '#d4f542' }}>{fmt(localStats.flash)}</p>
+                <p className="text-[#555] text-xs mt-0.5 uppercase tracking-wider">flash near you</p>
               </div>
-              <div className="w-px bg-border" />
+              <div className="w-px" style={{ background: 'rgba(212,245,66,0.2)' }} />
               <div className="text-center">
-                <p className="text-white font-black text-3xl tracking-tight">{fmt(localStats.artists)}</p>
-                <p className="text-[#888] text-xs mt-0.5 uppercase tracking-wider">artists near you</p>
+                <p className="font-black text-3xl tracking-tight" style={{ color: '#d4f542' }}>{fmt(localStats.artists)}</p>
+                <p className="text-[#555] text-xs mt-0.5 uppercase tracking-wider">artists near you</p>
               </div>
             </motion.div>
           ) : (
@@ -125,18 +138,27 @@ export default function OnboardingScreen({ onComplete }) {
               className="flex gap-8"
             >
               <div className="text-center">
-                <p className="text-white font-black text-3xl tracking-tight">{fmt(TOTAL_FLASH)}</p>
-                <p className="text-[#888] text-xs mt-0.5 uppercase tracking-wider">flash pieces</p>
+                <p className="font-black text-3xl tracking-tight" style={{ color: '#d4f542' }}>{fmt(TOTAL_FLASH)}</p>
+                <p className="text-[#555] text-xs mt-0.5 uppercase tracking-wider">flash pieces</p>
               </div>
-              <div className="w-px bg-border" />
+              <div className="w-px" style={{ background: 'rgba(212,245,66,0.2)' }} />
               <div className="text-center">
-                <p className="text-white font-black text-3xl tracking-tight">{fmt(TOTAL_ARTISTS)}</p>
-                <p className="text-[#888] text-xs mt-0.5 uppercase tracking-wider">artists</p>
+                <p className="font-black text-3xl tracking-tight" style={{ color: '#d4f542' }}>{fmt(TOTAL_ARTISTS)}</p>
+                <p className="text-[#555] text-xs mt-0.5 uppercase tracking-wider">artists</p>
               </div>
             </motion.div>
           )}
         </AnimatePresence>
       </motion.div>
+
+      {/* Acid rule line */}
+      <motion.div
+        initial={{ opacity: 0, scaleX: 0 }}
+        animate={{ opacity: 1, scaleX: 1 }}
+        transition={{ duration: 0.6, delay: 0.4 }}
+        className="relative mx-auto mt-10"
+        style={{ width: 40, height: 2, background: '#d4f542', borderRadius: 2 }}
+      />
 
       {/* CTA area */}
       <div className="relative flex flex-col items-center px-8 mt-auto pb-16">
@@ -155,11 +177,12 @@ export default function OnboardingScreen({ onComplete }) {
               <motion.button
                 onClick={handleFindArtists}
                 whileTap={{ scale: 0.97 }}
-                className="w-full py-4 px-8 rounded-full bg-cream text-[#0a0a0a] font-bold text-base tracking-tight"
+                className="w-full py-4 px-8 rounded-full font-bold text-base tracking-tight"
+                style={{ background: '#d4f542', color: '#0a0a0a' }}
               >
                 Find artists near me
               </motion.button>
-              <p className="text-center text-[#888] text-xs mt-4">
+              <p className="text-center text-[#444] text-xs mt-4">
                 We use your location to surface nearby artists first
               </p>
             </motion.div>
@@ -174,8 +197,8 @@ export default function OnboardingScreen({ onComplete }) {
               exit={{ opacity: 0 }}
               className="flex flex-col items-center gap-3"
             >
-              <div className="w-8 h-8 rounded-full border-2 border-white/20 border-t-white animate-spin" />
-              <p className="text-[#888] text-sm">Locating you…</p>
+              <div className="w-8 h-8 rounded-full border-2 border-[#d4f542]/20 border-t-[#d4f542] animate-spin" />
+              <p className="text-[#666] text-sm">Locating you…</p>
             </motion.div>
           )}
 
@@ -189,10 +212,13 @@ export default function OnboardingScreen({ onComplete }) {
               transition={{ type: 'spring', damping: 22, stiffness: 280 }}
               className="w-full flex flex-col items-center gap-5"
             >
-              <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/8 border border-white/12">
+              <div
+                className="flex items-center gap-2 px-4 py-2 rounded-full"
+                style={{ background: 'rgba(212,245,66,0.08)', border: '1px solid rgba(212,245,66,0.2)' }}
+              >
                 <span className="text-sm">📍</span>
                 <span className="text-white text-sm font-medium">{detectedLocation.label}</span>
-                <button onClick={handleEdit} className="text-[#888] hover:text-white transition-colors ml-1">
+                <button onClick={handleEdit} className="text-[#666] hover:text-white transition-colors ml-1">
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                     <path d="M9.5 2L12 4.5L5 11.5H2.5V9L9.5 2Z" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
@@ -201,7 +227,8 @@ export default function OnboardingScreen({ onComplete }) {
               <motion.button
                 onClick={handleConfirm}
                 whileTap={{ scale: 0.97 }}
-                className="w-full py-4 rounded-full bg-cream text-[#0a0a0a] font-bold text-base"
+                className="w-full py-4 rounded-full font-bold text-base"
+                style={{ background: '#d4f542', color: '#0a0a0a' }}
               >
                 See artists near me →
               </motion.button>
@@ -218,7 +245,7 @@ export default function OnboardingScreen({ onComplete }) {
               transition={{ duration: 0.3 }}
               className="w-full flex flex-col gap-3"
             >
-              <p className="text-[#888] text-sm text-center">Enter your city or zip code</p>
+              <p className="text-[#555] text-sm text-center">Enter your city or zip code</p>
               <LocationAutocomplete
                 onSelect={handleLocationSelect}
                 placeholder="Brooklyn, NY"
@@ -226,7 +253,7 @@ export default function OnboardingScreen({ onComplete }) {
               />
               <button
                 onClick={handleFindArtists}
-                className="text-[#888] text-xs text-center hover:text-white transition-colors"
+                className="text-[#444] text-xs text-center hover:text-white transition-colors"
               >
                 Use my current location instead
               </button>
