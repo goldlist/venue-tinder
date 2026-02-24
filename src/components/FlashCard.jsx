@@ -83,36 +83,61 @@ export default function FlashCard({ flash, onSwipeLeft, onSwipeRight, onDetailOp
         </div>
       </motion.div>
 
-      {/* Bottom info */}
-      <div className="absolute bottom-0 left-0 right-0 px-5 pb-4 pt-16 z-10">
-        {/* Handle + distance */}
-        <div className="flex items-baseline justify-between mb-1">
-          <span className="text-white font-bold text-xl tracking-tight">@{flash.artistHandle}</span>
-          {distLabel && <span className="text-[#888] text-xs">{distLabel}</span>}
+      {/* Bottom info + action buttons */}
+      <div className="absolute bottom-0 left-0 right-0 z-10">
+
+        {/* X / ❤️ buttons — sit at the bottom edge of the photo, above the text */}
+        <div className="flex items-center justify-between px-6 mb-4">
+          <motion.button
+            onPointerDown={(e) => e.stopPropagation()}
+            onClick={onSwipeLeft}
+            whileTap={{ scale: 0.85 }}
+            className="flex items-center justify-center w-12 h-12 rounded-full border border-white/20 bg-black/40 backdrop-blur-sm text-white/70 text-lg"
+          >
+            ✕
+          </motion.button>
+          <motion.button
+            onPointerDown={(e) => e.stopPropagation()}
+            onClick={onSwipeRight}
+            whileTap={{ scale: 0.85 }}
+            className="flex items-center justify-center w-12 h-12 rounded-full border border-white/20 bg-black/40 backdrop-blur-sm text-xl"
+          >
+            ❤️
+          </motion.button>
         </div>
 
-        {/* Flash title · Collection */}
-        <div className="flex items-center flex-wrap gap-x-1.5 gap-y-0.5 mb-2">
-          {flash.title && <span className="text-[#888] text-sm">{flash.title}</span>}
-          {flash.title && flash.collection && <span className="text-[#555] text-sm">·</span>}
-          {flash.collection && <span className="text-[#888] text-sm">{flash.collection}</span>}
+        {/* Text info */}
+        <div className="px-5 pb-5">
+          {/* Handle + distance */}
+          <div className="flex items-baseline justify-between mb-1">
+            <span className="text-white font-bold text-xl tracking-tight">@{flash.artistHandle}</span>
+            {distLabel && <span className="text-[#888] text-xs">{distLabel}</span>}
+          </div>
+
+          {/* Flash title · Collection */}
+          <div className="flex items-center flex-wrap gap-x-1.5 gap-y-0.5 mb-2">
+            {flash.title && <span className="text-[#888] text-sm">{flash.title}</span>}
+            {flash.title && flash.collection && <span className="text-[#555] text-sm">·</span>}
+            {flash.collection && <span className="text-[#888] text-sm">{flash.collection}</span>}
+          </div>
+
+          {/* Price */}
+          {priceLabel && (
+            <p className="text-cream text-sm font-semibold mb-3">{priceLabel}</p>
+          )}
+
+          {/* Detail chevron */}
+          <button
+            onPointerDown={(e) => e.stopPropagation()}
+            onClick={onDetailOpen}
+            className="flex items-center justify-center gap-1 mx-auto text-white/25 hover:text-white/50 transition-colors"
+          >
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M4.5 11L9 6.5L13.5 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            <span className="text-xs uppercase tracking-wider">More</span>
+          </button>
         </div>
-
-        {/* Price */}
-        {priceLabel && (
-          <p className="text-cream text-sm font-semibold mb-3">{priceLabel}</p>
-        )}
-
-        {/* Detail chevron */}
-        <button
-          onClick={(e) => { e.stopPropagation(); onDetailOpen() }}
-          className="flex items-center justify-center gap-1 mx-auto text-white/25 hover:text-white/50 transition-colors"
-        >
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-            <path d="M4.5 11L9 6.5L13.5 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
-          <span className="text-xs uppercase tracking-wider">More</span>
-        </button>
       </div>
     </motion.div>
   )

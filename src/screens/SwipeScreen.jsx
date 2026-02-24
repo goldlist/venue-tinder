@@ -1,7 +1,8 @@
-import { useState, useEffect, useRef, useCallback, useMemo } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import FlashCard from '../components/FlashCard'
 import LocationModal from '../components/LocationModal'
+import VenueLogo from '../components/VenueLogo'
 import { buildFeed, formatDistance } from '../utils/geo'
 import artistsData from '../data/artists.json'
 
@@ -112,15 +113,14 @@ export default function SwipeScreen({ userLocation, onLocationChange, onLikeFlas
     <div className="flex flex-col min-h-dvh bg-bg select-none">
 
       {/* Header */}
-      <div className="absolute top-0 left-0 right-0 z-30 flex items-center justify-between px-4 pt-12 pb-3 max-w-[430px] mx-auto">
-        {/* Venue wordmark */}
-        <span className="text-white font-black text-lg tracking-tight">venue</span>
+      <div className="absolute top-0 left-0 right-0 z-30 flex items-center justify-between px-4 pt-12 pb-3 max-w-[430px] mx-auto pointer-events-none">
+        <div className="pointer-events-none"><VenueLogo size="sm" /></div>
 
         {/* Location pill */}
         <motion.button
           whileTap={{ scale: 0.95 }}
           onClick={() => setShowLocationModal(true)}
-          className="flex items-center gap-1.5 py-1.5 px-3 rounded-full bg-white/8 border border-white/10 text-white text-xs font-medium"
+          className="pointer-events-auto flex items-center gap-1.5 py-1.5 px-3 rounded-full bg-white/8 border border-white/10 text-white text-xs font-medium"
         >
           <span>📍</span>
           <span className="max-w-[110px] truncate">{locationLabel}</span>
@@ -130,7 +130,7 @@ export default function SwipeScreen({ userLocation, onLocationChange, onLikeFlas
         <motion.button
           whileTap={{ scale: 0.9 }}
           onClick={onViewLiked}
-          className="flex items-center gap-1.5 py-1.5 px-3 rounded-full bg-white/8 border border-white/10 text-white text-xs font-medium"
+          className="pointer-events-auto flex items-center gap-1.5 py-1.5 px-3 rounded-full bg-white/8 border border-white/10 text-white text-xs font-medium"
         >
           <span>❤️</span>
           <span>{likedCount}</span>
@@ -138,12 +138,12 @@ export default function SwipeScreen({ userLocation, onLocationChange, onLikeFlas
       </div>
 
       {/* Card stack */}
-      <div className="absolute inset-0 pt-24 pb-32">
+      <div className="absolute inset-0 pt-24 pb-4">
         {/* Shadow cards */}
         {[next2, next1].filter(Boolean).map((item, i) => (
           <div
             key={item.id}
-            className="absolute inset-x-3 top-24 bottom-32 rounded-2xl overflow-hidden"
+            className="absolute inset-x-3 top-24 bottom-4 rounded-2xl overflow-hidden"
             style={{
               transform: `scale(${0.93 + i * 0.03}) translateY(${(1 - i) * -8}px)`,
               transformOrigin: 'bottom center',
@@ -168,25 +168,6 @@ export default function SwipeScreen({ userLocation, onLocationChange, onLikeFlas
         </AnimatePresence>
       </div>
 
-      {/* Action bar */}
-      <div className="absolute bottom-0 left-0 right-0 max-w-[430px] mx-auto pb-10 px-8 z-20">
-        <div className="flex items-center justify-center gap-10">
-          <motion.button
-            whileTap={{ scale: 0.85 }}
-            onClick={() => advance('left')}
-            className="flex items-center justify-center w-14 h-14 rounded-full bg-transparent border border-white/15 text-xl text-white/60"
-          >
-            ✕
-          </motion.button>
-          <motion.button
-            whileTap={{ scale: 0.85 }}
-            onClick={() => advance('right')}
-            className="flex items-center justify-center w-16 h-16 rounded-full bg-transparent border border-white/15 text-2xl"
-          >
-            ❤️
-          </motion.button>
-        </div>
-      </div>
 
       {/* Detail bottom sheet */}
       <AnimatePresence>
@@ -212,11 +193,6 @@ export default function SwipeScreen({ userLocation, onLocationChange, onLikeFlas
             >
               {/* Drag handle */}
               <div className="w-10 h-1 rounded-full bg-white/15 mx-auto mb-5" />
-
-              {/* Flash image */}
-              <div className="w-full aspect-square rounded-2xl overflow-hidden mb-5" style={{ background: '#111111' }}>
-                <img src={current.imageUrl} alt={current.title} className="w-full h-full object-contain" />
-              </div>
 
               {/* Title + collection */}
               <div className="flex items-start gap-2 justify-between mb-2">
@@ -252,8 +228,19 @@ export default function SwipeScreen({ userLocation, onLocationChange, onLikeFlas
               )}
 
               {/* Artist + location */}
-              <div className="flex items-center justify-between bg-surface rounded-xl p-4 border border-border mb-5">
-                <div>
+              <div className="flex items-center gap-3 bg-surface rounded-xl p-4 border border-border mb-5">
+                {/* Profile picture */}
+                <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0" style={{ background: '#222' }}>
+                  {current.artistProfileImageUrl ? (
+                    <img
+                      src={current.artistProfileImageUrl}
+                      alt={current.artistHandle}
+                      className="w-full h-full object-cover"
+                      onError={e => { e.currentTarget.style.display = 'none' }}
+                    />
+                  ) : null}
+                </div>
+                <div className="flex-1 min-w-0">
                   <a
                     href={current.bookingUrl}
                     target="_blank"
@@ -262,7 +249,7 @@ export default function SwipeScreen({ userLocation, onLocationChange, onLikeFlas
                   >
                     @{current.artistHandle} ↗
                   </a>
-                  <p className="text-[#888] text-xs mt-0.5">
+                  <p className="text-[#888] text-xs mt-0.5 truncate">
                     {current.artistLocation}
                     {current.artistDistance != null && ` · ${formatDistance(current.artistDistance)}`}
                   </p>

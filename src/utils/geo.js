@@ -17,19 +17,44 @@ export function formatDistance(miles) {
   return `${Math.round(miles)} mi away`
 }
 
+// Format a Nominatim result into a short readable label
+function formatNominatimLabel(d) {
+  const a = d.address || {}
+  const name = a.city || a.town || a.village || a.municipality || a.county || d.name || ''
+  if (a.country_code === 'us') {
+    const state = a.state_code || a.state || ''
+    return [name, state].filter(Boolean).join(', ')
+  }
+  const region = a.state || a.region || ''
+  const country = a.country || ''
+  return [name, region, country].filter(Boolean).join(', ') || d.display_name.split(',')[0]
+}
+
 // Geocode a text query via Nominatim → { lat, lng, label }
 export async function geocodeText(query) {
-  const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&format=json&limit=1`
+  const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&format=json&limit=1&addressdetails=1`
   const res = await fetch(url, {
     headers: { 'User-Agent': 'VenueDiscover/1.0' }
   })
   const data = await res.json()
   if (!data || !data[0]) return null
   const d = data[0]
-  // Build a readable label: "City, State" or display_name trimmed
-  const parts = d.display_name.split(',').map(s => s.trim())
-  const label = parts.slice(0, 2).join(', ')
-  return { lat: parseFloat(d.lat), lng: parseFloat(d.lon), label }
+  return { lat: parseFloat(d.lat), lng: parseFloat(d.lon), label: formatNominatimLabel(d) }
+}
+
+// Search for locations (autocomplete) → [{ lat, lng, label }]
+export async function searchLocations(query, limit = 6) {
+  const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&format=json&limit=${limit}&addressdetails=1`
+  const res = await fetch(url, {
+    headers: { 'User-Agent': 'VenueDiscover/1.0' }
+  })
+  const data = await res.json()
+  if (!data) return []
+  // Dedupe by label
+  const seen = new Set()
+  return data
+    .map(d => ({ lat: parseFloat(d.lat), lng: parseFloat(d.lon), label: formatNominatimLabel(d) }))
+    .filter(r => { if (!r.label || seen.has(r.label)) return false; seen.add(r.label); return true })
 }
 
 // Reverse geocode GPS coords → label string
@@ -76,6 +101,7 @@ export function buildFeed(artists, userLat, userLng) {
       artistLat: artist.lat,
       artistLng: artist.lng,
       artistDistance: artist.computedDistance,
+      artistProfileImageUrl: artist.profileImageUrl ?? null,
       bookingUrl: artist.bookingUrl,
       priceRange: artist.priceRange,
     }))

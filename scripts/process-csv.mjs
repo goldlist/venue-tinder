@@ -85,6 +85,10 @@ for (let lineNum = 1; lineNum < rawLines.length; lineNum++) {
   const flashIdMatch = imageUrl.match(/\/(fli-[A-Za-z0-9]+)\//)
   const flashId = flashIdMatch ? flashIdMatch[1] : `fli-line${lineNum}`
 
+  // Extract person ID from URL path e.g. per-8jnF8cX2RO4
+  const personIdMatch = imageUrl.match(/\/(per-[A-Za-z0-9]+)\//)
+  const personId = personIdMatch ? personIdMatch[1] : null
+
   if (seenFlashIds.has(flashId)) continue
   seenFlashIds.add(flashId)
 
@@ -92,7 +96,10 @@ for (let lineNum = 1; lineNum < rawLines.length; lineNum++) {
   const priceMax = xlCents > 0 ? Math.round(xlCents / 100) : priceMin
 
   if (!artistMap.has(handle)) {
-    artistMap.set(handle, { handle, location, bookingUrl: `https://venue.ink/@${handle}`, flash: [] })
+    const profileImageUrl = personId
+      ? `https://venue.ink/static/people/${personId}/profile_image.webp`
+      : null
+    artistMap.set(handle, { handle, location, bookingUrl: `https://venue.ink/@${handle}`, profileImageUrl, flash: [] })
   }
 
   artistMap.get(handle).flash.push({ id: flashId, title, description, collection, imageUrl, priceMin, priceMax })
@@ -126,6 +133,7 @@ const artists = Array.from(artistMap.values()).map(artist => {
     lat: coords?.lat ?? null,
     lng: coords?.lng ?? null,
     bookingUrl: artist.bookingUrl,
+    profileImageUrl: artist.profileImageUrl ?? null,
     priceRange,
     flash: artist.flash,
   }

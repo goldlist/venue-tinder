@@ -1,25 +1,21 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { geocodeText, reverseGeocode } from '../utils/geo'
+import { reverseGeocode, haversine } from '../utils/geo'
+import artistsData from '../data/artists.json'
+import VenueLogo from '../components/VenueLogo'
+import LocationAutocomplete from '../components/LocationAutocomplete'
 
-// Venue wordmark SVG (ink-drop + text)
-function VenueLogo() {
-  return (
-    <div className="flex items-center gap-2">
-      <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
-        <path d="M16 4C16 4 6 10 6 18C6 23.523 10.477 28 16 28C21.523 28 26 23.523 26 18C26 10 16 4 16 4Z" fill="#F5F0E8" opacity="0.9"/>
-        <path d="M16 10C16 10 11 14 11 18C11 20.761 13.239 23 16 23C18.761 23 21 20.761 21 18C21 14 16 10 16 10Z" fill="#0a0a0a"/>
-      </svg>
-      <span className="text-2xl font-black tracking-tight text-white">venue</span>
-    </div>
-  )
+const TOTAL_FLASH = artistsData.reduce((s, a) => s + a.flash.length, 0)
+const TOTAL_ARTISTS = artistsData.length
+
+function fmt(n) {
+  return n.toLocaleString()
 }
 
+
 export default function OnboardingScreen({ onComplete }) {
-  const [phase, setPhase] = useState('cta') // 'cta' | 'locating' | 'confirm' | 'manual' | 'searching'
+  const [phase, setPhase] = useState('cta') // 'cta' | 'locating' | 'confirm' | 'manual'
   const [detectedLocation, setDetectedLocation] = useState(null) // { lat, lng, label }
-  const [cityInput, setCityInput] = useState('')
-  const [error, setError] = useState(null)
 
   const handleFindArtists = () => {
     if (!navigator.geolocation) { setPhase('manual'); return }
@@ -36,29 +32,29 @@ export default function OnboardingScreen({ onComplete }) {
     )
   }
 
-  const handleCitySearch = async (e) => {
-    e.preventDefault()
-    if (!cityInput.trim()) return
-    setPhase('searching')
-    setError(null)
-    const result = await geocodeText(cityInput.trim())
-    if (result) {
-      setDetectedLocation(result)
-      setPhase('confirm')
-    } else {
-      setError("Couldn't find that location — try a city name or zip code")
-      setPhase('manual')
-    }
+  const handleLocationSelect = (result) => {
+    setDetectedLocation(result)
+    setPhase('confirm')
   }
+
+  // Local counts for confirmed location
+  const localStats = useMemo(() => {
+    if (!detectedLocation?.lat) return null
+    const nearby = artistsData.filter(a =>
+      a.lat != null && a.lng != null &&
+      haversine(detectedLocation.lat, detectedLocation.lng, a.lat, a.lng) <= 50
+    )
+    return {
+      artists: nearby.length,
+      flash: nearby.reduce((s, a) => s + a.flash.length, 0),
+    }
+  }, [detectedLocation])
 
   const handleConfirm = () => {
     onComplete(detectedLocation)
   }
 
-  const handleEdit = () => {
-    setCityInput(detectedLocation?.label || '')
-    setPhase('manual')
-  }
+  const handleEdit = () => setPhase('manual')
 
   return (
     <div className="flex flex-col min-h-dvh bg-bg relative overflow-hidden">
@@ -90,6 +86,56 @@ export default function OnboardingScreen({ onComplete }) {
         <p className="text-[#888] text-base font-normal leading-relaxed max-w-[260px]">
           Discover flash from artists near you.
         </p>
+      </motion.div>
+
+      {/* Stats counter */}
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.25 }}
+        className="relative flex justify-center gap-8 mt-10 px-8"
+      >
+        <AnimatePresence mode="wait">
+          {localStats && (phase === 'confirm') ? (
+            <motion.div
+              key="local"
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.3 }}
+              className="flex gap-8"
+            >
+              <div className="text-center">
+                <p className="text-white font-black text-3xl tracking-tight">{fmt(localStats.flash)}</p>
+                <p className="text-[#888] text-xs mt-0.5 uppercase tracking-wider">flash near you</p>
+              </div>
+              <div className="w-px bg-border" />
+              <div className="text-center">
+                <p className="text-white font-black text-3xl tracking-tight">{fmt(localStats.artists)}</p>
+                <p className="text-[#888] text-xs mt-0.5 uppercase tracking-wider">artists near you</p>
+              </div>
+            </motion.div>
+          ) : (
+            <motion.div
+              key="global"
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.3 }}
+              className="flex gap-8"
+            >
+              <div className="text-center">
+                <p className="text-white font-black text-3xl tracking-tight">{fmt(TOTAL_FLASH)}</p>
+                <p className="text-[#888] text-xs mt-0.5 uppercase tracking-wider">flash pieces</p>
+              </div>
+              <div className="w-px bg-border" />
+              <div className="text-center">
+                <p className="text-white font-black text-3xl tracking-tight">{fmt(TOTAL_ARTISTS)}</p>
+                <p className="text-[#888] text-xs mt-0.5 uppercase tracking-wider">artists</p>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.div>
 
       {/* CTA area */}
@@ -163,7 +209,7 @@ export default function OnboardingScreen({ onComplete }) {
           )}
 
           {/* Manual city entry */}
-          {(phase === 'manual' || phase === 'searching') && (
+          {phase === 'manual' && (
             <motion.div
               key="manual"
               initial={{ opacity: 0, y: 16 }}
@@ -172,28 +218,12 @@ export default function OnboardingScreen({ onComplete }) {
               transition={{ duration: 0.3 }}
               className="w-full flex flex-col gap-3"
             >
-              {error && (
-                <p className="text-pass-red text-xs text-center">{error}</p>
-              )}
               <p className="text-[#888] text-sm text-center">Enter your city or zip code</p>
-              <form onSubmit={handleCitySearch} className="flex gap-2">
-                <input
-                  type="text"
-                  value={cityInput}
-                  onChange={e => setCityInput(e.target.value)}
-                  placeholder="New York, NY"
-                  autoFocus
-                  className="flex-1 py-3.5 px-4 rounded-xl bg-surface border border-border text-white placeholder-white/25 text-sm outline-none focus:border-white/25 transition-colors"
-                />
-                <motion.button
-                  type="submit"
-                  disabled={phase === 'searching'}
-                  whileTap={{ scale: 0.95 }}
-                  className="py-3.5 px-5 rounded-xl bg-cream text-[#0a0a0a] font-bold text-sm disabled:opacity-50"
-                >
-                  {phase === 'searching' ? '…' : 'Go'}
-                </motion.button>
-              </form>
+              <LocationAutocomplete
+                onSelect={handleLocationSelect}
+                placeholder="Brooklyn, NY"
+                autoFocus
+              />
               <button
                 onClick={handleFindArtists}
                 className="text-[#888] text-xs text-center hover:text-white transition-colors"
