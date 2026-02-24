@@ -5,11 +5,15 @@ import { fileURLToPath } from 'url'
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const csvPath = path.join(__dirname, '../data/flash_data.csv')
 const outputPath = path.join(__dirname, '../src/data/artists.json')
+const cachePath = path.join(__dirname, '../data/geocode-cache.json')
 
-const text = fs.readFileSync(csvPath, 'utf-8')
-const rawLines = text.split('\n')
+// Load geocode cache
+let geocodeCache = {}
+if (fs.existsSync(cachePath)) {
+  geocodeCache = JSON.parse(fs.readFileSync(cachePath, 'utf-8'))
+  console.log(`Loaded ${Object.keys(geocodeCache).length} cached geocodes`)
+}
 
-// Parse a single CSV line respecting quoted fields
 function parseCSVLine(line) {
   const result = []
   let current = ''
@@ -29,21 +33,31 @@ function parseCSVLine(line) {
   return result
 }
 
-// Seeded distance: 0.5–15 miles, stable per handle
-function getDistance(handle) {
-  let hash = 0
-  for (let i = 0; i < handle.length; i++) {
-    hash = ((hash << 5) - hash) + handle.charCodeAt(i)
-    hash |= 0
+async function geocodeLocation(location) {
+  if (!location || location.length < 2) return null
+  const url = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(location)}&format=json&limit=1`
+  try {
+    const res = await fetch(url, {
+      headers: { 'User-Agent': 'VenueDiscover/1.0 (tattoo artist discovery app)' }
+    })
+    const data = await res.json()
+    if (data && data[0]) {
+      return { lat: parseFloat(data[0].lat), lng: parseFloat(data[0].lon) }
+    }
+  } catch (e) {
+    console.error(`Geocode failed for "${location}":`, e.message)
   }
-  const norm = (Math.abs(hash) % 1000) / 1000
-  return parseFloat((0.5 + norm * 14.5).toFixed(1))
+  return null
 }
 
-// Column indices (0-based)
-// 0: Handle, 1: Location, 2: Title, 3: Description,
-// 4: Image URL, 5: Collection, 6: XS Price Cents, 7: XL Price Cents
+function sleep(ms) {
+  return new Promise(r => setTimeout(r, ms))
+}
 
+const text = fs.readFileSync(csvPath, 'utf-8')
+const rawLines = text.split('\n')
+
+// Build artist map from CSV
 const artistMap = new Map()
 const seenFlashIds = new Set()
 
@@ -68,12 +82,9 @@ for (let lineNum = 1; lineNum < rawLines.length; lineNum++) {
   if (!rawUrl || !rawUrl.startsWith('s3://')) continue
 
   const imageUrl = rawUrl.replace('s3://venue-ink-prd-app/', 'https://venue.ink/')
-
-  // Extract flash ID from URL path
   const flashIdMatch = imageUrl.match(/\/(fli-[A-Za-z0-9]+)\//)
   const flashId = flashIdMatch ? flashIdMatch[1] : `fli-line${lineNum}`
 
-  // Skip duplicate flash IDs
   if (seenFlashIds.has(flashId)) continue
   seenFlashIds.add(flashId)
 
@@ -81,37 +92,45 @@ for (let lineNum = 1; lineNum < rawLines.length; lineNum++) {
   const priceMax = xlCents > 0 ? Math.round(xlCents / 100) : priceMin
 
   if (!artistMap.has(handle)) {
-    artistMap.set(handle, {
-      handle,
-      location,
-      bookingUrl: `https://venue.ink/@${handle}`,
-      distance: getDistance(handle),
-      flash: [],
-    })
+    artistMap.set(handle, { handle, location, bookingUrl: `https://venue.ink/@${handle}`, flash: [] })
   }
 
-  artistMap.get(handle).flash.push({
-    id: flashId,
-    title,
-    description,
-    collection,
-    imageUrl,
-    priceMin,
-    priceMax,
-  })
+  artistMap.get(handle).flash.push({ id: flashId, title, description, collection, imageUrl, priceMin, priceMax })
 }
 
-// Compute per-artist priceRange
+// Collect unique locations to geocode
+const uniqueLocations = [...new Set([...artistMap.values()].map(a => a.location).filter(Boolean))]
+const toGeocode = uniqueLocations.filter(loc => !(loc in geocodeCache))
+console.log(`Need to geocode ${toGeocode.length} new locations (${uniqueLocations.length - toGeocode.length} cached)`)
+
+// Geocode uncached locations
+for (let i = 0; i < toGeocode.length; i++) {
+  const loc = toGeocode[i]
+  process.stdout.write(`[${i + 1}/${toGeocode.length}] Geocoding: ${loc} ... `)
+  const coords = await geocodeLocation(loc)
+  geocodeCache[loc] = coords
+  // Save cache after each result
+  fs.writeFileSync(cachePath, JSON.stringify(geocodeCache, null, 2))
+  console.log(coords ? `${coords.lat.toFixed(4)}, ${coords.lng.toFixed(4)}` : 'not found')
+  if (i < toGeocode.length - 1) await sleep(1100) // Nominatim: 1 req/sec
+}
+
+// Build final artists array with geocoords
 const artists = Array.from(artistMap.values()).map(artist => {
   const prices = artist.flash.flatMap(f => [f.priceMin, f.priceMax]).filter(p => p > 0)
-  const priceRange = prices.length > 0
-    ? { min: Math.min(...prices), max: Math.max(...prices) }
-    : { min: 0, max: 0 }
-  return { ...artist, priceRange }
-})
+  const priceRange = prices.length > 0 ? { min: Math.min(...prices), max: Math.max(...prices) } : { min: 0, max: 0 }
+  const coords = geocodeCache[artist.location] || null
+  return {
+    handle: artist.handle,
+    location: artist.location,
+    lat: coords?.lat ?? null,
+    lng: coords?.lng ?? null,
+    bookingUrl: artist.bookingUrl,
+    priceRange,
+    flash: artist.flash,
+  }
+}).filter(a => a.flash.length > 0)
 
-// Filter out artists with no flash
-const filtered = artists.filter(a => a.flash.length > 0)
-
-fs.writeFileSync(outputPath, JSON.stringify(filtered, null, 2))
-console.log(`✓ Processed ${filtered.length} artists, ${filtered.reduce((s, a) => s + a.flash.length, 0)} flash items → src/data/artists.json`)
+fs.writeFileSync(outputPath, JSON.stringify(artists, null, 2))
+console.log(`\n✓ ${artists.length} artists, ${artists.reduce((s, a) => s + a.flash.length, 0)} flash items written to src/data/artists.json`)
+console.log(`  ${artists.filter(a => a.lat !== null).length} artists geocoded`)

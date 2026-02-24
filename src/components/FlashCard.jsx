@@ -1,4 +1,5 @@
 import { motion, useMotionValue, useTransform, useAnimationControls } from 'framer-motion'
+import { formatDistance } from '../utils/geo'
 
 const SWIPE_THRESHOLD = 80
 
@@ -8,28 +9,21 @@ export default function FlashCard({ flash, onSwipeLeft, onSwipeRight, onDetailOp
   const likeOpacity = useTransform(x, [30, 110], [0, 1])
   const passOpacity = useTransform(x, [-110, -30], [1, 0])
   const controls = useAnimationControls()
-  const handleDragStart = () => {}
 
   const handleDragEnd = (_, info) => {
     const offset = info.offset.x
     if (offset > SWIPE_THRESHOLD) {
-      controls.start({ x: 700, opacity: 0, transition: { duration: 0.28, ease: 'easeIn' } }).then(onSwipeRight)
+      controls.start({ x: 700, opacity: 0, transition: { duration: 0.26, ease: 'easeIn' } }).then(onSwipeRight)
     } else if (offset < -SWIPE_THRESHOLD) {
-      controls.start({ x: -700, opacity: 0, transition: { duration: 0.28, ease: 'easeIn' } }).then(onSwipeLeft)
+      controls.start({ x: -700, opacity: 0, transition: { duration: 0.26, ease: 'easeIn' } }).then(onSwipeLeft)
     } else {
-      controls.start({ x: 0, rotate: 0, transition: { type: 'spring', stiffness: 350, damping: 25 } })
+      controls.start({ x: 0, rotate: 0, transition: { type: 'spring', stiffness: 350, damping: 26 } })
     }
   }
 
-  const handleChevronClick = (e) => {
-    e.stopPropagation()
-    onDetailOpen()
-  }
-
+  const distLabel = formatDistance(flash.artistDistance)
   const priceLabel = flash.priceMin > 0
-    ? flash.priceMin === flash.priceMax
-      ? `$${flash.priceMin}`
-      : `$${flash.priceMin}–$${flash.priceMax}`
+    ? flash.priceMin === flash.priceMax ? `$${flash.priceMin}` : `$${flash.priceMin} – $${flash.priceMax}`
     : null
 
   return (
@@ -37,104 +31,87 @@ export default function FlashCard({ flash, onSwipeLeft, onSwipeRight, onDetailOp
       drag="x"
       dragConstraints={{ left: 0, right: 0 }}
       dragElastic={0.65}
-      onDragStart={handleDragStart}
       onDragEnd={handleDragEnd}
       animate={controls}
       style={{ x, rotate }}
-      className="absolute inset-x-3 top-0 bottom-0 rounded-3xl overflow-hidden cursor-grab active:cursor-grabbing z-10 select-none"
-      initial={{ scale: 1, opacity: 1 }}
+      className="absolute inset-x-3 top-0 bottom-0 rounded-2xl overflow-hidden cursor-grab active:cursor-grabbing z-10 select-none"
     >
-      {/* Image — object-contain so nothing is cropped */}
-      <div className="absolute inset-0" style={{ background: '#0a0a0a' }}>
+      {/* Image — object-contain, dark bg */}
+      <div className="absolute inset-0" style={{ background: '#111111' }}>
         {flash.imageUrl ? (
           <img
             src={flash.imageUrl}
-            alt={flash.title}
+            alt={flash.title || flash.artistHandle}
             className="w-full h-full object-contain"
             draggable={false}
             loading="lazy"
+            onError={e => { e.currentTarget.style.display = 'none' }}
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center text-white/10 text-7xl">♥</div>
+          <div className="w-full h-full flex flex-col items-center justify-center gap-2">
+            <span className="text-white/10 text-5xl">✦</span>
+            <span className="text-white/20 text-sm">@{flash.artistHandle}</span>
+          </div>
         )}
       </div>
 
       {/* Bottom gradient */}
       <div
         className="absolute inset-0 pointer-events-none"
-        style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.4) 35%, transparent 65%)' }}
+        style={{ background: 'linear-gradient(to top, #0a0a0a 0%, rgba(10,10,10,0.6) 30%, transparent 60%)' }}
       />
 
-      {/* Like stamp */}
+      {/* LIKE stamp */}
       <motion.div
-        style={{ opacity: likeOpacity, background: 'rgba(34,197,94,0.12)' }}
+        style={{ opacity: likeOpacity, background: 'rgba(74,222,128,0.1)' }}
         className="absolute inset-0 pointer-events-none"
       />
-      <motion.div
-        style={{ opacity: likeOpacity }}
-        className="absolute top-14 right-5 pointer-events-none"
-      >
-        <div className="px-4 py-1.5 rounded-xl border-[3px] border-green-400 text-green-400 text-2xl font-black tracking-widest rotate-[-12deg]">
+      <motion.div style={{ opacity: likeOpacity }} className="absolute top-14 right-5 pointer-events-none">
+        <div className="px-4 py-1.5 rounded-xl border-[3px] border-like-green text-like-green text-2xl font-black tracking-widest rotate-[-12deg]">
           LIKE
         </div>
       </motion.div>
 
-      {/* Pass stamp */}
+      {/* NOPE stamp */}
       <motion.div
-        style={{ opacity: passOpacity, background: 'rgba(239,68,68,0.12)' }}
+        style={{ opacity: passOpacity, background: 'rgba(248,113,113,0.1)' }}
         className="absolute inset-0 pointer-events-none"
       />
-      <motion.div
-        style={{ opacity: passOpacity }}
-        className="absolute top-14 left-5 pointer-events-none"
-      >
-        <div className="px-4 py-1.5 rounded-xl border-[3px] border-red-400 text-red-400 text-2xl font-black tracking-widest rotate-[12deg]">
+      <motion.div style={{ opacity: passOpacity }} className="absolute top-14 left-5 pointer-events-none">
+        <div className="px-4 py-1.5 rounded-xl border-[3px] border-pass-red text-pass-red text-2xl font-black tracking-widest rotate-[12deg]">
           NOPE
         </div>
       </motion.div>
 
-      {/* Bottom info overlay */}
-      <div className="absolute bottom-0 left-0 right-0 px-5 pb-5 pt-12 z-10">
-        {/* Artist + distance */}
+      {/* Bottom info */}
+      <div className="absolute bottom-0 left-0 right-0 px-5 pb-4 pt-16 z-10">
+        {/* Handle + distance */}
         <div className="flex items-baseline justify-between mb-1">
           <span className="text-white font-bold text-xl tracking-tight">@{flash.artistHandle}</span>
-          {flash.artistDistance != null && (
-            <span className="text-white/50 text-sm">{flash.artistDistance} mi</span>
-          )}
+          {distLabel && <span className="text-[#888] text-xs">{distLabel}</span>}
         </div>
 
-        {/* Flash title + collection */}
-        <div className="flex items-center gap-2 mb-1.5 flex-wrap">
-          {flash.title && (
-            <span className="text-white/90 text-sm font-medium">{flash.title}</span>
-          )}
-          {flash.collection && (
-            <>
-              <span className="text-white/30 text-sm">·</span>
-              <span className="text-gold text-xs font-medium">{flash.collection}</span>
-            </>
-          )}
+        {/* Flash title · Collection */}
+        <div className="flex items-center flex-wrap gap-x-1.5 gap-y-0.5 mb-2">
+          {flash.title && <span className="text-[#888] text-sm">{flash.title}</span>}
+          {flash.title && flash.collection && <span className="text-[#555] text-sm">·</span>}
+          {flash.collection && <span className="text-[#888] text-sm">{flash.collection}</span>}
         </div>
 
-        {/* Price + location */}
-        <div className="flex items-center justify-between">
-          {priceLabel && (
-            <span className="text-white/80 text-sm font-semibold">{priceLabel}</span>
-          )}
-          {flash.artistLocation && (
-            <span className="text-white/40 text-xs ml-auto">{flash.artistLocation}</span>
-          )}
-        </div>
+        {/* Price */}
+        {priceLabel && (
+          <p className="text-cream text-sm font-semibold mb-3">{priceLabel}</p>
+        )}
 
-        {/* Chevron to open detail sheet */}
+        {/* Detail chevron */}
         <button
-          onClick={handleChevronClick}
-          className="flex items-center justify-center gap-1 mt-3 mx-auto text-white/35 hover:text-white/60 transition-colors"
+          onClick={(e) => { e.stopPropagation(); onDetailOpen() }}
+          className="flex items-center justify-center gap-1 mx-auto text-white/25 hover:text-white/50 transition-colors"
         >
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M5 12.5L10 7.5L15 12.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M4.5 11L9 6.5L13.5 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
-          <span className="text-xs">Details</span>
+          <span className="text-xs uppercase tracking-wider">More</span>
         </button>
       </div>
     </motion.div>

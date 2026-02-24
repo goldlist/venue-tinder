@@ -1,40 +1,10 @@
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import FlashCard from '../components/FlashCard'
+import LocationModal from '../components/LocationModal'
+import { buildFeed, formatDistance } from '../utils/geo'
 import artistsData from '../data/artists.json'
 
-// Seeded shuffle using Fisher-Yates with a numeric seed
-function seededShuffle(arr, seed) {
-  const a = [...arr]
-  let s = seed
-  const rand = () => {
-    s = (s * 1664525 + 1013904223) & 0xffffffff
-    return (s >>> 0) / 0xffffffff
-  }
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(rand() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]]
-  }
-  return a
-}
-
-// Flatten all flash items with artist context
-function buildFlatFeed(artists) {
-  const all = artists.flatMap(artist =>
-    artist.flash.map(f => ({
-      ...f,
-      artistHandle: artist.handle,
-      artistLocation: artist.location,
-      artistDistance: artist.distance,
-      bookingUrl: artist.bookingUrl,
-      priceRange: artist.priceRange,
-    }))
-  )
-  // Shuffle with a time-based seed so each session is different
-  return seededShuffle(all, Date.now() & 0xffffff)
-}
-
-// Preload the next N images
 function preloadImages(feed, startIdx, count) {
   for (let i = startIdx; i < Math.min(startIdx + count, feed.length); i++) {
     if (feed[i]?.imageUrl) {
@@ -44,39 +14,45 @@ function preloadImages(feed, startIdx, count) {
   }
 }
 
-export default function SwipeScreen({ onLikeFlash, likedCount, onViewLiked }) {
-  const [feed, setFeed] = useState(() => buildFlatFeed(artistsData))
+export default function SwipeScreen({ userLocation, onLocationChange, onLikeFlash, likedCount, onViewLiked }) {
+  const [feed, setFeed] = useState(() =>
+    buildFeed(artistsData, userLocation?.lat, userLocation?.lng)
+  )
   const [currentIdx, setCurrentIdx] = useState(0)
-  const [exiting, setExiting] = useState(null)
   const [showDetail, setShowDetail] = useState(false)
-  const likeCountsRef = useRef({}) // handle → like count
+  const [showLocationModal, setShowLocationModal] = useState(false)
+  const likeCountsRef = useRef({})
+
+  // Rebuild feed when location changes
+  useEffect(() => {
+    setFeed(buildFeed(artistsData, userLocation?.lat, userLocation?.lng))
+    setCurrentIdx(0)
+    setShowDetail(false)
+  }, [userLocation])
 
   const current = feed[currentIdx] ?? null
   const next1 = feed[currentIdx + 1] ?? null
   const next2 = feed[currentIdx + 2] ?? null
 
-  // Preload upcoming images
   useEffect(() => {
-    preloadImages(feed, currentIdx + 1, 4)
+    preloadImages(feed, currentIdx + 1, 3)
   }, [currentIdx, feed])
 
   const advance = useCallback((direction) => {
     if (!current) return
     setShowDetail(false)
-    setExiting({ direction, item: current })
 
     if (direction === 'right') {
       const handle = current.artistHandle
       likeCountsRef.current[handle] = (likeCountsRef.current[handle] || 0) + 1
       onLikeFlash(current)
 
-      // Smart weighting: inject more of this artist's unseen flash near front
+      // Inject up to 2 more unseen flash from this artist into next ~10 positions
       setFeed(prev => {
         const upcoming = prev.slice(currentIdx + 1)
         const seenIds = new Set(prev.slice(0, currentIdx + 1).map(f => f.id))
-        // Find artist's flash not yet in upcoming
-        const artistObj = artistsData.find(a => a.handle === handle)
         const upcomingIds = new Set(upcoming.map(f => f.id))
+        const artistObj = artistsData.find(a => a.handle === handle)
         const toInject = (artistObj?.flash ?? [])
           .filter(f => !seenIds.has(f.id) && !upcomingIds.has(f.id))
           .slice(0, 2)
@@ -84,101 +60,95 @@ export default function SwipeScreen({ onLikeFlash, likedCount, onViewLiked }) {
             ...f,
             artistHandle: artistObj.handle,
             artistLocation: artistObj.location,
-            artistDistance: artistObj.distance,
+            artistLat: artistObj.lat,
+            artistLng: artistObj.lng,
+            artistDistance: current.artistDistance,
             bookingUrl: artistObj.bookingUrl,
             priceRange: artistObj.priceRange,
           }))
 
-        if (toInject.length > 0) {
-          // Insert after the next card (position 2 in upcoming = index 3 of remaining)
-          const insertAt = Math.min(2, upcoming.length)
-          const newUpcoming = [
-            ...upcoming.slice(0, insertAt),
-            ...toInject,
-            ...upcoming.slice(insertAt),
-          ]
-          return [...prev.slice(0, currentIdx + 1), ...newUpcoming]
-        }
-        return prev
+        if (toInject.length === 0) return prev
+        const insertAt = Math.min(currentIdx + 1 + 3, currentIdx + 1 + upcoming.length)
+        return [
+          ...prev.slice(0, currentIdx + 1 + 3),
+          ...toInject,
+          ...prev.slice(currentIdx + 1 + 3),
+        ]
       })
     }
 
-    setTimeout(() => {
-      setCurrentIdx(i => i + 1)
-      setExiting(null)
-    }, 300)
+    setCurrentIdx(i => i + 1)
   }, [current, currentIdx, onLikeFlash])
 
-  const handleReset = () => {
-    setFeed(buildFlatFeed(artistsData))
-    setCurrentIdx(0)
-    setExiting(null)
-    setShowDetail(false)
-    likeCountsRef.current = {}
+  const handleLocationChange = (loc) => {
+    onLocationChange(loc)
+    setShowLocationModal(false)
   }
 
-  const remaining = feed.length - currentIdx
+  const locationLabel = userLocation?.label || 'Nearby'
 
   // Empty state
-  if (!current && !exiting) {
+  if (!current) {
     return (
       <div className="flex flex-col min-h-dvh bg-bg items-center justify-center px-8 text-center">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ type: 'spring', bounce: 0.3 }}
+        <div className="text-4xl mb-5">🖤</div>
+        <h2 className="text-xl font-bold text-white mb-2">You've seen it all</h2>
+        <p className="text-[#888] text-sm mb-6">You've gone through all available flash</p>
+        <button
+          onClick={() => {
+            setFeed(buildFeed(artistsData, userLocation?.lat, userLocation?.lng))
+            setCurrentIdx(0)
+            likeCountsRef.current = {}
+          }}
+          className="text-cream text-sm font-medium underline underline-offset-4"
         >
-          <div className="text-5xl mb-6">🖤</div>
-          <h2 className="text-2xl font-bold text-white mb-2">You've seen it all</h2>
-          <p className="text-white/40 mb-8 text-sm">You've gone through all available flash</p>
-          <motion.button
-            whileTap={{ scale: 0.95 }}
-            onClick={handleReset}
-            className="py-3 px-8 rounded-xl bg-gold text-[#0a0a0a] font-bold"
-          >
-            Start over
-          </motion.button>
-          {likedCount > 0 && (
-            <button onClick={onViewLiked} className="block mt-4 text-gold text-sm font-medium mx-auto">
-              View {likedCount} liked
-            </button>
-          )}
-        </motion.div>
+          Start over
+        </button>
       </div>
     )
   }
 
   return (
     <div className="flex flex-col min-h-dvh bg-bg select-none">
-      {/* Top bar */}
-      <div className="absolute top-0 left-0 right-0 z-30 flex items-center justify-between px-5 pt-12 pb-4 max-w-[430px] mx-auto">
-        <div className="text-xl font-black text-white tracking-tight">Discover</div>
+
+      {/* Header */}
+      <div className="absolute top-0 left-0 right-0 z-30 flex items-center justify-between px-4 pt-12 pb-3 max-w-[430px] mx-auto">
+        {/* Venue wordmark */}
+        <span className="text-white font-black text-lg tracking-tight">venue</span>
+
+        {/* Location pill */}
+        <motion.button
+          whileTap={{ scale: 0.95 }}
+          onClick={() => setShowLocationModal(true)}
+          className="flex items-center gap-1.5 py-1.5 px-3 rounded-full bg-white/8 border border-white/10 text-white text-xs font-medium"
+        >
+          <span>📍</span>
+          <span className="max-w-[110px] truncate">{locationLabel}</span>
+        </motion.button>
+
+        {/* Liked pill */}
         <motion.button
           whileTap={{ scale: 0.9 }}
           onClick={onViewLiked}
-          className="relative flex items-center gap-2 py-2 px-4 rounded-xl bg-white/8 backdrop-blur-sm border border-white/10 text-white text-sm font-medium"
+          className="flex items-center gap-1.5 py-1.5 px-3 rounded-full bg-white/8 border border-white/10 text-white text-xs font-medium"
         >
-          <span>Liked</span>
-          {likedCount > 0 && (
-            <span className="flex items-center justify-center w-5 h-5 rounded-full bg-gold text-[#0a0a0a] text-xs font-bold">
-              {likedCount > 99 ? '99+' : likedCount}
-            </span>
-          )}
+          <span>❤️</span>
+          <span>{likedCount}</span>
         </motion.button>
       </div>
 
-      {/* Card stack area */}
-      <div className="absolute inset-0 flex flex-col pt-24 pb-32">
-        {/* Shadow cards (cards 2 and 3 in queue) */}
+      {/* Card stack */}
+      <div className="absolute inset-0 pt-24 pb-32">
+        {/* Shadow cards */}
         {[next2, next1].filter(Boolean).map((item, i) => (
           <div
             key={item.id}
-            className="absolute inset-x-3 top-24 bottom-32 rounded-3xl overflow-hidden"
+            className="absolute inset-x-3 top-24 bottom-32 rounded-2xl overflow-hidden"
             style={{
               transform: `scale(${0.93 + i * 0.03}) translateY(${(1 - i) * -8}px)`,
               transformOrigin: 'bottom center',
-              background: '#141414',
-              opacity: 0.6 + i * 0.2,
+              background: '#111111',
+              opacity: 0.5 + i * 0.25,
               zIndex: i + 1,
             }}
           />
@@ -198,31 +168,30 @@ export default function SwipeScreen({ onLikeFlash, likedCount, onViewLiked }) {
         </AnimatePresence>
       </div>
 
-      {/* Bottom action bar */}
+      {/* Action bar */}
       <div className="absolute bottom-0 left-0 right-0 max-w-[430px] mx-auto pb-10 px-8 z-20">
         <div className="flex items-center justify-center gap-10">
           <motion.button
             whileTap={{ scale: 0.85 }}
             onClick={() => advance('left')}
-            className="flex items-center justify-center w-16 h-16 rounded-full bg-white/8 backdrop-blur-sm border border-white/12 text-2xl"
+            className="flex items-center justify-center w-14 h-14 rounded-full bg-transparent border border-white/15 text-xl text-white/60"
           >
             ✕
           </motion.button>
           <motion.button
             whileTap={{ scale: 0.85 }}
             onClick={() => advance('right')}
-            className="flex items-center justify-center w-20 h-20 rounded-full bg-gold/15 backdrop-blur-sm border border-gold/35 text-3xl"
+            className="flex items-center justify-center w-16 h-16 rounded-full bg-transparent border border-white/15 text-2xl"
           >
-            ♥
+            ❤️
           </motion.button>
         </div>
       </div>
 
-      {/* Detail Bottom Sheet */}
+      {/* Detail bottom sheet */}
       <AnimatePresence>
         {showDetail && current && (
           <>
-            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -230,8 +199,6 @@ export default function SwipeScreen({ onLikeFlash, likedCount, onViewLiked }) {
               onClick={() => setShowDetail(false)}
               className="absolute inset-0 bg-black/50 z-40"
             />
-
-            {/* Sheet */}
             <motion.div
               initial={{ y: '100%' }}
               animate={{ y: 0 }}
@@ -239,29 +206,23 @@ export default function SwipeScreen({ onLikeFlash, likedCount, onViewLiked }) {
               transition={{ type: 'spring', damping: 28, stiffness: 300 }}
               drag="y"
               dragConstraints={{ top: 0 }}
-              dragElastic={0.2}
-              onDragEnd={(_, info) => {
-                if (info.offset.y > 80) setShowDetail(false)
-              }}
-              className="absolute bottom-0 left-0 right-0 z-50 bg-card rounded-t-3xl border-t border-white/10 px-6 pb-12 pt-5 max-h-[70vh] overflow-y-auto"
+              dragElastic={0.15}
+              onDragEnd={(_, info) => { if (info.offset.y > 80) setShowDetail(false) }}
+              className="absolute bottom-0 left-0 right-0 z-50 bg-card rounded-t-3xl border-t border-border px-5 pb-12 pt-4 max-h-[68vh] overflow-y-auto"
             >
               {/* Drag handle */}
-              <div className="w-10 h-1 rounded-full bg-white/20 mx-auto mb-6" />
+              <div className="w-10 h-1 rounded-full bg-white/15 mx-auto mb-5" />
 
-              {/* Flash image thumbnail */}
-              <div className="w-full aspect-square rounded-2xl overflow-hidden mb-5" style={{ background: '#0a0a0a' }}>
-                <img
-                  src={current.imageUrl}
-                  alt={current.title}
-                  className="w-full h-full object-contain"
-                />
+              {/* Flash image */}
+              <div className="w-full aspect-square rounded-2xl overflow-hidden mb-5" style={{ background: '#111111' }}>
+                <img src={current.imageUrl} alt={current.title} className="w-full h-full object-contain" />
               </div>
 
               {/* Title + collection */}
-              <div className="flex items-start justify-between gap-3 mb-3">
+              <div className="flex items-start gap-2 justify-between mb-2">
                 <h2 className="text-white font-bold text-xl leading-tight">{current.title || 'Untitled'}</h2>
                 {current.collection && (
-                  <span className="text-gold text-xs font-medium px-3 py-1 rounded-full bg-gold/10 border border-gold/20 flex-shrink-0 mt-0.5">
+                  <span className="text-xs uppercase tracking-wider text-[#888] border border-border px-2 py-1 rounded-full flex-shrink-0 mt-0.5">
                     {current.collection}
                   </span>
                 )}
@@ -269,65 +230,75 @@ export default function SwipeScreen({ onLikeFlash, likedCount, onViewLiked }) {
 
               {/* Description */}
               {current.description && (
-                <p className="text-white/60 text-sm leading-relaxed mb-5">{current.description}</p>
+                <p className="text-[#888] text-sm leading-relaxed mb-5">{current.description}</p>
               )}
 
-              {/* Price breakdown */}
+              {/* Price */}
               {(current.priceMin > 0 || current.priceMax > 0) && (
-                <div className="bg-surface rounded-2xl p-4 mb-5 border border-border">
-                  <p className="text-white/40 text-xs uppercase tracking-wider mb-3 font-medium">Pricing</p>
-                  <div className="flex justify-between">
-                    <div>
-                      <p className="text-white/50 text-xs mb-0.5">XS size</p>
-                      <p className="text-white font-bold text-lg">${current.priceMin}</p>
+                <div className="bg-surface rounded-xl p-4 mb-4 border border-border">
+                  <p className="text-[#888] text-[10px] uppercase tracking-wider mb-3">Pricing</p>
+                  <div className="flex justify-around">
+                    <div className="text-center">
+                      <p className="text-[#555] text-xs mb-1">XS</p>
+                      <p className="text-cream font-bold text-xl">${current.priceMin}</p>
                     </div>
                     <div className="w-px bg-border" />
-                    <div className="text-right">
-                      <p className="text-white/50 text-xs mb-0.5">XL size</p>
-                      <p className="text-white font-bold text-lg">${current.priceMax}</p>
+                    <div className="text-center">
+                      <p className="text-[#555] text-xs mb-1">XL</p>
+                      <p className="text-cream font-bold text-xl">${current.priceMax}</p>
                     </div>
                   </div>
                 </div>
               )}
 
-              {/* Artist link */}
-              <div className="flex items-center justify-between bg-surface rounded-2xl p-4 border border-border mb-5">
+              {/* Artist + location */}
+              <div className="flex items-center justify-between bg-surface rounded-xl p-4 border border-border mb-5">
                 <div>
-                  <p className="text-white/40 text-xs mb-0.5">Artist</p>
-                  <p className="text-white font-semibold">@{current.artistHandle}</p>
-                  {current.artistLocation && (
-                    <p className="text-white/40 text-xs mt-0.5">{current.artistLocation}</p>
-                  )}
+                  <a
+                    href={current.bookingUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-white font-semibold hover:text-cream transition-colors"
+                  >
+                    @{current.artistHandle} ↗
+                  </a>
+                  <p className="text-[#888] text-xs mt-0.5">
+                    {current.artistLocation}
+                    {current.artistDistance != null && ` · ${formatDistance(current.artistDistance)}`}
+                  </p>
                 </div>
-                <a
-                  href={current.bookingUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="py-2 px-4 rounded-xl bg-gold text-[#0a0a0a] font-bold text-sm"
-                >
-                  View ↗
-                </a>
               </div>
 
-              {/* Like / Pass from detail */}
+              {/* Like / Pass */}
               <div className="flex gap-3">
                 <motion.button
                   whileTap={{ scale: 0.95 }}
-                  onClick={() => { setShowDetail(false); setTimeout(() => advance('left'), 100) }}
-                  className="flex-1 py-3 rounded-xl bg-white/8 border border-white/12 text-white font-semibold"
+                  onClick={() => { setShowDetail(false); setTimeout(() => advance('left'), 80) }}
+                  className="flex-1 py-3.5 rounded-xl border border-border text-white font-semibold text-sm"
                 >
                   Pass
                 </motion.button>
                 <motion.button
                   whileTap={{ scale: 0.95 }}
-                  onClick={() => { setShowDetail(false); setTimeout(() => advance('right'), 100) }}
-                  className="flex-1 py-3 rounded-xl bg-gold text-[#0a0a0a] font-bold"
+                  onClick={() => { setShowDetail(false); setTimeout(() => advance('right'), 80) }}
+                  className="flex-1 py-3.5 rounded-xl bg-cream text-[#0a0a0a] font-bold text-sm"
                 >
-                  ♥ Like
+                  ❤️ Like
                 </motion.button>
               </div>
             </motion.div>
           </>
+        )}
+      </AnimatePresence>
+
+      {/* Location modal */}
+      <AnimatePresence>
+        {showLocationModal && (
+          <LocationModal
+            currentLocation={userLocation}
+            onClose={() => setShowLocationModal(false)}
+            onLocationChange={handleLocationChange}
+          />
         )}
       </AnimatePresence>
     </div>

@@ -10,18 +10,19 @@ export default function BookingScreen({ artist, onBack }) {
         <motion.button
           whileTap={{ scale: 0.9 }}
           onClick={onBack}
-          className="flex items-center justify-center w-10 h-10 rounded-xl bg-surface border border-border text-white/70 flex-shrink-0"
+          className="flex items-center gap-1.5 text-white/60 text-sm font-medium"
         >
-          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-            <path d="M11 4L6 9L11 14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M10 3L5 8L10 13" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
           </svg>
+          Back
         </motion.button>
-        <p className="text-white font-semibold truncate">@{artist.handle}</p>
+        <p className="text-white font-semibold text-sm flex-1 text-center">@{artist.handle}</p>
         <a
           href={bookingUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="ml-auto text-gold text-sm font-medium flex-shrink-0"
+          className="text-cream text-sm font-medium"
         >
           Open ↗
         </a>
@@ -32,7 +33,7 @@ export default function BookingScreen({ artist, onBack }) {
         <iframe
           src={bookingUrl}
           title={`Book @${artist.handle}`}
-          className="w-full h-full border-0"
+          className="w-full border-0"
           style={{ height: 'calc(100dvh - 5rem)' }}
           allow="payment"
         />

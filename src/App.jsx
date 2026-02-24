@@ -6,15 +6,12 @@ import BookingScreen from './screens/BookingScreen'
 
 export default function App() {
   const [screen, setScreen] = useState('onboarding')
-  // likes: array of flash items with artist context attached
+  const [userLocation, setUserLocation] = useState(null) // { lat, lng, label }
   const [likes, setLikes] = useState([])
   const [selectedArtist, setSelectedArtist] = useState(null)
 
   const handleLikeFlash = (flashItem) => {
-    setLikes(prev => {
-      if (prev.find(f => f.id === flashItem.id)) return prev
-      return [...prev, flashItem]
-    })
+    setLikes(prev => prev.find(f => f.id === flashItem.id) ? prev : [...prev, flashItem])
   }
 
   const handleBook = (artist) => {
@@ -25,10 +22,14 @@ export default function App() {
   return (
     <div className="relative w-full min-h-dvh bg-bg overflow-hidden" style={{ maxWidth: '430px', margin: '0 auto' }}>
       {screen === 'onboarding' && (
-        <OnboardingScreen onGranted={() => setScreen('swipe')} />
+        <OnboardingScreen
+          onComplete={(loc) => { setUserLocation(loc); setScreen('swipe') }}
+        />
       )}
       {screen === 'swipe' && (
         <SwipeScreen
+          userLocation={userLocation}
+          onLocationChange={setUserLocation}
           onLikeFlash={handleLikeFlash}
           likedCount={likes.length}
           onViewLiked={() => setScreen('liked')}
