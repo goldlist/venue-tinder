@@ -23,8 +23,10 @@ export default function SwipeScreen({ userLocation, onLocationChange, onLikeFlas
   const [showDetail, setShowDetail] = useState(false)
   const [showLocationModal, setShowLocationModal] = useState(false)
   const [matchedArtist, setMatchedArtist] = useState(null) // { handle, location, distance, profileImageUrl, bookingUrl }
+  const [showLikeHint, setShowLikeHint] = useState(false)
   const likeCountsRef = useRef({})
   const shownMatchRef = useRef(new Set()) // artists we've already shown a match for
+  const hintShownRef = useRef(false)
 
   const MATCH_THRESHOLD = 3
 
@@ -56,6 +58,13 @@ export default function SwipeScreen({ userLocation, onLocationChange, onLikeFlas
       const newCount = (likeCountsRef.current[handle] || 0) + 1
       likeCountsRef.current[handle] = newCount
       onLikeFlash(current)
+
+      // Show the hint once on the very first like
+      if (!hintShownRef.current) {
+        hintShownRef.current = true
+        setShowLikeHint(true)
+        setTimeout(() => setShowLikeHint(false), 4000)
+      }
 
       // Trigger match sheet on first time hitting the threshold
       if (newCount === MATCH_THRESHOLD && !shownMatchRef.current.has(handle)) {
@@ -149,14 +158,39 @@ export default function SwipeScreen({ userLocation, onLocationChange, onLikeFlas
         </motion.button>
 
         {/* Liked pill */}
-        <motion.button
-          whileTap={{ scale: 0.9 }}
-          onClick={onViewLiked}
-          className="pointer-events-auto flex items-center gap-1.5 py-1.5 px-3 rounded-full bg-white/8 border border-white/10 text-white text-xs font-medium"
-        >
-          <span>❤️</span>
-          <span>{likedCount}</span>
-        </motion.button>
+        <div className="pointer-events-auto relative">
+          <motion.button
+            whileTap={{ scale: 0.9 }}
+            onClick={onViewLiked}
+            className="flex items-center gap-1.5 py-1.5 px-3 rounded-full bg-white/8 border border-white/10 text-white text-xs font-medium"
+          >
+            <span>❤️</span>
+            <span>{likedCount}</span>
+          </motion.button>
+
+          {/* First-like hint tooltip */}
+          <AnimatePresence>
+            {showLikeHint && (
+              <motion.div
+                initial={{ opacity: 0, y: -4, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -4, scale: 0.95 }}
+                transition={{ type: 'spring', damping: 20, stiffness: 300 }}
+                onClick={() => setShowLikeHint(false)}
+                className="absolute top-full right-0 mt-2 w-44 rounded-2xl px-3 py-2.5 text-left cursor-pointer"
+                style={{ background: '#1a1a1a', border: '1px solid #2a2a2a', boxShadow: '0 8px 24px rgba(0,0,0,0.5)' }}
+              >
+                {/* Arrow pointing up toward the pill */}
+                <div
+                  className="absolute -top-1.5 right-4 w-3 h-3 rotate-45"
+                  style={{ background: '#1a1a1a', borderTop: '1px solid #2a2a2a', borderLeft: '1px solid #2a2a2a' }}
+                />
+                <p className="text-white text-xs font-semibold leading-snug">Review your likes & passes</p>
+                <p className="text-[#666] text-[11px] mt-0.5 leading-snug">Tap here anytime to see what you've swiped on.</p>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </div>
 
       {/* Card stack */}
