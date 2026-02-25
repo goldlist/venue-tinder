@@ -65,18 +65,61 @@ export async function searchLocations(query, limit = 6) {
     .filter(r => { if (!r.label || seen.has(r.label)) return false; seen.add(r.label); return true })
 }
 
-// Reverse geocode GPS coords → label string
+// Reverse geocode GPS coords → label string. Retries once on failure.
 export async function reverseGeocode(lat, lng) {
-  const url = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json`
-  const res = await fetch(url, {
-    headers: { 'User-Agent': 'VenueDiscover/1.0' }
-  })
-  const data = await res.json()
-  if (!data?.address) return `${lat.toFixed(2)}, ${lng.toFixed(2)}`
-  const a = data.address
-  const city = a.city || a.town || a.village || a.county || ''
-  const state = a.state_code || a.state || ''
-  return [city, state].filter(Boolean).join(', ') || data.display_name.split(',')[0]
+  const attempt = async () => {
+    const controller = new AbortController()
+    const timer = setTimeout(() => controller.abort(), 8000)
+    try {
+      const res = await fetch(
+        `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json`,
+        { headers: { 'User-Agent': 'VenueDiscover/1.0' }, signal: controller.signal }
+      )
+      const data = await res.json()
+      if (!data?.address) throw new Error('no address')
+      const a = data.address
+      const city = a.city || a.town || a.village || a.county || ''
+      const state = a.state_code || a.state || ''
+      const label = [city, state].filter(Boolean).join(', ') || data.display_name?.split(',')[0]
+      if (!label) throw new Error('empty label')
+      return label
+    } finally {
+      clearTimeout(timer)
+    }
+  }
+
+  try {
+    return await attempt()
+  } catch {
+    // Wait 1s then retry once
+    await new Promise(r => setTimeout(r, 1000))
+    return await attempt()
+  }
+}
+
+// Fisher-Yates shuffle in place
+function shuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]]
+  }
+  return arr
+}
+
+// Interleave feed so no two consecutive items share the same artistHandle.
+// Pass prevHandle to constrain the first item (e.g. when re-spreading mid-session).
+export function spreadFeed(items, prevHandle = null) {
+  const result = []
+  const pool = [...items]
+  let last = prevHandle
+  while (pool.length > 0) {
+    const idx = pool.findIndex(item => item.artistHandle !== last)
+    if (idx === -1) { result.push(...pool); break }
+    const [item] = pool.splice(idx, 1)
+    result.push(item)
+    last = item.artistHandle
+  }
+  return result
 }
 
 // Build distance-sorted flash feed from artists + user coords
@@ -89,29 +132,25 @@ export function buildFeed(artists, userLat, userLng) {
     return { ...artist, computedDistance: dist }
   })
 
-  // Sort: local (≤50 mi) by distance ASC, then rest randomly
-  const local = withDist
-    .filter(a => a.computedDistance != null && a.computedDistance <= 50)
-    .sort((a, b) => a.computedDistance - b.computedDistance)
+  const toFlashItems = (artist) => artist.flash.map(f => ({
+    ...f,
+    artistHandle: artist.handle,
+    artistLocation: artist.location,
+    artistLat: artist.lat,
+    artistLng: artist.lng,
+    artistDistance: artist.computedDistance,
+    artistProfileImageUrl: artist.profileImageUrl ?? null,
+    bookingUrl: artist.bookingUrl,
+    priceRange: artist.priceRange,
+  }))
 
-  const remote = withDist
-    .filter(a => a.computedDistance == null || a.computedDistance > 50)
-    .sort(() => Math.random() - 0.5)
+  // Local artists (≤50 mi) first, then remote — but shuffle each group's flash
+  // items randomly so order varies every time and isn't grouped by artist
+  const local = withDist.filter(a => a.computedDistance != null && a.computedDistance <= 50)
+  const remote = withDist.filter(a => a.computedDistance == null || a.computedDistance > 50)
 
-  const sorted = [...local, ...remote]
+  const localFlash = shuffle(local.flatMap(toFlashItems))
+  const remoteFlash = shuffle(remote.flatMap(toFlashItems))
 
-  // Flatten to flash items
-  return sorted.flatMap(artist =>
-    artist.flash.map(f => ({
-      ...f,
-      artistHandle: artist.handle,
-      artistLocation: artist.location,
-      artistLat: artist.lat,
-      artistLng: artist.lng,
-      artistDistance: artist.computedDistance,
-      artistProfileImageUrl: artist.profileImageUrl ?? null,
-      bookingUrl: artist.bookingUrl,
-      priceRange: artist.priceRange,
-    }))
-  )
+  return spreadFeed([...localFlash, ...remoteFlash])
 }

@@ -3,7 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import FlashCard from '../components/FlashCard'
 import LocationModal from '../components/LocationModal'
 import VenueLogo from '../components/VenueLogo'
-import { buildFeed, formatDistance, flashUrl } from '../utils/geo'
+import { buildFeed, spreadFeed, formatDistance, flashUrl } from '../utils/geo'
 import artistsData from '../data/artists.json'
 
 function preloadImages(feed, startIdx, count) {
@@ -15,7 +15,7 @@ function preloadImages(feed, startIdx, count) {
   }
 }
 
-export default function SwipeScreen({ userLocation, onLocationChange, onLikeFlash, onPassFlash, likedCount, onViewLiked }) {
+export default function SwipeScreen({ userLocation, onLocationChange, onLikeFlash, onPassFlash, likedCount, onViewLiked, onGoHome }) {
   const [feed, setFeed] = useState(() =>
     buildFeed(artistsData, userLocation?.lat, userLocation?.lng)
   )
@@ -50,7 +50,13 @@ export default function SwipeScreen({ userLocation, onLocationChange, onLikeFlas
     setShowDetail(false)
 
     if (direction === 'left') {
+      const handle = current.artistHandle
       onPassFlash(current)
+      // Remove all remaining flash from this artist — user said no
+      setFeed(prev => [
+        ...prev.slice(0, currentIdx + 1),
+        ...prev.slice(currentIdx + 1).filter(item => item.artistHandle !== handle),
+      ])
     }
 
     if (direction === 'right') {
@@ -79,7 +85,7 @@ export default function SwipeScreen({ userLocation, onLocationChange, onLikeFlas
         })
       }
 
-      // Inject up to 2 more unseen flash from this artist into next ~10 positions
+      // Inject up to 2 more unseen flash from this artist, then re-spread upcoming
       setFeed(prev => {
         const upcoming = prev.slice(currentIdx + 1)
         const seenIds = new Set(prev.slice(0, currentIdx + 1).map(f => f.id))
@@ -100,12 +106,10 @@ export default function SwipeScreen({ userLocation, onLocationChange, onLikeFlas
           }))
 
         if (toInject.length === 0) return prev
-        const insertAt = Math.min(currentIdx + 1 + 3, currentIdx + 1 + upcoming.length)
-        return [
-          ...prev.slice(0, currentIdx + 1 + 3),
-          ...toInject,
-          ...prev.slice(currentIdx + 1 + 3),
-        ]
+        // Prepend injected items so they surface soon, then spread to avoid consecutive repeats.
+        // Pass current handle so the first upcoming card is never the same artist just shown.
+        const newUpcoming = spreadFeed([...toInject, ...upcoming], handle)
+        return [...prev.slice(0, currentIdx + 1), ...newUpcoming]
       })
     }
 
@@ -141,11 +145,13 @@ export default function SwipeScreen({ userLocation, onLocationChange, onLikeFlas
   }
 
   return (
-    <div className="flex flex-col min-h-dvh bg-bg select-none">
+    <div className="flex flex-col min-h-dvh bg-bg select-none overflow-hidden" style={{ overscrollBehavior: 'none' }}>
 
       {/* Header */}
       <div className="absolute top-0 left-0 right-0 z-30 flex items-center justify-between px-4 pt-12 pb-3 max-w-[430px] mx-auto pointer-events-none">
-        <div className="pointer-events-none"><VenueLogo size="sm" /></div>
+        <motion.button whileTap={{ scale: 0.95 }} onClick={onGoHome} className="pointer-events-auto">
+          <VenueLogo size="sm" />
+        </motion.button>
 
         {/* Location pill */}
         <motion.button

@@ -40,6 +40,7 @@ export default function App() {
           onPassFlash={handlePassFlash}
           likedCount={likes.length}
           onViewLiked={() => setScreen('liked')}
+          onGoHome={() => { setLikes([]); setPasses([]); setUserLocation(null); setScreen('onboarding') }}
         />
       )}
       {screen === 'liked' && (
