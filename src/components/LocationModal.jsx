@@ -14,14 +14,22 @@ export default function LocationModal({ currentLocation, onClose, onLocationChan
   const handleGPS = () => {
     if (!navigator.geolocation) return
     setLocating(true)
+
+    // Safety net: if neither callback fires within 12s, reset so user can retry
+    let done = false
+    const giveUp = setTimeout(() => { if (!done) setLocating(false) }, 12000)
+
     navigator.geolocation.getCurrentPosition(
       async (pos) => {
+        done = true
+        clearTimeout(giveUp)
         const { latitude: lat, longitude: lng } = pos.coords
-        const label = await reverseGeocode(lat, lng)
+        let label
+        try { label = await reverseGeocode(lat, lng) } catch { setLocating(false); return }
         onLocationChange({ lat, lng, label })
         onClose()
       },
-      () => setLocating(false),
+      () => { done = true; clearTimeout(giveUp); setLocating(false) },
       { timeout: 10000 }
     )
   }

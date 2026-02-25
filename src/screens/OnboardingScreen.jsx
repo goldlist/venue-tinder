@@ -18,14 +18,22 @@ export default function OnboardingScreen({ onComplete }) {
   const handleFindArtists = () => {
     if (!navigator.geolocation) { setPhase('manual'); return }
     setPhase('locating')
+
+    // Safety net: if neither callback fires within 12s, drop to manual
+    let done = false
+    const giveUp = setTimeout(() => { if (!done) setPhase('manual') }, 12000)
+
     navigator.geolocation.getCurrentPosition(
       async (pos) => {
+        done = true
+        clearTimeout(giveUp)
         const { latitude: lat, longitude: lng } = pos.coords
-        const label = await reverseGeocode(lat, lng)
+        let label
+        try { label = await reverseGeocode(lat, lng) } catch { setPhase('manual'); return }
         setDetectedLocation({ lat, lng, label })
         setPhase('confirm')
       },
-      () => setPhase('manual'),
+      () => { done = true; clearTimeout(giveUp); setPhase('manual') },
       { timeout: 10000 }
     )
   }
