@@ -28,7 +28,7 @@ export function formatDistance(miles) {
 // Format a Nominatim result into a short readable label
 function formatNominatimLabel(d) {
   const a = d.address || {}
-  const name = a.city || a.town || a.village || a.municipality || a.county || d.name || ''
+  const name = a.borough || a.suburb || a.city || a.town || a.village || a.municipality || a.county || d.name || ''
   if (a.country_code === 'us') {
     const state = a.state_code || a.state || ''
     return [name, state].filter(Boolean).join(', ')
@@ -78,7 +78,7 @@ export async function reverseGeocode(lat, lng) {
       const data = await res.json()
       if (!data?.address) throw new Error('no address')
       const a = data.address
-      const city = a.city || a.town || a.village || a.county || ''
+      const city = a.borough || a.suburb || a.city || a.town || a.village || a.county || ''
       const state = a.state_code || a.state || ''
       const label = [city, state].filter(Boolean).join(', ') || data.display_name?.split(',')[0]
       if (!label) throw new Error('empty label')
@@ -106,51 +106,77 @@ function shuffle(arr) {
   return arr
 }
 
-// Interleave feed so no two consecutive items share the same artistHandle.
+const LOCAL_CAP = 600   // max local flash items in feed
+const REMOTE_CAP = 400  // max remote flash items in feed
+
+// Interleave feed so no two consecutive items share the same artistHandle. O(n).
 // Pass prevHandle to constrain the first item (e.g. when re-spreading mid-session).
 export function spreadFeed(items, prevHandle = null) {
-  const result = []
-  const pool = [...items]
-  let last = prevHandle
-  while (pool.length > 0) {
-    const idx = pool.findIndex(item => item.artistHandle !== last)
-    if (idx === -1) { result.push(...pool); break }
-    const [item] = pool.splice(idx, 1)
-    result.push(item)
-    last = item.artistHandle
+  // Group by artist
+  const groups = new Map()
+  for (const item of items) {
+    if (!groups.has(item.artistHandle)) groups.set(item.artistHandle, [])
+    groups.get(item.artistHandle).push(item)
   }
+
+  const buckets = [...groups.values()]
+  const result = []
+  let lastHandle = prevHandle
+  let gi = 0
+
+  while (result.length < items.length) {
+    let placed = false
+    for (let t = 0; t < buckets.length; t++) {
+      const b = buckets[(gi + t) % buckets.length]
+      if (b.length > 0 && b[0].artistHandle !== lastHandle) {
+        const item = b.shift()
+        result.push(item)
+        lastHandle = item.artistHandle
+        gi = (gi + t + 1) % buckets.length
+        placed = true
+        break
+      }
+    }
+    if (!placed) {
+      // All remaining are same artist — append them
+      for (const b of buckets) if (b.length > 0) result.push(...b.splice(0))
+      break
+    }
+  }
+
   return result
 }
 
 // Build distance-sorted flash feed from artists + user coords
 export function buildFeed(artists, userLat, userLng) {
-  const withDist = artists.map(artist => {
-    const dist =
-      artist.lat != null && artist.lng != null && userLat != null && userLng != null
-        ? haversine(userLat, userLng, artist.lat, artist.lng)
-        : null
-    return { ...artist, computedDistance: dist }
-  })
-
-  const toFlashItems = (artist) => artist.flash.map(f => ({
+  const toFlashItems = (artist, dist) => artist.flash.map(f => ({
     ...f,
     artistHandle: artist.handle,
     artistLocation: artist.location,
     artistLat: artist.lat,
     artistLng: artist.lng,
-    artistDistance: artist.computedDistance,
+    artistDistance: dist,
     artistProfileImageUrl: artist.profileImageUrl ?? null,
     bookingUrl: artist.bookingUrl,
     priceRange: artist.priceRange,
   }))
 
-  // Local artists (≤50 mi) first, then remote — but shuffle each group's flash
-  // items randomly so order varies every time and isn't grouped by artist
-  const local = withDist.filter(a => a.computedDistance != null && a.computedDistance <= 50)
-  const remote = withDist.filter(a => a.computedDistance == null || a.computedDistance > 50)
+  const local = []
+  const remote = []
 
-  const localFlash = shuffle(local.flatMap(toFlashItems))
-  const remoteFlash = shuffle(remote.flatMap(toFlashItems))
+  for (const artist of artists) {
+    const dist =
+      artist.lat != null && artist.lng != null && userLat != null && userLng != null
+        ? haversine(userLat, userLng, artist.lat, artist.lng)
+        : null
+    const items = toFlashItems(artist, dist)
+    if (dist != null && dist <= 50) local.push(...items)
+    else remote.push(...items)
+  }
+
+  // Shuffle then cap — no need to spread 471k items
+  const localFlash = shuffle(local).slice(0, LOCAL_CAP)
+  const remoteFlash = shuffle(remote).slice(0, REMOTE_CAP)
 
   return spreadFeed([...localFlash, ...remoteFlash])
 }
