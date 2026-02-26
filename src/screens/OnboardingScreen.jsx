@@ -14,6 +14,7 @@ function fmt(n) {
 export default function OnboardingScreen({ onComplete }) {
   const [phase, setPhase] = useState('cta') // 'cta' | 'locating' | 'confirm' | 'manual'
   const [detectedLocation, setDetectedLocation] = useState(null) // { lat, lng, label }
+  const [locationDenied, setLocationDenied] = useState(false)
 
   const handleFindArtists = () => {
     if (!navigator.geolocation) { setPhase('manual'); return }
@@ -33,7 +34,7 @@ export default function OnboardingScreen({ onComplete }) {
         setDetectedLocation({ lat, lng, label })
         setPhase('confirm')
       },
-      () => { done = true; clearTimeout(giveUp); setPhase('manual') },
+      (err) => { done = true; clearTimeout(giveUp); if (err.code === 1) setLocationDenied(true); setPhase('manual') },
       { timeout: 10000 }
     )
   }
@@ -253,7 +254,13 @@ export default function OnboardingScreen({ onComplete }) {
               transition={{ duration: 0.3 }}
               className="w-full flex flex-col gap-3"
             >
-              <p className="text-[#555] text-sm text-center">Enter your city or zip code</p>
+              {locationDenied ? (
+                <p className="text-[#555] text-sm text-center">
+                  Location access was blocked. Enable it in your browser settings, or enter your city below.
+                </p>
+              ) : (
+                <p className="text-[#555] text-sm text-center">Enter your city or zip code</p>
+              )}
               <LocationAutocomplete
                 onSelect={handleLocationSelect}
                 placeholder="Brooklyn, NY"
