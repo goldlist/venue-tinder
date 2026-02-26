@@ -1,10 +1,29 @@
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useState, useEffect, useRef, useCallback, useMemo } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import FlashCard from '../components/FlashCard'
 import LocationModal from '../components/LocationModal'
+import FilterSheet from '../components/FilterSheet'
 import VenueLogo from '../components/VenueLogo'
 import { buildFeed, spreadFeed, formatDistance, flashUrl } from '../utils/geo'
 import artistsData from '../data/artists.json'
+
+function hasActiveFilters(f) {
+  return f.sizes.length > 0 || f.maxPrice !== null || f.maxDuration !== null
+}
+
+function matchesFilters(flash, f) {
+  if (!hasActiveFilters(f)) return true
+  if (!flash.sizes?.length) {
+    if (f.sizes.length > 0 || f.maxDuration !== null) return false
+    if (f.maxPrice !== null && flash.priceMin === 0) return false
+    return f.maxPrice === null || flash.priceMin <= f.maxPrice
+  }
+  return flash.sizes.some(s =>
+    (f.sizes.length === 0 || f.sizes.includes(s.size)) &&
+    (f.maxPrice === null || s.price <= f.maxPrice) &&
+    (f.maxDuration === null || s.duration === 0 || s.duration <= f.maxDuration)
+  )
+}
 
 function preloadImages(feed, startIdx, count) {
   for (let i = startIdx; i < Math.min(startIdx + count, feed.length); i++) {
@@ -20,6 +39,8 @@ export default function SwipeScreen({ userLocation, onLocationChange, onLikeFlas
     buildFeed(artistsData, userLocation?.lat, userLocation?.lng)
   )
   const [currentIdx, setCurrentIdx] = useState(0)
+  const [filters, setFilters] = useState({ sizes: [], maxPrice: null, maxDuration: null })
+  const [showFilters, setShowFilters] = useState(false)
   const [showDetail, setShowDetail] = useState(false)
   const [showLocationModal, setShowLocationModal] = useState(false)
   const [matchedArtist, setMatchedArtist] = useState(null) // { handle, location, distance, profileImageUrl, bookingUrl }
@@ -37,9 +58,32 @@ export default function SwipeScreen({ userLocation, onLocationChange, onLikeFlas
     setShowDetail(false)
   }, [userLocation])
 
-  const current = feed[currentIdx] ?? null
-  const next1 = feed[currentIdx + 1] ?? null
-  const next2 = feed[currentIdx + 2] ?? null
+  const currentMatchIdx = useMemo(() => {
+    for (let i = currentIdx; i < feed.length; i++) {
+      if (matchesFilters(feed[i], filters)) return i
+    }
+    return -1
+  }, [feed, currentIdx, filters])
+
+  const next1Idx = useMemo(() => {
+    if (currentMatchIdx < 0) return -1
+    for (let i = currentMatchIdx + 1; i < feed.length; i++) {
+      if (matchesFilters(feed[i], filters)) return i
+    }
+    return -1
+  }, [feed, currentMatchIdx, filters])
+
+  const next2Idx = useMemo(() => {
+    if (next1Idx < 0) return -1
+    for (let i = next1Idx + 1; i < feed.length; i++) {
+      if (matchesFilters(feed[i], filters)) return i
+    }
+    return -1
+  }, [feed, next1Idx, filters])
+
+  const current = currentMatchIdx >= 0 ? feed[currentMatchIdx] : null
+  const next1 = next1Idx >= 0 ? feed[next1Idx] : null
+  const next2 = next2Idx >= 0 ? feed[next2Idx] : null
 
   useEffect(() => {
     preloadImages(feed, currentIdx + 1, 3)
@@ -49,13 +93,15 @@ export default function SwipeScreen({ userLocation, onLocationChange, onLikeFlas
     if (!current) return
     setShowDetail(false)
 
+    const idx = currentMatchIdx
+
     if (direction === 'left') {
       const handle = current.artistHandle
       onPassFlash(current)
       // Remove all remaining flash from this artist — user said no
       setFeed(prev => [
-        ...prev.slice(0, currentIdx + 1),
-        ...prev.slice(currentIdx + 1).filter(item => item.artistHandle !== handle),
+        ...prev.slice(0, idx + 1),
+        ...prev.slice(idx + 1).filter(item => item.artistHandle !== handle),
       ])
     }
 
@@ -87,8 +133,8 @@ export default function SwipeScreen({ userLocation, onLocationChange, onLikeFlas
 
       // Inject up to 2 more unseen flash from this artist, then re-spread upcoming
       setFeed(prev => {
-        const upcoming = prev.slice(currentIdx + 1)
-        const seenIds = new Set(prev.slice(0, currentIdx + 1).map(f => f.id))
+        const upcoming = prev.slice(idx + 1)
+        const seenIds = new Set(prev.slice(0, idx + 1).map(f => f.id))
         const upcomingIds = new Set(upcoming.map(f => f.id))
         const artistObj = artistsData.find(a => a.handle === handle)
         const toInject = (artistObj?.flash ?? [])
@@ -109,12 +155,12 @@ export default function SwipeScreen({ userLocation, onLocationChange, onLikeFlas
         // Prepend injected items so they surface soon, then spread to avoid consecutive repeats.
         // Pass current handle so the first upcoming card is never the same artist just shown.
         const newUpcoming = spreadFeed([...toInject, ...upcoming], handle)
-        return [...prev.slice(0, currentIdx + 1), ...newUpcoming]
+        return [...prev.slice(0, idx + 1), ...newUpcoming]
       })
     }
 
-    setCurrentIdx(i => i + 1)
-  }, [current, currentIdx, onLikeFlash])
+    setCurrentIdx(idx + 1)
+  }, [current, currentMatchIdx, onLikeFlash])
 
   const handleLocationChange = (loc) => {
     onLocationChange(loc)
@@ -123,23 +169,39 @@ export default function SwipeScreen({ userLocation, onLocationChange, onLikeFlas
 
   const locationLabel = userLocation?.label || 'Nearby'
 
+  const activeFilterCount = filters.sizes.length + (filters.maxPrice !== null ? 1 : 0) + (filters.maxDuration !== null ? 1 : 0)
+
   // Empty state
   if (!current) {
+    const isFiltered = hasActiveFilters(filters)
     return (
       <div className="flex flex-col min-h-dvh bg-bg items-center justify-center px-8 text-center">
-        <div className="text-4xl mb-5">🖤</div>
-        <h2 className="text-xl font-bold text-white mb-2">You've seen it all</h2>
-        <p className="text-[#888] text-sm mb-6">You've gone through all available flash</p>
-        <button
-          onClick={() => {
-            setFeed(buildFeed(artistsData, userLocation?.lat, userLocation?.lng))
-            setCurrentIdx(0)
-            likeCountsRef.current = {}
-          }}
-          className="text-cream text-sm font-medium underline underline-offset-4"
-        >
-          Start over
-        </button>
+        <div className="text-4xl mb-5">{isFiltered ? '🔍' : '🖤'}</div>
+        <h2 className="text-xl font-bold text-white mb-2">
+          {isFiltered ? 'No matches for these filters' : "You've seen it all"}
+        </h2>
+        <p className="text-[#888] text-sm mb-6">
+          {isFiltered ? 'Try adjusting your filters to see more flash' : "You've gone through all available flash"}
+        </p>
+        {isFiltered ? (
+          <button
+            onClick={() => setFilters({ sizes: [], maxPrice: null, maxDuration: null })}
+            className="text-cream text-sm font-medium underline underline-offset-4"
+          >
+            Clear filters
+          </button>
+        ) : (
+          <button
+            onClick={() => {
+              setFeed(buildFeed(artistsData, userLocation?.lat, userLocation?.lng))
+              setCurrentIdx(0)
+              likeCountsRef.current = {}
+            }}
+            className="text-cream text-sm font-medium underline underline-offset-4"
+          >
+            Start over
+          </button>
+        )}
       </div>
     )
   }
@@ -153,15 +215,36 @@ export default function SwipeScreen({ userLocation, onLocationChange, onLikeFlas
           <VenueLogo size="sm" />
         </motion.button>
 
-        {/* Location pill */}
-        <motion.button
-          whileTap={{ scale: 0.95 }}
-          onClick={() => setShowLocationModal(true)}
-          className="pointer-events-auto flex items-center gap-1.5 py-1.5 px-3 rounded-full bg-white/8 border border-white/10 text-white text-xs font-medium"
-        >
-          <span>📍</span>
-          <span className="max-w-[110px] truncate">{locationLabel}</span>
-        </motion.button>
+        {/* Center: location pill + filter button */}
+        <div className="pointer-events-auto flex items-center gap-2">
+          <motion.button
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setShowLocationModal(true)}
+            className="flex items-center gap-1.5 py-1.5 px-3 rounded-full bg-white/8 border border-white/10 text-white text-xs font-medium"
+          >
+            <span>📍</span>
+            <span className="max-w-[90px] truncate">{locationLabel}</span>
+          </motion.button>
+
+          {/* Filter button */}
+          <motion.button
+            whileTap={{ scale: 0.9 }}
+            onClick={() => setShowFilters(true)}
+            className="relative flex items-center justify-center w-8 h-8 rounded-full bg-white/8 border border-white/10"
+          >
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 2.5h12M3 7h8M5 11.5h4" stroke="white" strokeWidth="1.5" strokeLinecap="round"/>
+            </svg>
+            {activeFilterCount > 0 && (
+              <span
+                className="absolute -top-1 -right-1 w-4 h-4 rounded-full text-[9px] font-bold flex items-center justify-center"
+                style={{ background: '#d4a853', color: '#0a0a0a' }}
+              >
+                {activeFilterCount}
+              </span>
+            )}
+          </motion.button>
+        </div>
 
         {/* Liked pill */}
         <div className="pointer-events-auto relative">
@@ -257,14 +340,16 @@ export default function SwipeScreen({ userLocation, onLocationChange, onLikeFlas
               <div className="w-10 h-1 rounded-full bg-white/15 mx-auto mb-5" />
 
               {/* Title + collection */}
-              <div className="flex items-start gap-2 justify-between mb-2">
-                <h2 className="text-white font-bold text-xl leading-tight">{current.title || 'Untitled'}</h2>
-                {current.collection && (
-                  <span className="text-xs uppercase tracking-wider text-[#888] border border-border px-2 py-1 rounded-full flex-shrink-0 mt-0.5">
-                    {current.collection}
-                  </span>
-                )}
-              </div>
+              {(current.title || current.collection) && (
+                <div className="flex items-start gap-2 justify-between mb-2">
+                  {current.title && <h2 className="text-white font-bold text-xl leading-tight">{current.title}</h2>}
+                  {current.collection && (
+                    <span className="text-xs uppercase tracking-wider text-[#888] border border-border px-2 py-1 rounded-full flex-shrink-0 mt-0.5">
+                      {current.collection}
+                    </span>
+                  )}
+                </div>
+              )}
 
               {/* Description */}
               {current.description && (
@@ -272,19 +357,24 @@ export default function SwipeScreen({ userLocation, onLocationChange, onLikeFlas
               )}
 
               {/* Price */}
-              {(current.priceMin > 0 || current.priceMax > 0) && (
+              {current.sizes?.length > 0 && (
                 <div className="bg-surface rounded-xl p-4 mb-4 border border-border">
                   <p className="text-[#888] text-[10px] uppercase tracking-wider mb-3">Pricing</p>
                   <div className="flex justify-around">
-                    <div className="text-center">
-                      <p className="text-[#555] text-xs mb-1">XS</p>
-                      <p className="text-cream font-bold text-xl">${current.priceMin}</p>
-                    </div>
-                    <div className="w-px bg-border" />
-                    <div className="text-center">
-                      <p className="text-[#555] text-xs mb-1">XL</p>
-                      <p className="text-cream font-bold text-xl">${current.priceMax}</p>
-                    </div>
+                    {current.sizes.map((s, i) => (
+                      <>
+                        {i > 0 && <div key={`div-${i}`} className="w-px bg-border" />}
+                        <div key={s.size} className="text-center">
+                          <p className="text-[#555] text-xs mb-1">{s.size}</p>
+                          <p className="text-cream font-bold text-lg">${s.price}</p>
+                          {s.duration > 0 && (
+                            <p className="text-[#555] text-[10px] mt-0.5">
+                              {s.duration >= 60 ? `${Math.floor(s.duration / 60)}h${s.duration % 60 ? ` ${s.duration % 60}m` : ''}` : `${s.duration}m`}
+                            </p>
+                          )}
+                        </div>
+                      </>
+                    ))}
                   </div>
                 </div>
               )}
@@ -349,6 +439,17 @@ export default function SwipeScreen({ userLocation, onLocationChange, onLikeFlas
               </div>
             </motion.div>
           </>
+        )}
+      </AnimatePresence>
+
+      {/* Filter sheet */}
+      <AnimatePresence>
+        {showFilters && (
+          <FilterSheet
+            filters={filters}
+            onApply={setFilters}
+            onClose={() => setShowFilters(false)}
+          />
         )}
       </AnimatePresence>
 
