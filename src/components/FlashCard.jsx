@@ -12,6 +12,7 @@ function ZoomableImage({ src, alt, onZoomChange }) {
   const lastPinchDistRef = useRef(null)
   const lastPanRef = useRef(null)
   const [imgStyle, setImgStyle] = useState({ scale: 1, x: 0, y: 0 })
+  const [imgError, setImgError] = useState(false)
 
   const isZoomed = () => scaleRef.current > 1.01
 
@@ -84,9 +85,9 @@ function ZoomableImage({ src, alt, onZoomChange }) {
     <div
       ref={containerRef}
       className="absolute inset-0"
-      style={{ background: '#111111', overflow: 'hidden' }}
+      style={{ background: '#ffffff', overflow: 'hidden' }}
     >
-      {src ? (
+      {src && !imgError ? (
         <img
           src={src}
           alt={alt}
@@ -103,10 +104,10 @@ function ZoomableImage({ src, alt, onZoomChange }) {
             userSelect: 'none',
             pointerEvents: 'none',
           }}
-          onError={e => { e.currentTarget.style.display = 'none' }}
+          onError={() => setImgError(true)}
         />
       ) : (
-        <div className="w-full h-full flex flex-col items-center justify-center gap-2">
+        <div className="w-full h-full flex flex-col items-center justify-center gap-2" style={{ background: '#141414' }}>
           <span className="text-white/10 text-5xl">✦</span>
           <span className="text-white/20 text-sm">@{alt}</span>
         </div>
@@ -153,7 +154,7 @@ export default function FlashCard({ flash, onSwipeLeft, onSwipeRight, onDetailOp
       onDragEnd={handleDragEnd}
       animate={controls}
       style={{ x, rotate, touchAction: 'none' }}
-      className="absolute inset-x-3 top-0 bottom-0 rounded-2xl overflow-hidden cursor-grab active:cursor-grabbing z-10 select-none"
+      className="absolute inset-x-3 top-24 bottom-0 rounded-2xl overflow-hidden cursor-grab active:cursor-grabbing z-10 select-none"
     >
       <ZoomableImage
         src={flash.imageUrl}
@@ -258,11 +259,13 @@ export default function FlashCard({ flash, onSwipeLeft, onSwipeRight, onDetailOp
                 <span className="text-white font-bold text-xl tracking-tight">@{flash.artistHandle}</span>
                 {distLabel && <span className="text-[#888] text-xs">{distLabel}</span>}
               </div>
-              <div className="flex items-center flex-wrap gap-x-1.5 gap-y-0.5 mb-2">
-                {flash.title && <span className="text-[#888] text-sm">{flash.title}</span>}
-                {flash.title && flash.collection && <span className="text-[#555] text-sm">·</span>}
-                {flash.collection && <span className="text-[#888] text-sm">{flash.collection}</span>}
-              </div>
+              {(flash.title || flash.collection) && (
+                <div className="flex items-center flex-wrap gap-x-1.5 gap-y-0.5 mb-2">
+                  {flash.title && <span className="text-[#888] text-sm">{flash.title}</span>}
+                  {flash.title && flash.collection && <span className="text-[#555] text-sm">·</span>}
+                  {flash.collection && <span className="text-[#888] text-sm">{flash.collection}</span>}
+                </div>
+              )}
               {priceLabel && (
                 <p className="text-cream text-sm font-semibold mb-3">{priceLabel}</p>
               )}
