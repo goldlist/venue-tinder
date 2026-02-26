@@ -3,6 +3,7 @@ import OnboardingScreen from './screens/OnboardingScreen'
 import SwipeScreen from './screens/SwipeScreen'
 import LikedScreen from './screens/LikedScreen'
 import BookingScreen from './screens/BookingScreen'
+import MapScreen from './screens/MapScreen'
 
 export default function App() {
   const [screen, setScreen] = useState('onboarding')
@@ -41,6 +42,18 @@ export default function App() {
           likedCount={likes.length}
           onViewLiked={() => setScreen('liked')}
           onGoHome={() => { setLikes([]); setPasses([]); setUserLocation(null); setScreen('onboarding') }}
+          onGoMap={() => setScreen('map')}
+        />
+      )}
+      {screen === 'map' && (
+        <MapScreen
+          userLocation={userLocation}
+          onBack={() => setScreen('swipe')}
+          onLikeFlash={handleLikeFlash}
+          onPassFlash={handlePassFlash}
+          likes={likes}
+          likedCount={likes.length}
+          onViewLiked={() => setScreen('liked')}
         />
       )}
       {screen === 'liked' && (

@@ -33,3 +33,18 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+/* Leaflet map needs full touch control to pan in all directions */
+.leaflet-container {
+  touch-action: none;
+}
+
+/* Attribution styling on dark map */
+.leaflet-control-attribution {
+  background: rgba(0, 0, 0, 0.5) !important;
+  color: #666 !important;
+  font-size: 9px !important;
+}
+.leaflet-control-attribution a {
+  color: #888 !important;
+}

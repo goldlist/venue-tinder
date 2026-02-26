@@ -116,7 +116,7 @@ function ZoomableImage({ src, alt, onZoomChange }) {
   )
 }
 
-const LIKE_COLOR = '#d4f542'
+const LIKE_COLOR = '#d4a853'
 const NOPE_COLOR = '#ff3356'
 
 export default function FlashCard({ flash, onSwipeLeft, onSwipeRight, onDetailOpen }) {
@@ -175,7 +175,7 @@ export default function FlashCard({ flash, onSwipeLeft, onSwipeRight, onDetailOp
           <motion.div
             style={{
               opacity: likeOpacity,
-              background: `radial-gradient(ellipse at 85% 20%, rgba(212,245,66,0.22) 0%, transparent 60%)`,
+              background: `radial-gradient(ellipse at 85% 20%, rgba(212,168,83,0.22) 0%, transparent 60%)`,
             }}
             className="absolute inset-0 pointer-events-none"
           />
@@ -193,8 +193,8 @@ export default function FlashCard({ flash, onSwipeLeft, onSwipeRight, onDetailOp
               fontWeight: 900,
               letterSpacing: '0.1em',
               transform: 'rotate(-14deg)',
-              textShadow: `0 0 24px rgba(212,245,66,0.7)`,
-              boxShadow: `0 0 24px rgba(212,245,66,0.25), inset 0 0 16px rgba(212,245,66,0.08)`,
+              textShadow: `0 0 24px rgba(212,168,83,0.7)`,
+              boxShadow: `0 0 24px rgba(212,168,83,0.25), inset 0 0 16px rgba(212,168,83,0.08)`,
               backdropFilter: 'blur(2px)',
               WebkitBackdropFilter: 'blur(2px)',
             }}>
@@ -248,9 +248,13 @@ export default function FlashCard({ flash, onSwipeLeft, onSwipeRight, onDetailOp
                 onPointerDown={(e) => e.stopPropagation()}
                 onClick={onSwipeRight}
                 whileTap={{ scale: 0.85 }}
-                className="flex items-center justify-center w-12 h-12 rounded-full border border-white/20 bg-black/40 backdrop-blur-sm text-xl"
+                className="flex items-center justify-center w-12 h-12 rounded-full border bg-black/40 backdrop-blur-sm"
+                style={{ borderColor: 'rgba(212,168,83,0.4)' }}
               >
-                ❤️
+                <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                  <path d="M11 19S2 13.5 2 7.5a4.5 4.5 0 0 1 9-0.3A4.5 4.5 0 0 1 20 7.5C20 13.5 11 19 11 19z"
+                    fill="#d4a853" stroke="#d4a853" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
               </motion.button>
             </div>
 

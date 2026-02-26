@@ -34,7 +34,7 @@ function preloadImages(feed, startIdx, count) {
   }
 }
 
-export default function SwipeScreen({ userLocation, onLocationChange, onLikeFlash, onPassFlash, likedCount, onViewLiked, onGoHome }) {
+export default function SwipeScreen({ userLocation, onLocationChange, onLikeFlash, onPassFlash, likedCount, onViewLiked, onGoHome, onGoMap }) {
   const [feed, setFeed] = useState(() =>
     buildFeed(artistsData, userLocation?.lat, userLocation?.lng)
   )
@@ -224,6 +224,18 @@ export default function SwipeScreen({ userLocation, onLocationChange, onLikeFlas
           >
             <span>📍</span>
             <span className="max-w-[90px] truncate">{locationLabel}</span>
+          </motion.button>
+
+          {/* Map button */}
+          <motion.button
+            whileTap={{ scale: 0.9 }}
+            onClick={onGoMap}
+            className="flex items-center justify-center w-8 h-8 rounded-full bg-white/8 border border-white/10"
+          >
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M7 1C4.79 1 3 2.79 3 5c0 3 4 8 4 8s4-5 4-8c0-2.21-1.79-4-4-4z" stroke="white" strokeWidth="1.3" fill="none" strokeLinejoin="round"/>
+              <circle cx="7" cy="5" r="1.2" fill="white"/>
+            </svg>
           </motion.button>
 
           {/* Filter button */}

@@ -1,4 +1,8 @@
 {
+  "256": {
+    "lat": 6.1385711,
+    "lng": 100.3918199
+  },
   "Baltimore, MD": {
     "lat": 39.2908816,
     "lng": -76.610759
@@ -1175,5 +1179,4222 @@
   "Staten Island NY": {
     "lat": 40.5834557,
     "lng": -74.1496048
+  },
+  "Dallas, Tx": {
+    "lat": 32.7762719,
+    "lng": -96.7968559
+  },
+  "Greensboro": {
+    "lat": 36.0726355,
+    "lng": -79.7919754
+  },
+  "Charlotte NC": {
+    "lat": 35.2272086,
+    "lng": -80.8430827
+  },
+  "Winston-Salem": {
+    "lat": 36.0998131,
+    "lng": -80.2440518
+  },
+  "TORONTO": {
+    "lat": 43.6534817,
+    "lng": -79.3839347
+  },
+  "BROOKLYN, NYC": {
+    "lat": 40.6526006,
+    "lng": -73.9497211
+  },
+  "portland, oregon": {
+    "lat": 45.5202471,
+    "lng": -122.674194
+  },
+  "Flagstaff / Chandler": null,
+  "Minneapolis": {
+    "lat": 44.9772995,
+    "lng": -93.2654692
+  },
+  "Elkhart, IN": {
+    "lat": 41.6012796,
+    "lng": -85.8590603
+  },
+  "Charlotte": {
+    "lat": 35.2272086,
+    "lng": -80.8430827
+  },
+  "Oshawa": {
+    "lat": 43.8975558,
+    "lng": -78.8635324
+  },
+  "Columbia": {
+    "lat": 4.099917,
+    "lng": -72.9088133
+  },
+  "Reno, NV": {
+    "lat": 39.5261788,
+    "lng": -119.812658
+  },
+  "Griffin, GA": {
+    "lat": 33.2467807,
+    "lng": -84.2640904
+  },
+  "Plainview, New York": {
+    "lat": 40.7834607,
+    "lng": -73.4738844
+  },
+  "aurora, co": {
+    "lat": 39.7405111,
+    "lng": -104.830994
+  },
+  "Cincinnati Ohio": {
+    "lat": 39.1014537,
+    "lng": -84.5124602
+  },
+  "Bare Tattoo Studio - Canton, Ohio": null,
+  "Daytona Beach, FL": {
+    "lat": 29.2108147,
+    "lng": -81.0228331
+  },
+  "Roseville": {
+    "lat": 38.7521235,
+    "lng": -121.2880059
+  },
+  "Baltimore Md": {
+    "lat": 39.2908816,
+    "lng": -76.610759
+  },
+  "orange county & los angeles": {
+    "lat": 33.9002444,
+    "lng": -117.8365352
+  },
+  "Milledgeville": {
+    "lat": 33.0801429,
+    "lng": -83.2320991
+  },
+  "'Victoria BC'": {
+    "lat": 48.4283182,
+    "lng": -123.364953
+  },
+  "Phoenix": {
+    "lat": 33.4484367,
+    "lng": -112.074141
+  },
+  "Murfreesboro TN": {
+    "lat": 35.8460396,
+    "lng": -86.3921096
+  },
+  "Idaho falls": {
+    "lat": 43.4887907,
+    "lng": -112.03628
+  },
+  "Modesto, Ca 💒": {
+    "lat": 37.6393419,
+    "lng": -120.9968892
+  },
+  "Ladson": {
+    "lat": 32.9857275,
+    "lng": -80.1098123
+  },
+  "Melbourne": {
+    "lat": -37.8142454,
+    "lng": 144.9631732
+  },
+  "Maine": {
+    "lat": 45.709097,
+    "lng": -68.8590201
+  },
+  "Franklin": {
+    "lat": 33.2002659,
+    "lng": -95.2231752
+  },
+  "North ft myers Florida": {
+    "lat": 26.6728666,
+    "lng": -81.8840848
+  },
+  "Meanjin/Brisbane, Australia": {
+    "lat": -27.4809084,
+    "lng": 153.0337429
+  },
+  "Newberg, OR": {
+    "lat": 45.300347,
+    "lng": -122.972751
+  },
+  "Murfreesboro": {
+    "lat": 35.8460396,
+    "lng": -86.3921096
+  },
+  "Eastbourne/Brighton": {
+    "lat": 50.788658,
+    "lng": 0.3062875
+  },
+  "📍Huntsville, AL📍": {
+    "lat": 34.729847,
+    "lng": -86.5859011
+  },
+  "LOCATED IN ABERDEEN": null,
+  "O’Leary": {
+    "lat": 46.7070519,
+    "lng": -64.2267426
+  },
+  "Chatham, Ontario": {
+    "lat": 42.4057219,
+    "lng": -82.1853837
+  },
+  "Hammond Louisiana": {
+    "lat": 30.5043583,
+    "lng": -90.4611995
+  },
+  "Midtown NYC": {
+    "lat": 40.7551169,
+    "lng": -73.98478
+  },
+  "Irving Park, Chicago": {
+    "lat": 41.953365,
+    "lng": -87.7364471
+  },
+  "South Western PA": {
+    "lat": 39.7878135,
+    "lng": -76.9254054
+  },
+  "Victoria BC Canada": {
+    "lat": 48.4283182,
+    "lng": -123.364953
+  },
+  "Fresno, Ca": {
+    "lat": 36.7394421,
+    "lng": -119.78483
+  },
+  "Fort McMurray AB": {
+    "lat": 56.7291997,
+    "lng": -111.3885221
+  },
+  "Syracuse, NY": {
+    "lat": 43.0481221,
+    "lng": -76.1474244
+  },
+  "Chicago/Cicero": {
+    "lat": 41.8948886,
+    "lng": -87.7460747
+  },
+  "greenwood, in": {
+    "lat": 39.6136987,
+    "lng": -86.1095429
+  },
+  "Ealing , Hanger Lane": {
+    "lat": 51.5303098,
+    "lng": -0.2936453
+  },
+  "Grand Valley, Ontario": {
+    "lat": 43.8991217,
+    "lng": -80.3152465
+  },
+  "Franklinville, NJ": {
+    "lat": 39.617641,
+    "lng": -75.072458
+  },
+  "Oxford": {
+    "lat": 51.7520131,
+    "lng": -1.2578499
+  },
+  "Columbus, OH": {
+    "lat": 39.9622601,
+    "lng": -83.0007065
+  },
+  "Monticello": {
+    "lat": 42.617236,
+    "lng": 8.9546269
+  },
+  "Rhinelander, WI": {
+    "lat": 45.636623,
+    "lng": -89.412075
+  },
+  "Piqua Ohio": {
+    "lat": 40.1447732,
+    "lng": -84.2424449
+  },
+  "Rogers": {
+    "lat": 36.3781607,
+    "lng": -95.6190889
+  },
+  "Fontana, CA": {
+    "lat": 34.0922947,
+    "lng": -117.43433
+  },
+  "Milwaukee": {
+    "lat": 43.0386475,
+    "lng": -87.9090751
+  },
+  "Garden Grove": {
+    "lat": 33.7746292,
+    "lng": -117.9463717
+  },
+  "Hurricane Utah": {
+    "lat": 37.1750272,
+    "lng": -113.289888
+  },
+  "Downtown Sarasota, FL": {
+    "lat": 27.3357179,
+    "lng": -82.5483545
+  },
+  "Williamsburg, NYC": {
+    "lat": 40.714622,
+    "lng": -73.95345
+  },
+  "Unceded Lenape Land 'Brooklyn, NY'": null,
+  "GRAND RAPIDS, MI": {
+    "lat": 42.9632425,
+    "lng": -85.6678639
+  },
+  "Stockton ca": {
+    "lat": 37.9577016,
+    "lng": -121.290779
+  },
+  "Sandy Springs, Atlanta GA": {
+    "lat": 33.8763011,
+    "lng": -84.3815199
+  },
+  "Holland, MI": {
+    "lat": 42.7876022,
+    "lng": -86.1090828
+  },
+  "San Jacinto Ca.": {
+    "lat": 33.7839664,
+    "lng": -116.9589086
+  },
+  "Caguas, Puerto Rico": {
+    "lat": 18.2129421,
+    "lng": -66.0558844
+  },
+  "Nashua nh": {
+    "lat": 42.7656251,
+    "lng": -71.4677032
+  },
+  "san antonio, tx": {
+    "lat": 29.4246002,
+    "lng": -98.4951405
+  },
+  "Greenville, SC": {
+    "lat": 34.851354,
+    "lng": -82.3984882
+  },
+  "Fort Wayne Indiana": {
+    "lat": 41.0799898,
+    "lng": -85.1386015
+  },
+  "Brooklyn, NY": {
+    "lat": 40.6526006,
+    "lng": -73.9497211
+  },
+  "Belfast": {
+    "lat": 54.5975805,
+    "lng": -5.9277097
+  },
+  "magic door tattoo | toronto": null,
+  "Sainte-Martine": {
+    "lat": 45.246129,
+    "lng": -73.804436
+  },
+  "Ottawa": {
+    "lat": 45.4208777,
+    "lng": -75.6901106
+  },
+  "Fayetteville, AR": {
+    "lat": 36.0625843,
+    "lng": -94.1574328
+  },
+  "Bournemouth": {
+    "lat": 50.7201514,
+    "lng": -1.8799118
+  },
+  "Wittier": {
+    "lat": 35.9949819,
+    "lng": -84.875138
+  },
+  "Highland": {
+    "lat": 57.5066357,
+    "lng": -5.0038367
+  },
+  "Cedar City": {
+    "lat": 37.6774238,
+    "lng": -113.061827
+  },
+  "East London": {
+    "lat": -33.0191604,
+    "lng": 27.8998573
+  },
+  "Troy, Mo": {
+    "lat": 38.9794923,
+    "lng": -90.9806954
+  },
+  "Mobile": {
+    "lat": 30.6913462,
+    "lng": -88.0437509
+  },
+  "Sumner, Wa": {
+    "lat": 47.2061882,
+    "lng": -122.2312383
+  },
+  "Rochester, MI": {
+    "lat": 42.680588,
+    "lng": -83.1338214
+  },
+  "Tunbridge Wells, Kent": {
+    "lat": 51.1371483,
+    "lng": 0.2673446
+  },
+  "BELLEVUE, WA": {
+    "lat": 47.6144219,
+    "lng": -122.192337
+  },
+  "Tempe AZ": {
+    "lat": 33.4255117,
+    "lng": -111.940016
+  },
+  "Eugene": {
+    "lat": 44.0505054,
+    "lng": -123.0950506
+  },
+  "Peoria": {
+    "lat": 40.6938609,
+    "lng": -89.5891008
+  },
+  "Moncks Corner": {
+    "lat": 33.1960027,
+    "lng": -80.0131374
+  },
+  "Kansas City, MO": {
+    "lat": 39.100105,
+    "lng": -94.5781416
+  },
+  "Sacramento & Auburn CA": {
+    "lat": 38.8834393,
+    "lng": -121.0763421
+  },
+  "Toronto, Canada": {
+    "lat": 43.6534817,
+    "lng": -79.3839347
+  },
+  "Read booking info first !": null,
+  "Ashland, Oregon": {
+    "lat": 42.1972487,
+    "lng": -122.7153995
+  },
+  "Pompano beach": {
+    "lat": 26.2378597,
+    "lng": -80.1247667
+  },
+  "Reading pa": {
+    "lat": 40.335345,
+    "lng": -75.9279495
+  },
+  "Hamilton, Ontario": {
+    "lat": 43.2560802,
+    "lng": -79.8728583
+  },
+  "El Paso": {
+    "lat": 31.7601001,
+    "lng": -106.4870476
+  },
+  "Athens, GA": {
+    "lat": 33.9597677,
+    "lng": -83.376398
+  },
+  "Belfast/ Croí Dubh Tattoo": null,
+  "Dalton, Georgia": {
+    "lat": 34.7691867,
+    "lng": -84.9702475
+  },
+  "Idaho Falls, ID": {
+    "lat": 43.4887907,
+    "lng": -112.03628
+  },
+  "Bonita Springs": {
+    "lat": 26.339806,
+    "lng": -81.7786972
+  },
+  "Springfield, MO": {
+    "lat": 37.2081729,
+    "lng": -93.2922715
+  },
+  "Flint": {
+    "lat": 43.0161693,
+    "lng": -83.6900211
+  },
+  "Mentor, OH": {
+    "lat": 41.6664781,
+    "lng": -81.3399769
+  },
+  "Cedar Rapids": {
+    "lat": 41.9758872,
+    "lng": -91.6704053
+  },
+  "Arts District, LA || Lake Forest, OC": null,
+  "Wantage": {
+    "lat": 51.5878072,
+    "lng": -1.4249258
+  },
+  "Rancho cordova": {
+    "lat": 38.5890723,
+    "lng": -121.302728
+  },
+  "3223 Louisville, Monroe, Louisiana, 71203": {
+    "lat": 32.5223975,
+    "lng": -92.0842498
+  },
+  "Universal City": {
+    "lat": 34.1419225,
+    "lng": -118.358411
+  },
+  "Fort Wayne, IN": {
+    "lat": 41.0799898,
+    "lng": -85.1386015
+  },
+  "North Olmsted": {
+    "lat": 41.4156025,
+    "lng": -81.9234726
+  },
+  "tacoma, WA": {
+    "lat": 47.2455013,
+    "lng": -122.438329
+  },
+  "Denison, TX": {
+    "lat": 33.7556593,
+    "lng": -96.536658
+  },
+  "Lawton": {
+    "lat": 34.6051975,
+    "lng": -98.3952279
+  },
+  "Long Island, NY": {
+    "lat": 40.8514971,
+    "lng": -73.0994297
+  },
+  "arlington, tx": {
+    "lat": 32.7355816,
+    "lng": -97.1071186
+  },
+  "Houston Tx 🍇🔩": {
+    "lat": 29.7589382,
+    "lng": -95.3676974
+  },
+  "Houston tx": {
+    "lat": 29.7589382,
+    "lng": -95.3676974
+  },
+  "Ballston Spa": {
+    "lat": 43.0100155,
+    "lng": -73.8502957
+  },
+  "Dunbar": {
+    "lat": 56.0021385,
+    "lng": -2.5158237
+  },
+  "Moncton NB": {
+    "lat": 46.0985679,
+    "lng": -64.8004265
+  },
+  "Dunbar, WV": {
+    "lat": 38.3606509,
+    "lng": -81.7373485
+  },
+  "Katy Tx": {
+    "lat": 29.7857853,
+    "lng": -95.8243956
+  },
+  "📍Memphis, TN": {
+    "lat": 35.1460249,
+    "lng": -90.0517638
+  },
+  "Gonzales, Texas": {
+    "lat": 29.4436555,
+    "lng": -97.5108636
+  },
+  "Portland, ME": {
+    "lat": 43.6573605,
+    "lng": -70.2586618
+  },
+  "Arlington": {
+    "lat": 32.7355816,
+    "lng": -97.1071186
+  },
+  "Airdrie AB": {
+    "lat": 51.28597,
+    "lng": -114.01062
+  },
+  "Ogden, UT": {
+    "lat": 41.2230048,
+    "lng": -111.9738429
+  },
+  "Edison NJ": {
+    "lat": 40.518157,
+    "lng": -74.4113926
+  },
+  "Tom’s River": {
+    "lat": 52.6419212,
+    "lng": -7.2549071
+  },
+  "Myrtle Beach": {
+    "lat": 33.6956461,
+    "lng": -78.8900409
+  },
+  "BUFFALO, NY": {
+    "lat": 42.8864163,
+    "lng": -78.8781493
+  },
+  "Borden": {
+    "lat": 32.6879416,
+    "lng": -101.425711
+  },
+  "Redmond Oregon": {
+    "lat": 44.2726203,
+    "lng": -121.173921
+  },
+  "Knoxville TN": {
+    "lat": 35.9603948,
+    "lng": -83.9210261
+  },
+  "Toledo": {
+    "lat": 39.8558913,
+    "lng": -4.024265
+  },
+  "Olympia, WA": {
+    "lat": 47.0451022,
+    "lng": -122.8950075
+  },
+  "Oklahoma City, OK": {
+    "lat": 35.4729886,
+    "lng": -97.5170536
+  },
+  "Monmouth": {
+    "lat": 40.2932319,
+    "lng": -74.1671114
+  },
+  "Cumberland, Rhode Island": {
+    "lat": 41.9667656,
+    "lng": -71.4328363
+  },
+  "Melbourne, Australia": {
+    "lat": -37.8142454,
+    "lng": 144.9631732
+  },
+  "Airdrie": {
+    "lat": 51.28597,
+    "lng": -114.01062
+  },
+  "British Columbia": {
+    "lat": 55.001251,
+    "lng": -125.002441
+  },
+  "Colton, CA": {
+    "lat": 34.0739016,
+    "lng": -117.3136547
+  },
+  "Las vegas": {
+    "lat": 36.1674263,
+    "lng": -115.1484131
+  },
+  "New Castle": {
+    "lat": 40.9999202,
+    "lng": -80.3471856
+  },
+  "Lake Jackson": {
+    "lat": 29.0338575,
+    "lng": -95.4343859
+  },
+  "Miami - Florida": {
+    "lat": 25.7741566,
+    "lng": -80.1935973
+  },
+  "Biloxi": {
+    "lat": 30.4007626,
+    "lng": -88.8893818
+  },
+  "Tattoo artist based in Enschede": null,
+  "Hibbing, MN": {
+    "lat": 47.427155,
+    "lng": -92.937689
+  },
+  "2025 Akron’s Community Choice Awards Winner for Best Tattoo Studio. Located in the Portage Lakes/Green area of Akron, OH.": null,
+  "Winnipeg,MB": {
+    "lat": 49.8955367,
+    "lng": -97.1384584
+  },
+  "Virginia Beach, Virginia": {
+    "lat": 36.8496579,
+    "lng": -75.9760751
+  },
+  "Fort Lauderdale": {
+    "lat": 26.1223084,
+    "lng": -80.1433786
+  },
+  "Deebing Heights": {
+    "lat": -27.6867653,
+    "lng": 152.7650463
+  },
+  "tacoma": {
+    "lat": 47.2455013,
+    "lng": -122.438329
+  },
+  "moh'kinstsis / calgary": null,
+  "Youngstown, OH": {
+    "lat": 41.1035786,
+    "lng": -80.6520161
+  },
+  "Rawdon, QC": {
+    "lat": 46.0454129,
+    "lng": -73.7107666
+  },
+  "Raleigh NC": {
+    "lat": 35.7803977,
+    "lng": -78.6390989
+  },
+  "Leonardtown": {
+    "lat": 38.2912431,
+    "lng": -76.6357946
+  },
+  "Newnan": {
+    "lat": 33.3806716,
+    "lng": -84.7996573
+  },
+  "San Antonio, Florida": {
+    "lat": 28.3361142,
+    "lng": -82.2745308
+  },
+  "Spartanburg SC": {
+    "lat": 34.9498007,
+    "lng": -81.9320157
+  },
+  "Saginaw, MI": {
+    "lat": 43.4200387,
+    "lng": -83.9490365
+  },
+  "CASPER, WYO": {
+    "lat": 42.8501191,
+    "lng": -106.325138
+  },
+  "Orlando, Fl": {
+    "lat": 28.5421218,
+    "lng": -81.379045
+  },
+  "Orlando": {
+    "lat": 28.5421218,
+    "lng": -81.379045
+  },
+  "Bromley": {
+    "lat": 51.4028046,
+    "lng": 0.0148142
+  },
+  "Collingwood": {
+    "lat": 44.5027226,
+    "lng": -80.2172379
+  },
+  "Pompano Beach": {
+    "lat": 26.2378597,
+    "lng": -80.1247667
+  },
+  "Pompton Lakes": {
+    "lat": 41.0053413,
+    "lng": -74.2905713
+  },
+  "Sherbrooke": {
+    "lat": 45.403271,
+    "lng": -71.889038
+  },
+  "Saint Cloud, FL ☀️🌴": {
+    "lat": 28.2498534,
+    "lng": -81.2839038
+  },
+  "Melbourne FL": {
+    "lat": 28.0785034,
+    "lng": -80.6077908
+  },
+  "Phoenix, AZ": {
+    "lat": 33.4484367,
+    "lng": -112.074141
+  },
+  "BAL📍RVA": null,
+  "Orange, CA": {
+    "lat": 33.750631,
+    "lng": -117.8722311
+  },
+  "Fresno": {
+    "lat": 36.7394421,
+    "lng": -119.78483
+  },
+  "Fairfax, VA": {
+    "lat": 38.8462236,
+    "lng": -77.3063733
+  },
+  "Effort, PA": {
+    "lat": 40.9449315,
+    "lng": -75.4429717
+  },
+  "Leawood": {
+    "lat": 38.966673,
+    "lng": -94.6169012
+  },
+  "San antonio": {
+    "lat": 29.4246002,
+    "lng": -98.4951405
+  },
+  "Santa Monica, CA": {
+    "lat": 34.0194704,
+    "lng": -118.491227
+  },
+  "West Kelowna": {
+    "lat": 49.8585784,
+    "lng": -119.582876
+  },
+  "Erie": {
+    "lat": 42.1294712,
+    "lng": -80.0852695
+  },
+  "Scottsdale, AZ": {
+    "lat": 33.4942189,
+    "lng": -111.926018
+  },
+  "Nashville": {
+    "lat": 36.1622767,
+    "lng": -86.7742984
+  },
+  "Jurupa Valley": {
+    "lat": 33.9798472,
+    "lng": -117.4515754
+  },
+  "Colorado Springs, Colorado": {
+    "lat": 38.8339578,
+    "lng": -104.825348
+  },
+  "The Pas, Manitoba, Canada": {
+    "lat": 53.8224172,
+    "lng": -101.2405153
+  },
+  "Roseville, Minnesota": {
+    "lat": 45.0060767,
+    "lng": -93.1566107
+  },
+  "Limoilou, Québec": {
+    "lat": 46.8262728,
+    "lng": -71.233149
+  },
+  "Council Bluffs": {
+    "lat": 41.258841,
+    "lng": -95.8519484
+  },
+  "Norfolk Va": {
+    "lat": 36.8493695,
+    "lng": -76.2899539
+  },
+  "Located at The Ink Elephant in McAllen TX": null,
+  "Waco": {
+    "lat": 31.5491899,
+    "lng": -97.1474628
+  },
+  "Naples, Florida": {
+    "lat": 26.1421976,
+    "lng": -81.7942944
+  },
+  "Manchester, uk": {
+    "lat": 53.4794892,
+    "lng": -2.2451148
+  },
+  "Columbia. MO": {
+    "lat": 38.951883,
+    "lng": -92.3337366
+  },
+  "Richmond": {
+    "lat": 37.5385087,
+    "lng": -77.43428
+  },
+  "Silver Spring Maryland": {
+    "lat": 38.9997621,
+    "lng": -77.0240371
+  },
+  "Peru IL": {
+    "lat": 41.3272919,
+    "lng": -89.1287636
+  },
+  "Spring Lake": {
+    "lat": 40.1535132,
+    "lng": -74.0293941
+  },
+  "ROYAL OAK, MI": {
+    "lat": 42.4894801,
+    "lng": -83.1446485
+  },
+  "Pittsburgh, pa": {
+    "lat": 40.4406968,
+    "lng": -80.0025666
+  },
+  "Cabot, Arkansas": {
+    "lat": 34.974532,
+    "lng": -92.0165336
+  },
+  "Tillsonburg": {
+    "lat": 42.859494,
+    "lng": -80.7265015
+  },
+  "Philadelphia. PA": {
+    "lat": 39.9527237,
+    "lng": -75.1635262
+  },
+  "Monroe, WA": {
+    "lat": 47.8552259,
+    "lng": -121.971335
+  },
+  "Clarkesville": {
+    "lat": 34.6125971,
+    "lng": -83.5248933
+  },
+  "2 Castlereagh Road Belfast": {
+    "lat": 54.588225,
+    "lng": -5.8956593
+  },
+  "Orem": {
+    "lat": 40.2981599,
+    "lng": -111.6944313
+  },
+  "Fort Worth": {
+    "lat": 32.753177,
+    "lng": -97.3327459
+  },
+  "Stockton": {
+    "lat": 37.9577016,
+    "lng": -121.290779
+  },
+  "elkhart, IN": {
+    "lat": 41.6012796,
+    "lng": -85.8590603
+  },
+  "Cary": {
+    "lat": 35.7882893,
+    "lng": -78.7812081
+  },
+  "HONOLULU": {
+    "lat": 21.304547,
+    "lng": -157.855676
+  },
+  "Milwaukee, WI": {
+    "lat": 43.0386475,
+    "lng": -87.9090751
+  },
+  "Millet, AB": {
+    "lat": 53.0941031,
+    "lng": -113.4719296
+  },
+  "Springville": {
+    "lat": 42.0602077,
+    "lng": -91.4433793
+  },
+  "Maple Ridge": {
+    "lat": 49.2197345,
+    "lng": -122.599707
+  },
+  "Artillery West - Long Beach, CA": null,
+  "• HOUSTON, TX •": {
+    "lat": 29.7589382,
+    "lng": -95.3676974
+  },
+  "Houston, Tx": {
+    "lat": 29.7589382,
+    "lng": -95.3676974
+  },
+  "Batavia NY": {
+    "lat": 42.9980144,
+    "lng": -78.1875515
+  },
+  "Birdsboro": {
+    "lat": 40.2645371,
+    "lng": -75.8040852
+  },
+  "Redding, Ca": {
+    "lat": 40.5863563,
+    "lng": -122.391675
+  },
+  "YVR “Vancouver”": {
+    "lat": 49.1928337,
+    "lng": -123.1829087
+  },
+  "New Westminster, BC": {
+    "lat": 49.2067726,
+    "lng": -122.9108818
+  },
+  "Mechanicville, NY": {
+    "lat": 42.9028547,
+    "lng": -73.6873405
+  },
+  "El Paso, Texas, Phoenix, Arizona": null,
+  "📍STATEN ISLAND, NYC 🗽": {
+    "lat": 40.5834557,
+    "lng": -74.1496048
+  },
+  "Springfield MO": {
+    "lat": 37.2081729,
+    "lng": -93.2922715
+  },
+  "Montreal Based Tattoo and Nail Artist": null,
+  "Cheyenne": {
+    "lat": 41.139981,
+    "lng": -104.820246
+  },
+  "dubreuilville": {
+    "lat": 48.349083,
+    "lng": -84.5510486
+  },
+  "Washington Metropolitan Area": {
+    "lat": -12.0579583,
+    "lng": -77.0392627
+  },
+  "Poland, Ohio": {
+    "lat": 41.024226,
+    "lng": -80.614795
+  },
+  "Denver,Colorado": {
+    "lat": 39.7392364,
+    "lng": -104.984862
+  },
+  "Niles, Michigan": {
+    "lat": 41.8297694,
+    "lng": -86.2541768
+  },
+  "Salisbury, MD📍": {
+    "lat": 38.366027,
+    "lng": -75.6009964
+  },
+  "San Pedro": {
+    "lat": 33.7358518,
+    "lng": -118.2922934
+  },
+  "Calicut, trivandrum": null,
+  "Long Beach": {
+    "lat": 33.7690164,
+    "lng": -118.191604
+  },
+  "Dorset, UK": {
+    "lat": 50.7968369,
+    "lng": -2.3447323
+  },
+  "Memphis, TN": {
+    "lat": 35.1460249,
+    "lng": -90.0517638
+  },
+  "Sacramento, CA": {
+    "lat": 38.5810606,
+    "lng": -121.493895
+  },
+  "Pittsburgh,PA": {
+    "lat": 40.4406968,
+    "lng": -80.0025666
+  },
+  "Kitchener-Waterloo": {
+    "lat": 43.4528673,
+    "lng": -80.5036918
+  },
+  "The Well, Toronto": {
+    "lat": 43.6429569,
+    "lng": -79.3959018
+  },
+  "Louisville, KY": {
+    "lat": 38.2542376,
+    "lng": -85.759407
+  },
+  "Warrenville, Illinois": {
+    "lat": 41.8179303,
+    "lng": -88.174097
+  },
+  "Zanesville Ohio": {
+    "lat": 39.9401426,
+    "lng": -82.005019
+  },
+  "Cincinnati, Ohio": {
+    "lat": 39.1014537,
+    "lng": -84.5124602
+  },
+  "Thunder Bay": {
+    "lat": 48.406414,
+    "lng": -89.259796
+  },
+  "Louisville": {
+    "lat": 38.2542376,
+    "lng": -85.759407
+  },
+  "Newcastle, UK": {
+    "lat": 54.9738474,
+    "lng": -1.6131572
+  },
+  "Check info before booking!": null,
+  "Whiting, Indiana": {
+    "lat": 41.6797598,
+    "lng": -87.4944645
+  },
+  "Cincinnati": {
+    "lat": 39.1014537,
+    "lng": -84.5124602
+  },
+  "Tattoo Artist & Body Piercing Technician": null,
+  "Brooklyn New York": {
+    "lat": 40.6526006,
+    "lng": -73.9497211
+  },
+  "DERBY, CT": {
+    "lat": 41.3201706,
+    "lng": -73.0389308
+  },
+  "Charlotte North Carolina": {
+    "lat": 35.2272086,
+    "lng": -80.8430827
+  },
+  "Ink Haus": {
+    "lat": 50.3330507,
+    "lng": 6.5118559
+  },
+  "St. Peter’s, MO": {
+    "lat": 51.4791611,
+    "lng": -0.2083367
+  },
+  "Wisconsin Rapids": {
+    "lat": 44.3917589,
+    "lng": -89.8228767
+  },
+  "Mooresville": {
+    "lat": 35.5848596,
+    "lng": -80.8100724
+  },
+  "Redmond": {
+    "lat": 47.6694141,
+    "lng": -122.1238767
+  },
+  "Show Low": {
+    "lat": 34.2542084,
+    "lng": -110.029832
+  },
+  "Fox Lake, IL": {
+    "lat": 42.3966874,
+    "lng": -88.1836965
+  },
+  "Kailua Kona": {
+    "lat": 19.641941,
+    "lng": -155.996933
+  },
+  "Cambridge": {
+    "lat": 52.2055314,
+    "lng": 0.1186637
+  },
+  "Puyallup": {
+    "lat": 47.1849009,
+    "lng": -122.29214
+  },
+  "Barrie": {
+    "lat": 44.3893208,
+    "lng": -79.6901302
+  },
+  "115 E Chestnut St Mason City, IL  62664 United States": {
+    "lat": 40.2023102,
+    "lng": -89.6970249
+  },
+  "Nashville, TN": {
+    "lat": 36.1622767,
+    "lng": -86.7742984
+  },
+  "Somerset WI": {
+    "lat": 45.124894,
+    "lng": -92.6730433
+  },
+  "Honolulu, HI": {
+    "lat": 21.304547,
+    "lng": -157.855676
+  },
+  "Liverpool now": {
+    "lat": -33.922002,
+    "lng": 150.9239808
+  },
+  "South Jordan": {
+    "lat": 40.5584882,
+    "lng": -111.9367107
+  },
+  "Albany, OR": {
+    "lat": 44.6365071,
+    "lng": -123.1059324
+  },
+  "Sonora": {
+    "lat": 29.3333331,
+    "lng": -110.6666671
+  },
+  "Knoxville": {
+    "lat": 35.9603948,
+    "lng": -83.9210261
+  },
+  "ᴛᴀᴄᴏᴍᴀ": {
+    "lat": 47.2450762,
+    "lng": -122.4397174
+  },
+  "Vancouver, Washington": {
+    "lat": 45.6306954,
+    "lng": -122.6744557
+  },
+  "Overland Park KS": {
+    "lat": 38.9742502,
+    "lng": -94.6851702
+  },
+  "Newberg Oregon": {
+    "lat": 45.300347,
+    "lng": -122.972751
+  },
+  "Durham/Chapel Hill, NC": {
+    "lat": 35.9031845,
+    "lng": -79.0009621
+  },
+  "Portland based": null,
+  "NYC": {
+    "lat": 40.7127281,
+    "lng": -74.0060152
+  },
+  "Chalmette": {
+    "lat": 29.9427892,
+    "lng": -89.9629372
+  },
+  "Longwood, FL": {
+    "lat": 28.7007225,
+    "lng": -81.349278
+  },
+  "Norcross, Ga": {
+    "lat": 33.9412127,
+    "lng": -84.2135309
+  },
+  "Amarillo, TX": {
+    "lat": 35.20729,
+    "lng": -101.8371192
+  },
+  "Monroe,WA": {
+    "lat": 47.8552259,
+    "lng": -121.971335
+  },
+  "Franklin, KY": {
+    "lat": 38.2520423,
+    "lng": -84.8633812
+  },
+  "Manchester, NH": {
+    "lat": 42.9956397,
+    "lng": -71.4547891
+  },
+  "Miami Gardens": {
+    "lat": 25.9420377,
+    "lng": -80.2456045
+  },
+  "greeley, co": {
+    "lat": 40.4233142,
+    "lng": -104.7091322
+  },
+  "Imperial Beach, San Diego": {
+    "lat": 32.583893,
+    "lng": -117.1130487
+  },
+  "Fort Worth, TX": {
+    "lat": 32.753177,
+    "lng": -97.3327459
+  },
+  "Terre Haute, Indiana": {
+    "lat": 39.4667025,
+    "lng": -87.4139119
+  },
+  "Mill creek": {
+    "lat": 47.8577455,
+    "lng": -122.2210628
+  },
+  "Albuquerque": {
+    "lat": 35.0841034,
+    "lng": -106.650985
+  },
+  "Black Cat Tattoo- Pittsburgh, Pa": null,
+  "Columbia, SC": {
+    "lat": 34.000754,
+    "lng": -81.0352313
+  },
+  "MILWAUKEE": {
+    "lat": 43.0386475,
+    "lng": -87.9090751
+  },
+  "Missoula, MT": {
+    "lat": 46.8701049,
+    "lng": -113.995267
+  },
+  "Knoxville, TN": {
+    "lat": 35.9603948,
+    "lng": -83.9210261
+  },
+  "Raynham MA": {
+    "lat": 41.9487118,
+    "lng": -71.0731008
+  },
+  "Syracuse ,NY": {
+    "lat": 43.0481221,
+    "lng": -76.1474244
+  },
+  "Colorado Springs": {
+    "lat": 38.8339578,
+    "lng": -104.825348
+  },
+  "Newcastle": {
+    "lat": 54.9738474,
+    "lng": -1.6131572
+  },
+  "Camrose alberta": {
+    "lat": 53.013131,
+    "lng": -112.840576
+  },
+  "Plymouth, MI": {
+    "lat": 42.3712,
+    "lng": -83.4675021
+  },
+  "Macclenny": {
+    "lat": 30.2821807,
+    "lng": -82.1220569
+  },
+  "Kearu Tattoo Co": null,
+  "Brighton & Hove": {
+    "lat": 50.8288602,
+    "lng": -0.1407393
+  },
+  "Lansing, MI": {
+    "lat": 42.7338254,
+    "lng": -84.5546295
+  },
+  "Paragould, Arkansas": {
+    "lat": 36.0584021,
+    "lng": -90.4973286
+  },
+  "Alton IL": {
+    "lat": 38.8908583,
+    "lng": -90.1843091
+  },
+  "Elizabeth, NJ": {
+    "lat": 40.6639916,
+    "lng": -74.2107006
+  },
+  "Temple, GA": {
+    "lat": 33.7370514,
+    "lng": -85.032445
+  },
+  "IE📍": {
+    "lat": 52.865196,
+    "lng": -7.9794599
+  },
+  "Barcelona": {
+    "lat": 41.3825802,
+    "lng": 2.177073
+  },
+  "DFW": {
+    "lat": 32.8965195,
+    "lng": -97.0465221
+  },
+  "Anchorage": {
+    "lat": 61.2163129,
+    "lng": -149.894852
+  },
+  "Huntington": {
+    "lat": 38.4192496,
+    "lng": -82.445154
+  },
+  "Edmonton, Alberta, Canada": {
+    "lat": 53.5462055,
+    "lng": -113.491241
+  },
+  "North Vancouver, BC": {
+    "lat": 49.3206294,
+    "lng": -123.0737925
+  },
+  "Tri-Cities, WA": {
+    "lat": 46.3327354,
+    "lng": -119.2672371
+  },
+  "Bay City, MI": {
+    "lat": 43.5962107,
+    "lng": -83.8881711
+  },
+  "Yucaipa, California": {
+    "lat": 34.033625,
+    "lng": -117.0430865
+  },
+  "Tucson": {
+    "lat": 32.2228765,
+    "lng": -110.974847
+  },
+  "Long Beach and Los Angeles based unless clarified on insta bio": null,
+  "Rockingham": {
+    "lat": 36.3926798,
+    "lng": -79.744144
+  },
+  "Laval": {
+    "lat": 48.0706687,
+    "lng": -0.7734022
+  },
+  "Iron Broads Tattoo Studio - Piqua, OH": null,
+  "Williamsport, PA": {
+    "lat": 41.2411556,
+    "lng": -77.0011096
+  },
+  "Williamsport PA": {
+    "lat": 41.2411556,
+    "lng": -77.0011096
+  },
+  "Chinatown, Vancouver BC": {
+    "lat": 49.2803671,
+    "lng": -123.1010541
+  },
+  "Henagar, AL": {
+    "lat": 34.635084,
+    "lng": -85.7671936
+  },
+  "Vacaville CA": {
+    "lat": 38.3565773,
+    "lng": -121.9877444
+  },
+  "Gloucestershire": {
+    "lat": 51.7643786,
+    "lng": -2.1880662
+  },
+  "Jacksonville, FL": {
+    "lat": 30.3262247,
+    "lng": -81.6579179
+  },
+  "Chadron": {
+    "lat": 44.9601372,
+    "lng": 3.9354515
+  },
+  "Madison, FL": {
+    "lat": 30.4514352,
+    "lng": -83.4524524
+  },
+  "Brooklyn": {
+    "lat": 40.6526006,
+    "lng": -73.9497211
+  },
+  "Traverse City, MI": {
+    "lat": 44.7606481,
+    "lng": -85.6165976
+  },
+  "Round Rock": {
+    "lat": 30.5085915,
+    "lng": -97.6788056
+  },
+  "Conroe, TX": {
+    "lat": 30.3118769,
+    "lng": -95.4560512
+  },
+  "peterborough & toronto": {
+    "lat": 43.6740455,
+    "lng": -79.4447759
+  },
+  "Carbon Hill, AL": {
+    "lat": 33.8888252,
+    "lng": -87.5294765
+  },
+  "Arlington Heights, Illinois": {
+    "lat": 42.0811563,
+    "lng": -87.9802164
+  },
+  "Moncton": {
+    "lat": 46.0985679,
+    "lng": -64.8004265
+  },
+  "Savannah, GA": {
+    "lat": 32.0790074,
+    "lng": -81.0921335
+  },
+  "Fayette ohio": {
+    "lat": 39.5839889,
+    "lng": -83.4401122
+  },
+  "Cotati, CA": {
+    "lat": 38.3266798,
+    "lng": -122.706844
+  },
+  "Arvada": {
+    "lat": 39.8005505,
+    "lng": -105.0811573
+  },
+  "ELEGANCE REBORN IN DARKNESS": null,
+  "Grants Pass, Oregon": {
+    "lat": 42.4393707,
+    "lng": -123.3272489
+  },
+  "Eureka": {
+    "lat": 40.8018746,
+    "lng": -124.1707558
+  },
+  "Seattle/Philadelphia": {
+    "lat": 47.685228,
+    "lng": -122.387241
+  },
+  "Bella Vida Creative Studio": null,
+  "Pittsburgh": {
+    "lat": 40.4406968,
+    "lng": -80.0025666
+  },
+  "Addison": {
+    "lat": 41.931696,
+    "lng": -87.9889556
+  },
+  "Elizabeth NJ": {
+    "lat": 40.6639916,
+    "lng": -74.2107006
+  },
+  "🇵🇭NAGA CITY": {
+    "lat": 13.6240122,
+    "lng": 123.1850318
+  },
+  "Nelson": {
+    "lat": -41.2710849,
+    "lng": 173.2836756
+  },
+  "Hyattsville, MD": {
+    "lat": 38.9529442,
+    "lng": -76.9408647
+  },
+  "Alumni Tattoo Gallery": null,
+  "Denton, TX": {
+    "lat": 33.1838787,
+    "lng": -97.1413417
+  },
+  "Bingley / Leeds": {
+    "lat": 53.8815587,
+    "lng": -1.4482891
+  },
+  "El paso": {
+    "lat": 31.7601001,
+    "lng": -106.4870476
+  },
+  "MONTREAL": {
+    "lat": 45.5031824,
+    "lng": -73.5698065
+  },
+  "Minerva": {
+    "lat": -18.5211147,
+    "lng": -136.3679094
+  },
+  "Durham": {
+    "lat": 54.666667,
+    "lng": -1.75
+  },
+  "Los Angeles, Ca": {
+    "lat": 34.0536909,
+    "lng": -118.242766
+  },
+  "Brisbane, Australia": {
+    "lat": -27.365991,
+    "lng": 152.948963
+  },
+  "KCMO": {
+    "lat": 39.0706777,
+    "lng": -94.5826203
+  },
+  "Los Angeles, CA": {
+    "lat": 34.0536909,
+    "lng": -118.242766
+  },
+  "Spanaway": {
+    "lat": 47.0898165,
+    "lng": -122.4176008
+  },
+  "Atwater": {
+    "lat": 45.1363343,
+    "lng": -94.7810199
+  },
+  "Hampton": {
+    "lat": 37.0264414,
+    "lng": -76.3442846
+  },
+  "Salem": {
+    "lat": 44.9391565,
+    "lng": -123.033121
+  },
+  "toronto": {
+    "lat": 43.6534817,
+    "lng": -79.3839347
+  },
+  "Glenpool, OK": {
+    "lat": 35.9553523,
+    "lng": -96.008778
+  },
+  "Manchester, UK": {
+    "lat": 53.4794892,
+    "lng": -2.2451148
+  },
+  "Saint Paul, MN": {
+    "lat": 44.9497487,
+    "lng": -93.0931028
+  },
+  "372 Water St. Peterborough, Ontario": {
+    "lat": 44.3051212,
+    "lng": -78.3187208
+  },
+  "brisbane, australia": {
+    "lat": -27.365991,
+    "lng": 152.948963
+  },
+  "Seymour": {
+    "lat": 33.5942438,
+    "lng": -99.2603073
+  },
+  "Corvallis": {
+    "lat": 44.5645659,
+    "lng": -123.2620435
+  },
+  "cleveland, oh": {
+    "lat": 41.4996574,
+    "lng": -81.6936772
+  },
+  "Harrisburg, Pennsylvania": {
+    "lat": 40.2663107,
+    "lng": -76.8861122
+  },
+  "OKC": {
+    "lat": 35.3848053,
+    "lng": -97.6053443
+  },
+  "Los Angeles Lancaster Las Vegas": null,
+  "Lansing": {
+    "lat": 42.7338254,
+    "lng": -84.5546295
+  },
+  "Huntsville/Meridianville": {
+    "lat": 34.8645333,
+    "lng": -86.6066611
+  },
+  "NEWCASTLE": {
+    "lat": 54.9738474,
+    "lng": -1.6131572
+  },
+  "eye work with energy in new orleans": null,
+  "Streetsville, Mississauga": {
+    "lat": 43.5761899,
+    "lng": -79.7089736
+  },
+  "Nine Finger Tattoo Company": null,
+  "Austin": {
+    "lat": 30.2711286,
+    "lng": -97.7436995
+  },
+  "Tremont, Pa": {
+    "lat": 40.6284222,
+    "lng": -76.3871768
+  },
+  "Lexington": {
+    "lat": 38.0464066,
+    "lng": -84.4970393
+  },
+  "Houston TX": {
+    "lat": 29.7589382,
+    "lng": -95.3676974
+  },
+  "Watford city": {
+    "lat": 47.802241,
+    "lng": -103.283247
+  },
+  "Turriff, Aberdeenshire": {
+    "lat": 57.537482,
+    "lng": -2.4640839
+  },
+  "Ogden, Utah": {
+    "lat": 41.2230048,
+    "lng": -111.9738429
+  },
+  "Pekin": {
+    "lat": 39.9057136,
+    "lng": 116.3912972
+  },
+  "Grand Rapids MI": {
+    "lat": 42.9632425,
+    "lng": -85.6678639
+  },
+  "Smithville, ON": {
+    "lat": 43.09879,
+    "lng": -79.5463593
+  },
+  "Chelmsford MA": {
+    "lat": 42.5968617,
+    "lng": -71.3517602
+  },
+  "Boerne": {
+    "lat": 29.7946641,
+    "lng": -98.7319703
+  },
+  "Chico": {
+    "lat": 39.7284945,
+    "lng": -121.8374777
+  },
+  "Stockton, Mo.": {
+    "lat": 37.6989279,
+    "lng": -93.796044
+  },
+  "Sainte-Catherine": {
+    "lat": 50.304864,
+    "lng": 2.763456
+  },
+  "Sacramento": {
+    "lat": 38.5810606,
+    "lng": -121.493895
+  },
+  "South Burlington, VT": {
+    "lat": 44.4642957,
+    "lng": -73.176273
+  },
+  "Victoria": {
+    "lat": -36.5986096,
+    "lng": 144.6780052
+  },
+  "Sacramento. California": {
+    "lat": 38.5810606,
+    "lng": -121.493895
+  },
+  "Blessed Thistle Studio (Basford, Nottingham NG5 1JZ)": null,
+  "Blackpool, Lancs": {
+    "lat": 53.8403606,
+    "lng": -3.0161091
+  },
+  "Sydney": {
+    "lat": -33.8698439,
+    "lng": 151.2082848
+  },
+  "Albertville": {
+    "lat": 45.6754622,
+    "lng": 6.3925417
+  },
+  "Jessup": {
+    "lat": 39.1492746,
+    "lng": -76.7752493
+  },
+  "GTA": {
+    "lat": 43.9019833,
+    "lng": -79.268313
+  },
+  "Edmonton, Ab": {
+    "lat": 53.5462055,
+    "lng": -113.491241
+  },
+  "Toronto, ON": {
+    "lat": 43.6534817,
+    "lng": -79.3839347
+  },
+  "Deeping St James": {
+    "lat": 52.6733282,
+    "lng": -0.2694056
+  },
+  "Radcliffe, Manchester": {
+    "lat": 53.5593382,
+    "lng": -2.3261546
+  },
+  "Cabot": {
+    "lat": 34.974532,
+    "lng": -92.0165336
+  },
+  "Oxnard": {
+    "lat": 34.1976308,
+    "lng": -119.180381
+  },
+  "Missouri City TX": {
+    "lat": 29.6185669,
+    "lng": -95.5377215
+  },
+  "Villa Rica": {
+    "lat": 33.732052,
+    "lng": -84.9191081
+  },
+  "Redding": {
+    "lat": 40.5863563,
+    "lng": -122.391675
+  },
+  "TORONTO, ON": {
+    "lat": 43.6534817,
+    "lng": -79.3839347
+  },
+  "Laurinburg": {
+    "lat": 34.7740495,
+    "lng": -79.4628248
+  },
+  "Fairless hill": null,
+  "Sheffield, AL": {
+    "lat": 34.7650888,
+    "lng": -87.6986407
+  },
+  "Bryant": {
+    "lat": 40.4661513,
+    "lng": -90.0917851
+  },
+  "Fredericton New Brunswick": {
+    "lat": 45.9488278,
+    "lng": -66.6291827
+  },
+  "tallahassee, fl": {
+    "lat": 30.4380832,
+    "lng": -84.2809332
+  },
+  "Salaberry de Valleyfield": {
+    "lat": 45.2555575,
+    "lng": -74.1316718
+  },
+  "Tianna Camille": null,
+  "Hamilton": {
+    "lat": 43.2560802,
+    "lng": -79.8728583
+  },
+  "Bowling Green": {
+    "lat": 36.9929203,
+    "lng": -86.4428677
+  },
+  "st. petersburg, fl": {
+    "lat": 27.7712264,
+    "lng": -82.6340259
+  },
+  "Bardstown": {
+    "lat": 37.8092463,
+    "lng": -85.4669015
+  },
+  "Dallas tx": {
+    "lat": 32.7762719,
+    "lng": -96.7968559
+  },
+  "Kingston NY": {
+    "lat": 41.9287812,
+    "lng": -74.0023825
+  },
+  "London, Ky": {
+    "lat": 37.1283343,
+    "lng": -84.0835576
+  },
+  "Plano": {
+    "lat": 33.0136764,
+    "lng": -96.6925096
+  },
+  "Bluefield, W.V": {
+    "lat": 37.247339,
+    "lng": -81.3034337
+  },
+  "Coleman TX": {
+    "lat": 31.7766863,
+    "lng": -99.4461098
+  },
+  "Tulare CA": {
+    "lat": 36.2516475,
+    "lng": -118.852583
+  },
+  "San Juan": {
+    "lat": 18.465299,
+    "lng": -66.116666
+  },
+  "Birmingham, UK": {
+    "lat": 52.4796992,
+    "lng": -1.9026911
+  },
+  "Raleigh, NC": {
+    "lat": 35.7803977,
+    "lng": -78.6390989
+  },
+  "Lakeland": {
+    "lat": 28.0394654,
+    "lng": -81.9498042
+  },
+  "NAARM/MELBOURNE": {
+    "lat": -37.8142454,
+    "lng": 144.9631732
+  },
+  "durham, nc": {
+    "lat": 35.996653,
+    "lng": -78.9018053
+  },
+  "Columbia, TN": {
+    "lat": 35.6148165,
+    "lng": -87.0338464
+  },
+  "Oregon, Wisconsin": {
+    "lat": 42.9259657,
+    "lng": -89.3842779
+  },
+  "Mesa, AZ": {
+    "lat": 33.4151005,
+    "lng": -111.831455
+  },
+  "Gainesville": {
+    "lat": 29.6519684,
+    "lng": -82.3249846
+  },
+  "St. Petersburg, Florida": {
+    "lat": 27.7712264,
+    "lng": -82.6340259
+  },
+  "Omaha NE": {
+    "lat": 41.2587459,
+    "lng": -95.9383758
+  },
+  "Alton, Illinois": {
+    "lat": 38.8908583,
+    "lng": -90.1843091
+  },
+  "Weed CA": {
+    "lat": 41.4238018,
+    "lng": -122.3847609
+  },
+  "Wasilla, AK": {
+    "lat": 61.5824216,
+    "lng": -149.442563
+  },
+  "Melbourne CBD": {
+    "lat": -37.8141705,
+    "lng": 144.9655616
+  },
+  "Woman's Only Tattoo Studio in Mackenzie, BC": null,
+  "Milton,FL": {
+    "lat": 30.6324149,
+    "lng": -87.0396881
+  },
+  "Vaughan, Ontario": {
+    "lat": 43.7941544,
+    "lng": -79.5268023
+  },
+  "Bethlehem, Pennsylvania": {
+    "lat": 40.6178915,
+    "lng": -75.3786521
+  },
+  "Dousman, WI": {
+    "lat": 43.0147244,
+    "lng": -88.4727792
+  },
+  "Janesville": {
+    "lat": 42.6829765,
+    "lng": -89.0226793
+  },
+  "Poplar Bluff": {
+    "lat": 36.7563166,
+    "lng": -90.3944869
+  },
+  "Springfield Mo": {
+    "lat": 37.2081729,
+    "lng": -93.2922715
+  },
+  "Cascade": {
+    "lat": 47.3271465,
+    "lng": -111.3281242
+  },
+  "Price": {
+    "lat": 45.676627,
+    "lng": -90.368792
+  },
+  "Maumee, OH": {
+    "lat": 41.5628294,
+    "lng": -83.6538244
+  },
+  "Melbourne Aus": {
+    "lat": -37.7360584,
+    "lng": 145.0486263
+  },
+  "Roselle Park, New Jersey": {
+    "lat": 40.6645469,
+    "lng": -74.2643133
+  },
+  "Shalimar": {
+    "lat": 22.5551538,
+    "lng": 88.3153898
+  },
+  "Logan, Utah": {
+    "lat": 41.7313063,
+    "lng": -111.834914
+  },
+  "Sherwood": {
+    "lat": 34.8150907,
+    "lng": -92.2243153
+  },
+  "Inglewood CA, 90305": {
+    "lat": 33.9598709,
+    "lng": -118.328579
+  },
+  "Crown Point": {
+    "lat": 41.4169806,
+    "lng": -87.3653136
+  },
+  "Nelson, BC": {
+    "lat": 49.494891,
+    "lng": -117.290039
+  },
+  "Weatherford, TX": {
+    "lat": 32.7589648,
+    "lng": -97.7970748
+  },
+  "Downtown Milwaukie, Oregon": null,
+  "Brisbane": {
+    "lat": -27.365991,
+    "lng": 152.948963
+  },
+  "📍Queen City Staunton Virginia": {
+    "lat": 38.1496588,
+    "lng": -79.0717696
+  },
+  "Orlando/Celebration": {
+    "lat": 28.5462435,
+    "lng": -81.3468917
+  },
+  "Baton Rouge": {
+    "lat": 30.4494155,
+    "lng": -91.1869659
+  },
+  "Lancaster": {
+    "lat": 40.0379958,
+    "lng": -76.3056707
+  },
+  "Arlington tx": {
+    "lat": 32.7668672,
+    "lng": -97.099058
+  },
+  "Aurora": {
+    "lat": 41.7571701,
+    "lng": -88.3147539
+  },
+  "Helston": {
+    "lat": 50.1016731,
+    "lng": -5.273032
+  },
+  "Yo Claire Wisconsin!": null,
+  "Brandon, Fl": {
+    "lat": 27.928464,
+    "lng": -82.2880508
+  },
+  "PLAINVIEW": {
+    "lat": 34.1847936,
+    "lng": -101.706841
+  },
+  "Winston Salem, NC + Travel": {
+    "lat": 36.0832161,
+    "lng": -80.2938552
+  },
+  "Briggsdale": {
+    "lat": 39.9258969,
+    "lng": -83.0582409
+  },
+  "Memphis": {
+    "lat": 35.1460249,
+    "lng": -90.0517638
+  },
+  "Cordele, GA": {
+    "lat": 31.9691606,
+    "lng": -83.782718
+  },
+  "Cromwell, CT": {
+    "lat": 41.5949942,
+    "lng": -72.6455665
+  },
+  "Rogers Ar": {
+    "lat": 36.334857,
+    "lng": -94.1193816
+  },
+  "London,Ladbroke grove": {
+    "lat": 51.5271047,
+    "lng": -0.215702
+  },
+  "oceanside": {
+    "lat": 33.1958696,
+    "lng": -117.379483
+  },
+  "Gardena": {
+    "lat": 33.8815601,
+    "lng": -118.2935879
+  },
+  "PORTLAND, OREGON": {
+    "lat": 45.5202471,
+    "lng": -122.674194
+  },
+  "Pelham": {
+    "lat": 33.285669,
+    "lng": -86.8099884
+  },
+  "Vilnius / 's-Hertogenbosch [GA]": null,
+  "Ready for a transformation? ✨": null,
+  "VANCOUVER BC - READ INFO/FAQ BEFORE BOOKING <3": null,
+  "Montreal/ Canada": {
+    "lat": 45.5031824,
+    "lng": -73.5698065
+  },
+  "Chaska": {
+    "lat": 44.7894072,
+    "lng": -93.6021791
+  },
+  "Plano, TX": {
+    "lat": 33.0136764,
+    "lng": -96.6925096
+  },
+  "Pleasant Grove,UT": {
+    "lat": 40.3640349,
+    "lng": -111.7386884
+  },
+  "New Philadelphia": {
+    "lat": 40.4897871,
+    "lng": -81.4456706
+  },
+  "Mission": {
+    "lat": 26.2159066,
+    "lng": -98.3252932
+  },
+  "📍Sacramento": {
+    "lat": 38.5810606,
+    "lng": -121.493895
+  },
+  "Doylestown": {
+    "lat": 40.3100446,
+    "lng": -75.1304588
+  },
+  "NC/NJ": {
+    "lat": 40.5017649,
+    "lng": -74.2777663
+  },
+  "Anchorage, Ak": {
+    "lat": 61.2163129,
+    "lng": -149.894852
+  },
+  "Beltsville MD.": {
+    "lat": 39.0397735,
+    "lng": -76.9271851
+  },
+  "Charlotte , Nc": {
+    "lat": 35.2272086,
+    "lng": -80.8430827
+  },
+  "Berlin": {
+    "lat": 52.5173885,
+    "lng": 13.3951309
+  },
+  "Bryan College Station Tx": {
+    "lat": 30.6159088,
+    "lng": -96.3490411
+  },
+  "Massapequa": {
+    "lat": 40.669501,
+    "lng": -73.4698253
+  },
+  "Durango, CO": {
+    "lat": 37.2769484,
+    "lng": -107.8766
+  },
+  "San Jose": {
+    "lat": 37.3361663,
+    "lng": -121.890591
+  },
+  "Sebastopol, CA": {
+    "lat": 38.4021038,
+    "lng": -122.824222
+  },
+  "Garland TX": {
+    "lat": 32.912624,
+    "lng": -96.6388833
+  },
+  "Seattle- Not offering walk ins. Book today !": null,
+  "Stoke-on-Trent": {
+    "lat": 53.0162014,
+    "lng": -2.1812607
+  },
+  "Vinton Virginia": {
+    "lat": 37.2800221,
+    "lng": -79.8975673
+  },
+  "Mesa": {
+    "lat": 33.4151005,
+    "lng": -111.831455
+  },
+  "Kingston, OK": {
+    "lat": 33.9984099,
+    "lng": -96.7198974
+  },
+  "Saint Mary’s GA": {
+    "lat": 53.3729727,
+    "lng": -1.4745436
+  },
+  "Baltimore City": {
+    "lat": 39.3259726,
+    "lng": -76.5967586
+  },
+  "𝕮𝖔𝖑𝖚𝖒𝖇𝖚𝖘, 𝕺𝕳": null,
+  "San Angelo": {
+    "lat": 31.4649685,
+    "lng": -100.4405094
+  },
+  "West Palm Beach, Florida": {
+    "lat": 26.715364,
+    "lng": -80.0532942
+  },
+  "Bakersfield (LA by appt only)": null,
+  "Chinatown, NY 🧚‍♀️": {
+    "lat": 40.7164913,
+    "lng": -73.9962504
+  },
+  "Burnham, South Bucks": null,
+  "Loveland": {
+    "lat": 40.3977612,
+    "lng": -105.07498
+  },
+  "Langley": {
+    "lat": 48.3604648,
+    "lng": 6.3258262
+  },
+  "Dayton": {
+    "lat": 39.7589478,
+    "lng": -84.1916069
+  },
+  "BAKERSFIELD": {
+    "lat": 35.3738712,
+    "lng": -119.019463
+  },
+  "Pontoon beach": {
+    "lat": 38.7317158,
+    "lng": -90.0803839
+  },
+  "Ridgewood, NY": {
+    "lat": 40.7080556,
+    "lng": -73.9141667
+  },
+  "Rialto, CA": {
+    "lat": 34.1064001,
+    "lng": -117.3703235
+  },
+  "Hoschton": {
+    "lat": 34.096496,
+    "lng": -83.7612839
+  },
+  "Raleigh": {
+    "lat": 35.7803977,
+    "lng": -78.6390989
+  },
+  "SALEM CT": {
+    "lat": 41.491269,
+    "lng": -72.2762084
+  },
+  "St.catharines": {
+    "lat": 43.1579812,
+    "lng": -79.2441003
+  },
+  "Longmont, CO": {
+    "lat": 40.1672117,
+    "lng": -105.101928
+  },
+  "Harrah": {
+    "lat": 35.4895085,
+    "lng": -97.1636408
+  },
+  "VIRGINIA LICENSED TATTOO ARTIST": null,
+  "West Point": {
+    "lat": 41.3558443,
+    "lng": -74.0078312
+  },
+  "Somerset": {
+    "lat": 51.1617509,
+    "lng": -3.0753867
+  },
+  "Fallbrook": {
+    "lat": 33.3764196,
+    "lng": -117.2511466
+  },
+  "North Chicago": {
+    "lat": 42.327724,
+    "lng": -87.8394189
+  },
+  "Bronx NYC": {
+    "lat": 40.8466508,
+    "lng": -73.8785937
+  },
+  "Doncaster, South Yorkshire": {
+    "lat": 53.5227681,
+    "lng": -1.1335312
+  },
+  "Leesville": {
+    "lat": 31.1431257,
+    "lng": -93.2651126
+  },
+  "Lyon": {
+    "lat": 45.7578137,
+    "lng": 4.8320114
+  },
+  "Lancaster, California": {
+    "lat": 34.6981064,
+    "lng": -118.1366153
+  },
+  "Greenfield, Wi": {
+    "lat": 42.9596903,
+    "lng": -87.98132
+  },
+  "east hollywood, ca": {
+    "lat": 34.0904277,
+    "lng": -118.2966254
+  },
+  "Tampa, FL": {
+    "lat": 27.9449854,
+    "lng": -82.4583107
+  },
+  "Youngstown, Ohio": {
+    "lat": 41.1035786,
+    "lng": -80.6520161
+  },
+  "Hertfordshire, UK": {
+    "lat": 51.8400523,
+    "lng": -0.0978552
+  },
+  "Bend Oregon": {
+    "lat": 44.0581728,
+    "lng": -121.3153096
+  },
+  "Bloomington Indiana": {
+    "lat": 39.1670396,
+    "lng": -86.5342881
+  },
+  "📍 Wasilla, AK": {
+    "lat": 61.5824216,
+    "lng": -149.442563
+  },
+  "Frodsham": {
+    "lat": 53.2963636,
+    "lng": -2.7114845
+  },
+  "Corona, Ca": {
+    "lat": 33.8752945,
+    "lng": -117.566444
+  },
+  "Spokane": {
+    "lat": 47.6571934,
+    "lng": -117.42351
+  },
+  "newcastle upon tyne": {
+    "lat": 54.9738474,
+    "lng": -1.6131572
+  },
+  "Anchorage Ak": {
+    "lat": 61.2163129,
+    "lng": -149.894852
+  },
+  "CONCORD 💯": {
+    "lat": 43.207178,
+    "lng": -71.537476
+  },
+  "Section, AL": {
+    "lat": 34.5789747,
+    "lng": -85.986644
+  },
+  "Kingston": {
+    "lat": 17.9712148,
+    "lng": -76.7928128
+  },
+  "Philadelphia Tattoo + PMU Brows": null,
+  "Redding, CA": {
+    "lat": 40.5863563,
+    "lng": -122.391675
+  },
+  "Halifax, Nova Scotia": {
+    "lat": 44.648618,
+    "lng": -63.5859487
+  },
+  "Thornton, CO": {
+    "lat": 39.8695516,
+    "lng": -104.985181
+  },
+  "New Haven": {
+    "lat": 41.3082138,
+    "lng": -72.9250518
+  },
+  "Covington, KY": {
+    "lat": 39.0831712,
+    "lng": -84.5107548
+  },
+  "Corvallis, OR": {
+    "lat": 44.5645659,
+    "lng": -123.2620435
+  },
+  "Shady Pines Tattoo, Rochester MI": null,
+  "Tallahassee": {
+    "lat": 30.4380832,
+    "lng": -84.2809332
+  },
+  "Ventura": {
+    "lat": 34.4458248,
+    "lng": -119.0779359
+  },
+  "Banff, Aberdeenshire": {
+    "lat": 57.6645459,
+    "lng": -2.5217539
+  },
+  "Tallahassee, Florida": {
+    "lat": 30.4380832,
+    "lng": -84.2809332
+  },
+  "Staten Island, NY": {
+    "lat": 40.5834557,
+    "lng": -74.1496048
+  },
+  "New Braunfels": {
+    "lat": 29.7028266,
+    "lng": -98.1257348
+  },
+  "Texarkana": {
+    "lat": 33.4466745,
+    "lng": -94.0771483
+  },
+  "OLD TOWN TUSTIN • OC, CA": null,
+  "Andover Boro, NJ": null,
+  "detroit": {
+    "lat": 42.3315509,
+    "lng": -83.0466403
+  },
+  "GLASGOW": {
+    "lat": 55.861155,
+    "lng": -4.2501687
+  },
+  "Staffordshire": {
+    "lat": 52.8246942,
+    "lng": -2.0074547
+  },
+  "Medford, OR": {
+    "lat": 42.3264181,
+    "lng": -122.8718605
+  },
+  "Twentynine palms": {
+    "lat": 34.1356915,
+    "lng": -116.0543506
+  },
+  "Arlington Heights": {
+    "lat": 42.0811563,
+    "lng": -87.9802164
+  },
+  "Tattoo Apprentice | KS": null,
+  "Canton": {
+    "lat": 23.1288454,
+    "lng": 113.2590064
+  },
+  "Private Tattoo Studio | Canton, OH": null,
+  "Marianna Fl": {
+    "lat": 30.7743596,
+    "lng": -85.2268735
+  },
+  "Alhambra": {
+    "lat": 37.17606,
+    "lng": -3.5881103
+  },
+  "Nottingham": {
+    "lat": 52.9534193,
+    "lng": -1.1496461
+  },
+  "Steinbach, MB": {
+    "lat": 49.5254414,
+    "lng": -96.6854275
+  },
+  "Charlotte,NC": {
+    "lat": 35.2272086,
+    "lng": -80.8430827
+  },
+  "Naarm/Melbourne": {
+    "lat": -37.8142454,
+    "lng": 144.9631732
+  },
+  "Galloway, NJ": {
+    "lat": 40.3688911,
+    "lng": -74.1561383
+  },
+  "Spring Texas 77388": {
+    "lat": 30.0795707,
+    "lng": -95.4187924
+  },
+  "columbus, oh": {
+    "lat": 39.9622601,
+    "lng": -83.0007065
+  },
+  "Kailua-Kona": {
+    "lat": 19.641941,
+    "lng": -155.996933
+  },
+  "231 Eldridge Street, NYC": {
+    "lat": 40.7223269,
+    "lng": -73.990019
+  },
+  "231 Eldridge, NYC": {
+    "lat": 40.7223269,
+    "lng": -73.990019
+  },
+  "Riverside, CA": {
+    "lat": 33.9824949,
+    "lng": -117.374238
+  },
+  "Edmonton, AB 📍": {
+    "lat": 53.5462055,
+    "lng": -113.491241
+  },
+  "Hereford": {
+    "lat": 52.0553813,
+    "lng": -2.7151735
+  },
+  "Twin Falls": {
+    "lat": 42.5558542,
+    "lng": -114.4700684
+  },
+  "Richmond, VA": {
+    "lat": 37.5385087,
+    "lng": -77.43428
+  },
+  "Draper Utah": {
+    "lat": 40.5247777,
+    "lng": -111.8627989
+  },
+  "Sioux Falls": {
+    "lat": 43.5476008,
+    "lng": -96.7293629
+  },
+  "Waldorf, MD": {
+    "lat": 38.6263882,
+    "lng": -76.9106581
+  },
+  "Brandento. Fl": null,
+  "Lynn MA📍": {
+    "lat": 42.466763,
+    "lng": -70.9494939
+  },
+  "Ewing": {
+    "lat": 38.0886603,
+    "lng": -88.852287
+  },
+  "Newcastle upon tyne": {
+    "lat": 54.9738474,
+    "lng": -1.6131572
+  },
+  "Marietta, Ohio.": {
+    "lat": 39.4167742,
+    "lng": -81.4548392
+  },
+  "Fullerton": {
+    "lat": 33.8708215,
+    "lng": -117.929416
+  },
+  "Raleigh, NC📍": {
+    "lat": 35.7803977,
+    "lng": -78.6390989
+  },
+  "Stuart, FL 📍": {
+    "lat": 27.197983,
+    "lng": -80.2519175
+  },
+  "Brainerd": {
+    "lat": 46.3580221,
+    "lng": -94.2008288
+  },
+  "Metamora": {
+    "lat": 40.7907409,
+    "lng": -89.3614407
+  },
+  "Rowlett": {
+    "lat": 32.9029017,
+    "lng": -96.56388
+  },
+  "Montebello": {
+    "lat": 34.0159398,
+    "lng": -118.111975
+  },
+  "Lacey": {
+    "lat": 47.0263876,
+    "lng": -122.8072257
+  },
+  "Boston, MA": {
+    "lat": 42.3588336,
+    "lng": -71.0578303
+  },
+  "🌱you are your greatest project, luv yourself🌱": null,
+  "Cranston, RI": {
+    "lat": 41.779588,
+    "lng": -71.4366813
+  },
+  "Lenox, IA": {
+    "lat": 40.8812978,
+    "lng": -94.5588947
+  },
+  "dallas tx": {
+    "lat": 32.7762719,
+    "lng": -96.7968559
+  },
+  "Provo, UT": {
+    "lat": 40.2337289,
+    "lng": -111.6587085
+  },
+  "Miami, Florida": {
+    "lat": 25.7741566,
+    "lng": -80.1935973
+  },
+  "Grants Pass Oregon": {
+    "lat": 42.4393707,
+    "lng": -123.3272489
+  },
+  "San Antonio Texas": {
+    "lat": 18.174167,
+    "lng": -96.129722
+  },
+  "Tarzana, CA": {
+    "lat": 34.1689262,
+    "lng": -118.5365791
+  },
+  "Eldersburg": {
+    "lat": 39.4037147,
+    "lng": -76.9502567
+  },
+  "Port Colborne, ON": {
+    "lat": 42.8862392,
+    "lng": -79.2513905
+  },
+  "Spartanburg": {
+    "lat": 34.9498007,
+    "lng": -81.9320157
+  },
+  "Westland, MI": {
+    "lat": 42.3238056,
+    "lng": -83.4005321
+  },
+  "Woodstock, ontario": {
+    "lat": 43.1301111,
+    "lng": -80.7562977
+  },
+  "hamilton, ON": {
+    "lat": 43.2560802,
+    "lng": -79.8728583
+  },
+  "Apple Valley": {
+    "lat": 44.7319094,
+    "lng": -93.21772
+  },
+  "Brooks, Alberta": {
+    "lat": 50.571027,
+    "lng": -111.893005
+  },
+  "Brampton": {
+    "lat": 43.685832,
+    "lng": -79.7599366
+  },
+  "mesa arizona": {
+    "lat": 33.4151005,
+    "lng": -111.831455
+  },
+  "Herne Bay, Kent, UK": {
+    "lat": 51.3719507,
+    "lng": 1.1306951
+  },
+  "bethesda, md": {
+    "lat": 38.9812726,
+    "lng": -77.1233587
+  },
+  "Piedmont": {
+    "lat": 45.060735,
+    "lng": 7.923549
+  },
+  "“Vancouver”": {
+    "lat": 49.2608724,
+    "lng": -123.113952
+  },
+  "los angeles, ca": {
+    "lat": 34.0536909,
+    "lng": -118.242766
+  },
+  "Bloomington, IN": {
+    "lat": 39.1670396,
+    "lng": -86.5342881
+  },
+  "Aliquippa, Pa": {
+    "lat": 40.6102386,
+    "lng": -80.267726
+  },
+  "Glasgow": {
+    "lat": 55.861155,
+    "lng": -4.2501687
+  },
+  "las vegas": {
+    "lat": 36.1674263,
+    "lng": -115.1484131
+  },
+  "Prospect park📍": {
+    "lat": 40.6617743,
+    "lng": -73.9710896
+  },
+  "marfa, tx": {
+    "lat": 30.3117621,
+    "lng": -104.023146
+  },
+  "121 W. Seminary Ave. Onarga IL. 60955": {
+    "lat": 40.7149238,
+    "lng": -88.0074389
+  },
+  "Wilderness Battlefield": {
+    "lat": 37.142284,
+    "lng": -93.3674762
+  },
+  "Kimberley, BC": {
+    "lat": 49.6850876,
+    "lng": -115.9819477
+  },
+  "Beauharnois": {
+    "lat": 45.3139778,
+    "lng": -73.875834
+  },
+  "ICE OUT OF MINNEAPOLIS": null,
+  "Abitibi-Témiscaming": {
+    "lat": 46.7219118,
+    "lng": -79.0954543
+  },
+  "Columbus OH": {
+    "lat": 39.9622601,
+    "lng": -83.0007065
+  },
+  "North salt Lake": {
+    "lat": 40.8485564,
+    "lng": -111.906882
+  },
+  "Chesterfield, Va": {
+    "lat": 37.3859982,
+    "lng": -77.578509
+  },
+  "Tyler": {
+    "lat": 32.3512601,
+    "lng": -95.3010624
+  },
+  "tallahassee": {
+    "lat": 30.4380832,
+    "lng": -84.2809332
+  },
+  "Lynn, Ma": {
+    "lat": 42.466763,
+    "lng": -70.9494939
+  },
+  "Glasgow, Scotland": {
+    "lat": 55.861155,
+    "lng": -4.2501687
+  },
+  "lehighton pa": {
+    "lat": 40.8339907,
+    "lng": -75.7135568
+  },
+  "West Covina": {
+    "lat": 34.0686208,
+    "lng": -117.9389526
+  },
+  "York, NE": {
+    "lat": 40.871617,
+    "lng": -97.6001401
+  },
+  "Denton TX": {
+    "lat": 33.1838787,
+    "lng": -97.1413417
+  },
+  "Collingwood, ON": {
+    "lat": 44.5027226,
+    "lng": -80.2172379
+  },
+  "✶ ༺Tattoo Apprentice༻ ✶": null,
+  "Petaluma": {
+    "lat": 38.2325829,
+    "lng": -122.636465
+  },
+  "Stockton, Ca": {
+    "lat": 37.9577016,
+    "lng": -121.290779
+  },
+  "South Jordan UTAH": {
+    "lat": 40.5584882,
+    "lng": -111.9367107
+  },
+  "Redmond, OR": {
+    "lat": 44.2726203,
+    "lng": -121.173921
+  },
+  "Welland": {
+    "lat": 42.9922181,
+    "lng": -79.2484192
+  },
+  "stockton": {
+    "lat": 37.9577016,
+    "lng": -121.290779
+  },
+  "St. Petersburg": {
+    "lat": 59.938732,
+    "lng": 30.316229
+  },
+  "Valley Station, Louisville": {
+    "lat": 38.1111811,
+    "lng": -85.8702413
+  },
+  "Dallas, Austin/San Antonio, Los Angeles, CDMX, The Bay": null,
+  "Arvada CO": {
+    "lat": 39.8005505,
+    "lng": -105.0811573
+  },
+  "Somerset KY": {
+    "lat": 37.0920222,
+    "lng": -84.6041084
+  },
+  "FRANKLIN TN": {
+    "lat": 35.925206,
+    "lng": -86.8689419
+  },
+  "Bury St Edmunds": {
+    "lat": 52.2460367,
+    "lng": 0.7125173
+  },
+  "Doral , FL": {
+    "lat": 25.8195424,
+    "lng": -80.3553302
+  },
+  "☆ Vancouver, BC ☆": {
+    "lat": 49.2608724,
+    "lng": -123.113952
+  },
+  "Lexington, KY": {
+    "lat": 38.0464066,
+    "lng": -84.4970393
+  },
+  "Deer Lodge, Montana": {
+    "lat": 46.0753795,
+    "lng": -113.089332
+  },
+  "Bayville, NJ": {
+    "lat": 39.9092852,
+    "lng": -74.1548614
+  },
+  "RENO": {
+    "lat": 50.4693743,
+    "lng": 7.3499986
+  },
+  "studio sueño in denver, co": null,
+  "Wheeling , WV": {
+    "lat": 40.0639616,
+    "lng": -80.7209149
+  },
+  "Ickesburg,PA": {
+    "lat": 40.4559146,
+    "lng": -77.3516536
+  },
+  "Vanceboro Nc": {
+    "lat": 35.2995434,
+    "lng": -77.1522321
+  },
+  "Sault Ste, Marie, Ontario": {
+    "lat": 46.5122801,
+    "lng": -84.3129549
+  },
+  "Huntsville Alabama": {
+    "lat": 34.729847,
+    "lng": -86.5859011
+  },
+  "Fredericton": {
+    "lat": 45.9488278,
+    "lng": -66.6291827
+  },
+  "Ozark, Mo": {
+    "lat": 36.6467816,
+    "lng": -92.4575198
+  },
+  "Arvada , CO": {
+    "lat": 39.8005505,
+    "lng": -105.0811573
+  },
+  "boston": {
+    "lat": 42.3588336,
+    "lng": -71.0578303
+  },
+  "Mantua": {
+    "lat": 45.1692628,
+    "lng": 10.6708365
+  },
+  "Los Banos": {
+    "lat": 37.0592253,
+    "lng": -120.8505342
+  },
+  "Parachute, Colorado": {
+    "lat": 39.446423,
+    "lng": -108.0522672
+  },
+  "Seymour, IN": {
+    "lat": 38.9592201,
+    "lng": -85.8902547
+  },
+  "OCEAN SPRINGS": {
+    "lat": 30.4112904,
+    "lng": -88.8279165
+  },
+  "Statesboro": {
+    "lat": 32.4490141,
+    "lng": -81.7832912
+  },
+  "Creighton, SK": {
+    "lat": 54.7449167,
+    "lng": -101.9088396
+  },
+  "Boonville NY": {
+    "lat": 43.4843153,
+    "lng": -75.3357941
+  },
+  "Riverside": {
+    "lat": 33.9824949,
+    "lng": -117.374238
+  },
+  "Arvada Colorado": {
+    "lat": 39.8005505,
+    "lng": -105.0811573
+  },
+  "Binghamton, Ny": {
+    "lat": 42.098698,
+    "lng": -75.9125187
+  },
+  "Biloxi Mississippi": {
+    "lat": 30.4007626,
+    "lng": -88.8893818
+  },
+  "Downtown Sarasota": {
+    "lat": 27.3364239,
+    "lng": -82.5426467
+  },
+  "Brooklyn NYC": {
+    "lat": 40.6526006,
+    "lng": -73.9497211
+  },
+  "Belltown Seattle": {
+    "lat": 47.6132311,
+    "lng": -122.3453607
+  },
+  "Saint Petersburg": {
+    "lat": 59.9606739,
+    "lng": 30.1586551
+  },
+  "Bethesda, MD": {
+    "lat": 38.9812726,
+    "lng": -77.1233587
+  },
+  "Pensacola": {
+    "lat": 30.421309,
+    "lng": -87.2169149
+  },
+  "Downtown Los Angeles": {
+    "lat": 34.047996,
+    "lng": -118.2521002
+  },
+  "Huffman": {
+    "lat": 30.0271626,
+    "lng": -95.0857627
+  },
+  "St Petersburg": {
+    "lat": 59.938732,
+    "lng": 30.316229
+  },
+  "Burlington, VT": {
+    "lat": 44.4761601,
+    "lng": -73.212906
+  },
+  "Saint Augustine": {
+    "lat": 29.8946952,
+    "lng": -81.3145395
+  },
+  "Brighton, UK": {
+    "lat": 50.8214626,
+    "lng": -0.1400561
+  },
+  "Blackfoot": {
+    "lat": 43.190039,
+    "lng": -112.348357
+  },
+  "Oskaloosa iowa": {
+    "lat": 41.2951037,
+    "lng": -92.6448451
+  },
+  "Buffalo": {
+    "lat": 42.8864163,
+    "lng": -78.8781493
+  },
+  "Northridge, 91324": {
+    "lat": 34.2345615,
+    "lng": -118.5369316
+  },
+  "Québec": {
+    "lat": 52.4760892,
+    "lng": -71.8258668
+  },
+  "Auburn CA": {
+    "lat": 38.8945939,
+    "lng": -121.0739897
+  },
+  "Huntington, NY": {
+    "lat": 40.868154,
+    "lng": -73.425676
+  },
+  "Brooklyn,NY": {
+    "lat": 40.6526006,
+    "lng": -73.9497211
+  },
+  "Sharpsburg": {
+    "lat": 40.8018143,
+    "lng": -94.6408202
+  },
+  "Erie, PA": {
+    "lat": 42.1294712,
+    "lng": -80.0852695
+  },
+  "Tyler, TX": {
+    "lat": 32.3512601,
+    "lng": -95.3010624
+  },
+  "Granite city , Illinois": {
+    "lat": 38.7014389,
+    "lng": -90.1487199
+  },
+  "San Clemente": {
+    "lat": 39.4034745,
+    "lng": -2.4281278
+  },
+  "Oak Ridge": {
+    "lat": 36.0103562,
+    "lng": -84.2696449
+  },
+  "Ludowici, GA 31316": {
+    "lat": 31.7097964,
+    "lng": -81.7430846
+  },
+  "Willoughby": {
+    "lat": -33.8015995,
+    "lng": 151.1836478
+  },
+  "Lincoln": {
+    "lat": 40.8088861,
+    "lng": -96.7077751
+  },
+  "San Antonio, Tx": {
+    "lat": 29.4246002,
+    "lng": -98.4951405
+  },
+  "Terre Haute": {
+    "lat": 39.4667025,
+    "lng": -87.4139119
+  },
+  "The Bronx": {
+    "lat": 40.8466508,
+    "lng": -73.8785937
+  },
+  "Providence, RI": {
+    "lat": 41.8239891,
+    "lng": -71.4128343
+  },
+  "Providence": {
+    "lat": 41.8239891,
+    "lng": -71.4128343
+  },
+  "Valdosta": {
+    "lat": 30.8327022,
+    "lng": -83.2784851
+  },
+  "Guadalajara": {
+    "lat": 20.6720375,
+    "lng": -103.338396
+  },
+  "Scottsdale": {
+    "lat": 33.4942189,
+    "lng": -111.926018
+  },
+  "Oregon City, OR": {
+    "lat": 45.3573429,
+    "lng": -122.606758
+  },
+  "springfield, MA": {
+    "lat": 42.1018764,
+    "lng": -72.5886727
+  },
+  "Marietta, GA": {
+    "lat": 33.9528472,
+    "lng": -84.5496148
+  },
+  "Blackpool": {
+    "lat": 53.8179442,
+    "lng": -3.0509812
+  },
+  "Corpus  Christi TX.         Tampa FL": null,
+  "Las Vegas, NV": {
+    "lat": 36.1674263,
+    "lng": -115.1484131
+  },
+  "Honolulu": {
+    "lat": 21.304547,
+    "lng": -157.855676
+  },
+  "Runcorn": {
+    "lat": 53.3421509,
+    "lng": -2.7334941
+  },
+  "Oak Ridge, TN": {
+    "lat": 36.0103562,
+    "lng": -84.2696449
+  },
+  "Washington, IL": {
+    "lat": 38.3662806,
+    "lng": -89.4201902
+  },
+  "Santa Maria": {
+    "lat": -29.6860512,
+    "lng": -53.8069214
+  },
+  "Bowdon, GA": {
+    "lat": 33.5378885,
+    "lng": -85.2532818
+  },
+  "Reno": {
+    "lat": 50.4693743,
+    "lng": 7.3499986
+  },
+  "Panama City": {
+    "lat": 30.1586518,
+    "lng": -85.6602936
+  },
+  "Owensboro, KY": {
+    "lat": 37.7742152,
+    "lng": -87.1133304
+  },
+  "Spring, Texas": {
+    "lat": 30.070979,
+    "lng": -95.401342
+  },
+  "Mount Holly / Willingboro NJ": null,
+  "St. Louis": {
+    "lat": 38.6254063,
+    "lng": -90.190009
+  },
+  "Halifax": {
+    "lat": 44.648618,
+    "lng": -63.5859487
+  },
+  "Zanesville": {
+    "lat": 39.9401426,
+    "lng": -82.005019
+  },
+  "Manteca": {
+    "lat": 37.7986184,
+    "lng": -121.2117148
+  },
+  "san diego, ca": {
+    "lat": 32.7174202,
+    "lng": -117.162772
+  },
+  "Pontypridd": {
+    "lat": 51.6001047,
+    "lng": -3.3449362
+  },
+  "Williamsburg": {
+    "lat": 37.2708788,
+    "lng": -76.7074042
+  },
+  "Anaheim, California": {
+    "lat": 33.8347516,
+    "lng": -117.911732
+  },
+  "Madison, Indiana": {
+    "lat": 40.1624531,
+    "lng": -85.7260804
+  },
+  "Redlands, Ca": {
+    "lat": 34.0550328,
+    "lng": -117.1827445
+  },
+  "Concord, Nc": {
+    "lat": 35.4094178,
+    "lng": -80.5800049
+  },
+  "Rumford, ME": {
+    "lat": 44.5460049,
+    "lng": -70.5458422
+  },
+  "Galloway, New Jersey": {
+    "lat": 40.3688911,
+    "lng": -74.1561383
+  },
+  "minneapolis": {
+    "lat": 44.9772995,
+    "lng": -93.2654692
+  },
+  "Moberly, MO": {
+    "lat": 39.4201137,
+    "lng": -92.4364298
+  },
+  "Montreal,QC": {
+    "lat": 45.5031824,
+    "lng": -73.5698065
+  },
+  "St Petersburg,FL": {
+    "lat": 27.7712264,
+    "lng": -82.6340259
+  },
+  "Angola, IN": {
+    "lat": 41.634874,
+    "lng": -84.99928
+  },
+  "Bastrop, TX": {
+    "lat": 30.0541116,
+    "lng": -97.3887764
+  },
+  "Oak harbor": {
+    "lat": 48.2931559,
+    "lng": -122.643224
+  },
+  "Barcelona, España": {
+    "lat": 41.3825802,
+    "lng": 2.177073
+  },
+  "Rialto": {
+    "lat": 34.1064001,
+    "lng": -117.3703235
+  },
+  "Spring, TX": {
+    "lat": 30.070979,
+    "lng": -95.401342
+  },
+  "Youngstown": {
+    "lat": 41.1035786,
+    "lng": -80.6520161
+  },
+  "Youngstown ohio": {
+    "lat": 41.1035786,
+    "lng": -80.6520161
+  },
+  "Newberg": {
+    "lat": 45.300347,
+    "lng": -122.972751
+  },
+  "Oak Ridge Tennessee": {
+    "lat": 36.0103562,
+    "lng": -84.2696449
+  },
+  "Logan": {
+    "lat": 40.1075089,
+    "lng": -89.3768539
+  },
+  "Selma": {
+    "lat": 32.4078632,
+    "lng": -87.0207473
+  },
+  "Ogmore Vale, Bridgend": {
+    "lat": 51.6029957,
+    "lng": -3.5416491
+  },
+  "Northrige": null,
+  "HEARTBREAK NAIL CLUB | AVL": null,
+  "Great Torrington, Devon": {
+    "lat": 50.9616387,
+    "lng": -4.139834
+  },
+  "Brighton": {
+    "lat": 50.8214626,
+    "lng": -0.1400561
+  },
+  "Amarillo": {
+    "lat": 35.20729,
+    "lng": -101.8371192
+  },
+  "Xenia ohio": {
+    "lat": 39.6847822,
+    "lng": -83.9296526
+  },
+  "Southampton": {
+    "lat": 50.9025349,
+    "lng": -1.404189
+  },
+  "Sault Ste. Maris": null,
+  "portland, or": {
+    "lat": 45.5202471,
+    "lng": -122.674194
+  },
+  "Cidra, Puerto Rico": {
+    "lat": 18.1815694,
+    "lng": -66.156973
+  },
+  "Montreal 📍": {
+    "lat": 45.5031824,
+    "lng": -73.5698065
+  },
+  "spokane": {
+    "lat": 47.6571934,
+    "lng": -117.42351
+  },
+  "Baltimore/Albuquerque": null,
+  "St. Paul MN": {
+    "lat": 44.9497487,
+    "lng": -93.0931028
+  },
+  "CONNECTICUT": {
+    "lat": 41.6500201,
+    "lng": -72.7342163
+  },
+  "La Habra , Ca": {
+    "lat": 33.9316066,
+    "lng": -117.9454867
+  },
+  "New Phila, Ohio": null,
+  "Punta Gorda": {
+    "lat": 26.9351529,
+    "lng": -82.0512058
+  },
+  "Geelong": {
+    "lat": -38.1493248,
+    "lng": 144.3598241
+  },
+  "Cambridge uk 🇬🇧": {
+    "lat": 52.2055314,
+    "lng": 0.1186637
+  },
+  "San Marcos": {
+    "lat": 29.8826436,
+    "lng": -97.9405828
+  },
+  "Jacksonville Florida 32222": {
+    "lat": 30.2170648,
+    "lng": -81.821819
+  },
+  "Monterrey": {
+    "lat": 25.6802019,
+    "lng": -100.315258
+  },
+  "Norman": {
+    "lat": 35.2225717,
+    "lng": -97.4394816
+  },
+  "Tacoma WA": {
+    "lat": 47.2455013,
+    "lng": -122.438329
+  },
+  "Bartlesville": {
+    "lat": 36.7509272,
+    "lng": -95.9771779
+  },
+  "Jersey City, NJ": {
+    "lat": 40.7215682,
+    "lng": -74.047455
+  },
+  "Tarzana CA": {
+    "lat": 34.1689262,
+    "lng": -118.5365791
+  },
+  "Lakewood": {
+    "lat": 39.7085736,
+    "lng": -105.0846694
+  },
+  "Plainfield NJ / Lawrenceville NJ": null,
+  "Killeen": {
+    "lat": 31.1171441,
+    "lng": -97.727796
+  },
+  "Anderson in": {
+    "lat": 40.1033959,
+    "lng": -85.6803358
+  },
+  "🇨🇦 Toronto - $50 minimum, $150/hr": null,
+  "Flagstaff AZ": {
+    "lat": 35.1987522,
+    "lng": -111.651822
+  },
+  "Columbus, Ohio": {
+    "lat": 39.9622601,
+    "lng": -83.0007065
+  },
+  "Elberton, Georgia": {
+    "lat": 34.1112226,
+    "lng": -82.8670839
+  },
+  "Beech Island": {
+    "lat": 33.4280649,
+    "lng": -81.8891583
+  },
+  "Handpoke tattoo artist - Montreal": null,
+  "Indianapolis Indiana": {
+    "lat": 39.7683331,
+    "lng": -86.1583502
+  },
+  "Sacramento CA": {
+    "lat": 38.5810606,
+    "lng": -121.493895
+  },
+  "Worthing": {
+    "lat": 50.8115402,
+    "lng": -0.3699697
+  },
+  "Ossett West Yorkshire": {
+    "lat": 53.6780539,
+    "lng": -1.5765949
+  },
+  "Sault Ste. Marie📍": {
+    "lat": 46.5126554,
+    "lng": -84.3330301
+  },
+  "Holland MI": {
+    "lat": 42.7876022,
+    "lng": -86.1090828
+  },
+  "Roselle Park NJ": {
+    "lat": 40.6645469,
+    "lng": -74.2643133
+  },
+  "Greencastle Indiana": {
+    "lat": 39.6444898,
+    "lng": -86.8647316
+  },
+  "PGH": {
+    "lat": 40.4406968,
+    "lng": -80.0025666
+  },
+  "Huntington Beach, Ca": {
+    "lat": 33.6783336,
+    "lng": -118.000016
+  },
+  "Portland ME": {
+    "lat": 43.6634708,
+    "lng": -70.2584907
+  },
+  "Austin Texas": {
+    "lat": 30.2711286,
+    "lng": -97.7436995
+  },
+  "Currently in Puerto Rico": null,
+  "Coachella Valley": {
+    "lat": 33.7672351,
+    "lng": -116.3560439
+  },
+  "APRIL BOOKS OPEN 3/1 @ 5PM | Ohio tattoo artist specializing in fine line script + black and grey + florals  - so glad you’re here! Please become familiar with my policies below before booking": null,
+  "Easton PA": {
+    "lat": 40.6916081,
+    "lng": -75.2099866
+  },
+  "Mooresville, IN": {
+    "lat": 39.6128243,
+    "lng": -86.37416
+  },
+  "Sidney": {
+    "lat": -33.8698439,
+    "lng": 151.2082848
+  },
+  "Benton Harbor": {
+    "lat": 42.1167065,
+    "lng": -86.4541894
+  },
+  "Manchester": {
+    "lat": 53.4794892,
+    "lng": -2.2451148
+  },
+  "Hamilton ontario": {
+    "lat": 43.2560802,
+    "lng": -79.8728583
+  },
+  "Fort Washington, MD": {
+    "lat": 38.7379938,
+    "lng": -77.0043036
+  },
+  "Mississauga": {
+    "lat": 43.5896231,
+    "lng": -79.6443879
+  },
+  "North Olmstead": {
+    "lat": 31.8530283,
+    "lng": -81.5949356
+  },
+  "Maplewood, Mn": {
+    "lat": 45.0082216,
+    "lng": -93.0456985
+  },
+  "sunny studio - gilbert az": null,
+  "Banbury & Bicester": {
+    "lat": 51.9084823,
+    "lng": -1.1547756
+  },
+  "Earith": {
+    "lat": 52.3646689,
+    "lng": 0.0391823
+  },
+  "London and Norwich": {
+    "lat": 51.516821,
+    "lng": -0.1097804
+  },
+  "Charleston, WV": {
+    "lat": 38.3505995,
+    "lng": -81.6332812
+  },
+  "Warwick, RI": {
+    "lat": 41.6992717,
+    "lng": -71.4586114
+  },
+  "Adelaide": {
+    "lat": -34.9281805,
+    "lng": 138.5999312
+  },
+  "Perkasie, PA USA": {
+    "lat": 40.372048,
+    "lng": -75.292676
+  },
+  "Colorado & Indiana": {
+    "lat": 40.534864,
+    "lng": -105.1176705
+  },
+  "Omaha, Ne": {
+    "lat": 41.2587459,
+    "lng": -95.9383758
+  },
+  "Richmond VA": {
+    "lat": -32.8652,
+    "lng": 151.5012
+  },
+  "Norfolk": {
+    "lat": 52.666667,
+    "lng": 1
+  },
+  "Columbia, South Carolina": {
+    "lat": 34.000754,
+    "lng": -81.0352313
+  },
+  "Poughkeepsie, NY": {
+    "lat": 41.7065539,
+    "lng": -73.9283672
+  },
+  "Hammond, IN": {
+    "lat": 41.6173959,
+    "lng": -87.5220108
+  },
+  "Bronx nyc": {
+    "lat": 40.8466508,
+    "lng": -73.8785937
+  },
+  "Madison Indiana": {
+    "lat": 28.2537402,
+    "lng": -82.7153998
+  },
+  "Canton, Ohio -> Austin, Texas": null,
+  "Visalia, ca": {
+    "lat": 36.3302284,
+    "lng": -119.292058
+  },
+  "Berwyn": {
+    "lat": 41.8505874,
+    "lng": -87.7936685
+  },
+  "Bedford Indiana": {
+    "lat": 38.8611619,
+    "lng": -86.4872149
+  },
+  "Rogers, AR": {
+    "lat": 36.334857,
+    "lng": -94.1193816
+  },
+  "Santiago, Chile": {
+    "lat": -33.4376995,
+    "lng": -70.6510671
+  },
+  "Nw Indiana - Chicago": {
+    "lat": 41.7814925,
+    "lng": -87.6204084
+  },
+  "Artist located in Bend Tattoo Company(875 SE 3rd St #200, Bend, OR 97702)": null,
+  "SAINT AUGUSTINE": {
+    "lat": 29.8946952,
+    "lng": -81.3145395
+  },
+  "Nixa": {
+    "lat": 37.0433856,
+    "lng": -93.2986635
+  },
+  "Port Angeles": {
+    "lat": 48.118146,
+    "lng": -123.430741
+  },
+  "newton, NC": {
+    "lat": 35.6630887,
+    "lng": -81.2219363
+  },
+  "Laconia, NH": {
+    "lat": 43.5278546,
+    "lng": -71.470351
+  },
+  "Gulfport, MS": {
+    "lat": 30.3674198,
+    "lng": -89.0928155
+  },
+  "Long Beach is home but I tour regularly": null,
+  "McAllen": {
+    "lat": 26.204114,
+    "lng": -98.2300605
+  },
+  "N. Colorodo": null,
+  "Lynn, MA": {
+    "lat": 42.466763,
+    "lng": -70.9494939
+  },
+  "DALLAS": {
+    "lat": 32.7762719,
+    "lng": -96.7968559
+  },
+  "Tulsa, OK": {
+    "lat": 36.1563122,
+    "lng": -95.9927516
+  },
+  "Blythe": {
+    "lat": 33.6134767,
+    "lng": -114.5937537
+  },
+  "North Salt Lake 🌹": {
+    "lat": 40.8485564,
+    "lng": -111.906882
+  },
+  "Thornton,CO": {
+    "lat": 39.8695516,
+    "lng": -104.985181
+  },
+  "Naperville/Aurora": {
+    "lat": 41.7623329,
+    "lng": -88.2055794
+  },
+  "Palestine Tx": {
+    "lat": 31.7621153,
+    "lng": -95.6307891
+  },
+  "Mansfield": {
+    "lat": 40.75839,
+    "lng": -82.5154471
+  },
+  "Royersford, PA": {
+    "lat": 40.1842688,
+    "lng": -75.5379639
+  },
+  "Berkeley, CA": {
+    "lat": 37.8708393,
+    "lng": -122.272863
+  },
+  "Boone NC": {
+    "lat": 36.2187873,
+    "lng": -81.684004
+  },
+  "Swansea, Illinois": {
+    "lat": 38.5339392,
+    "lng": -89.9889936
+  },
+  "Paragould, AR": {
+    "lat": 36.0584021,
+    "lng": -90.4973286
+  },
+  "Raymondville tx": {
+    "lat": 26.4814565,
+    "lng": -97.783051
+  },
+  "Valdosta, Ga": {
+    "lat": 30.8327022,
+    "lng": -83.2784851
+  },
+  "Olympia": {
+    "lat": 47.0451022,
+    "lng": -122.8950075
+  },
+  "Ashville": {
+    "lat": 33.8369216,
+    "lng": -86.2549799
+  },
+  "All over Utah": {
+    "lat": 40.7258709,
+    "lng": -112.0797167
+  },
+  "Grand rapids": {
+    "lat": 42.9632425,
+    "lng": -85.6678639
+  },
+  "Orem, Utah": {
+    "lat": 40.2981599,
+    "lng": -111.6944313
+  },
+  "AUSTIN, TX": {
+    "lat": 30.2711286,
+    "lng": -97.7436995
+  },
+  "Cleveland tn": {
+    "lat": 35.1595182,
+    "lng": -84.8766115
+  },
+  "Toronto, CA": {
+    "lat": 43.6534817,
+    "lng": -79.3839347
+  },
+  "Huntingdon": {
+    "lat": 40.3446332,
+    "lng": -78.0281185
+  },
+  "Rancho Mirage": {
+    "lat": 33.7583005,
+    "lng": -116.4347271
+  },
+  "Peru": {
+    "lat": -6.8699697,
+    "lng": -75.0458515
+  },
+  "Los Ángeles": {
+    "lat": 34.0536909,
+    "lng": -118.242766
+  },
+  "Worksop": {
+    "lat": 53.3042362,
+    "lng": -1.1246168
+  },
+  "Warren, Rhode Island": {
+    "lat": 41.7303794,
+    "lng": -71.2825494
+  },
+  "Hutchinson KS": {
+    "lat": 38.0608444,
+    "lng": -97.9297743
+  },
+  "Asheboro": {
+    "lat": 35.7079146,
+    "lng": -79.8136446
+  },
+  "Elgin": {
+    "lat": 42.03726,
+    "lng": -88.2810994
+  },
+  "Tamarac fl": {
+    "lat": 26.2128609,
+    "lng": -80.2497707
+  },
+  "Fort Wayne": {
+    "lat": 41.0799898,
+    "lng": -85.1386015
+  },
+  "Groton, CT": {
+    "lat": 41.3454024,
+    "lng": -72.0462196
+  },
+  "montreal, quebec + sometimes toronto, ontario": null,
+  "Black Hart Collective, Leek": null,
+  "Greeley,CO": {
+    "lat": 40.4233142,
+    "lng": -104.7091322
+  },
+  "Idaho Falls": {
+    "lat": 43.4887907,
+    "lng": -112.03628
+  },
+  "Battle creek": {
+    "lat": 42.3192548,
+    "lng": -85.1824269
+  },
+  "Coshocton": {
+    "lat": 40.2905684,
+    "lng": -81.9271441
+  },
+  "$150/hr": {
+    "lat": -37.802498,
+    "lng": 175.3049275
+  },
+  "Uxbridge, ON": {
+    "lat": 44.1088502,
+    "lng": -79.1226768
+  },
+  "Schuylkill Haven, PA": {
+    "lat": 40.6306464,
+    "lng": -76.171054
+  },
+  "Peterborough, On": {
+    "lat": 44.3048009,
+    "lng": -78.3199496
+  },
+  "Leicester": {
+    "lat": 52.6362,
+    "lng": -1.1331969
+  },
+  "CINCINNATI": {
+    "lat": 39.1014537,
+    "lng": -84.5124602
+  },
+  "Detroit, Mi": {
+    "lat": 42.3315509,
+    "lng": -83.0466403
+  },
+  "The Blackhouse Tattoo - Brighton": null,
+  "Tonbridge, Kent": {
+    "lat": 51.1955494,
+    "lng": 0.2750712
+  },
+  "Dalton": {
+    "lat": 34.7691867,
+    "lng": -84.9702475
+  },
+  "Portland OR": {
+    "lat": 45.5202471,
+    "lng": -122.674194
+  },
+  "Hull": {
+    "lat": 53.7623863,
+    "lng": -0.3301214
+  },
+  "Crawfordville": {
+    "lat": 33.5539938,
+    "lng": -82.8961899
+  },
+  "Duluth, MN": {
+    "lat": 46.7838287,
+    "lng": -92.1052679
+  },
+  "Anchorage, Alaska": {
+    "lat": 61.2163129,
+    "lng": -149.894852
+  },
+  "Whitehall, MT": {
+    "lat": 45.87076,
+    "lng": -112.097494
+  },
+  "Jacksonville, Florida": {
+    "lat": 30.3262247,
+    "lng": -81.6579179
+  },
+  "Cardiff": {
+    "lat": 51.4816546,
+    "lng": -3.1791934
+  },
+  "Pittsburgh,Pa": {
+    "lat": 40.4406968,
+    "lng": -80.0025666
+  },
+  "Siren Studios, Nottingham": null,
+  "Mount Vernon, IA": {
+    "lat": 41.9222443,
+    "lng": -91.4171209
+  },
+  "Warrington": {
+    "lat": 53.4018582,
+    "lng": -2.5680224
+  },
+  "Midvale UT": {
+    "lat": 40.6149174,
+    "lng": -111.9106607
+  },
+  "Buford, Ga": {
+    "lat": 34.1206564,
+    "lng": -84.0043513
+  },
+  "Murphysboro, il": {
+    "lat": 37.7644952,
+    "lng": -89.3350888
+  },
+  "Hampshire, England": {
+    "lat": 51.0449814,
+    "lng": -1.2433133
+  },
+  "Kailua Kona, HI": {
+    "lat": 19.641941,
+    "lng": -155.996933
+  },
+  "Michigan": {
+    "lat": 43.6211955,
+    "lng": -84.6824346
+  },
+  "Saint-Hyacinthe": {
+    "lat": 45.627484,
+    "lng": -72.940636
+  },
+  "Jackson MI": {
+    "lat": 42.2416466,
+    "lng": -84.425589
+  },
+  "Edmonton": {
+    "lat": 53.5462055,
+    "lng": -113.491241
+  },
+  "Conroe": {
+    "lat": 30.3118769,
+    "lng": -95.4560512
+  },
+  "Rochester,NY": {
+    "lat": 43.157285,
+    "lng": -77.615214
+  },
+  "Big Stone": {
+    "lat": 45.385266,
+    "lng": -96.3557364
+  },
+  "NJ": {
+    "lat": 40.0757384,
+    "lng": -74.4041622
+  },
+  "Octoink LLC Mobile Tattoo Raleigh NC": null,
+  "Vancouver BC & Port Coquitlam BC": {
+    "lat": 49.2639623,
+    "lng": -122.7802479
+  },
+  "Rock Springs": {
+    "lat": 41.5860557,
+    "lng": -109.2194544
+  },
+  "Stockbridge": {
+    "lat": 42.282398,
+    "lng": -73.3123684
+  },
+  "Moncton, New Brunswick": {
+    "lat": 46.0985679,
+    "lng": -64.8004265
+  },
+  "Guelph, ON": {
+    "lat": 43.5460516,
+    "lng": -80.2493276
+  },
+  "Stamford": {
+    "lat": 41.0534302,
+    "lng": -73.5387341
+  },
+  "Pittsburgh, PA": {
+    "lat": 40.4406968,
+    "lng": -80.0025666
+  },
+  "Lancaster, PA": {
+    "lat": 40.0379958,
+    "lng": -76.3056707
+  },
+  "Coral Springs": {
+    "lat": 26.271192,
+    "lng": -80.2706044
+  },
+  "Panama City, FL": {
+    "lat": 30.1586518,
+    "lng": -85.6602936
+  },
+  "Dayton, OH": {
+    "lat": 39.7589478,
+    "lng": -84.1916069
+  },
+  "Sparks": {
+    "lat": 39.5404679,
+    "lng": -119.7487235
+  },
+  "Byron Bay Hinterland": {
+    "lat": -28.7503093,
+    "lng": 153.5331693
+  },
+  "Fort Collins CO": {
+    "lat": 40.5871782,
+    "lng": -105.0770113
+  },
+  "Charleston": {
+    "lat": 32.7884363,
+    "lng": -79.9399309
+  },
+  "Arizona 🏜️": {
+    "lat": 34.395342,
+    "lng": -111.763275
+  },
+  "Fort Lupton": {
+    "lat": 40.0847055,
+    "lng": -104.813027
+  },
+  "Cambridge, New Zealand": {
+    "lat": -37.8917889,
+    "lng": 175.4691069
+  },
+  "Jakobstad, Finland": {
+    "lat": 63.6744703,
+    "lng": 22.7055385
+  },
+  "Texas Based": {
+    "lat": 30.4112046,
+    "lng": -97.7179851
+  },
+  "✨Brooklyn New York✨": {
+    "lat": 40.6526006,
+    "lng": -73.9497211
+  },
+  "Seattle, Washington": {
+    "lat": 47.6038321,
+    "lng": -122.330062
+  },
+  "Toronto CA": {
+    "lat": 43.6534817,
+    "lng": -79.3839347
+  },
+  "Atlanta, Ga": {
+    "lat": 33.7544657,
+    "lng": -84.3898151
+  },
+  "Rochester, Indiana": {
+    "lat": 41.0648846,
+    "lng": -86.2159959
+  },
+  "Aurora, CO": {
+    "lat": 39.7405111,
+    "lng": -104.830994
+  },
+  "Lacey WA": {
+    "lat": 47.0263876,
+    "lng": -122.8072257
+  },
+  "Cotati": {
+    "lat": 38.3266798,
+    "lng": -122.706844
+  },
+  "Kingston, NY": {
+    "lat": 41.9287812,
+    "lng": -74.0023825
+  },
+  "Georgetown, Texas": {
+    "lat": 30.6370152,
+    "lng": -97.6775634
+  },
+  "New York, NY": {
+    "lat": 40.7127281,
+    "lng": -74.0060152
+  },
+  "O’Fallon, MO": {
+    "lat": 38.7902503,
+    "lng": -90.7033292
+  },
+  "Astor": {
+    "lat": 29.164031,
+    "lng": -81.5359119
+  },
+  "BEACHWOOD": {
+    "lat": 41.464498,
+    "lng": -81.508732
+  },
+  "Birmingham, AL": {
+    "lat": 33.5206824,
+    "lng": -86.8024326
+  },
+  "Geneva ✶ Prague": {
+    "lat": 37.7128615,
+    "lng": -122.431735
+  },
+  "Clayton": {
+    "lat": 33.5204959,
+    "lng": -84.3591713
+  },
+  "North Pheonix": {
+    "lat": 52.3104715,
+    "lng": -0.733849
+  },
+  "Costa Mesa": {
+    "lat": 33.6633386,
+    "lng": -117.903317
+  },
+  "Euclid": {
+    "lat": 41.5931049,
+    "lng": -81.5267873
+  },
+  ":Washington DC::[*Maryland*]::Virginia:": null,
+  "Detroit": {
+    "lat": 42.3315509,
+    "lng": -83.0466403
+  },
+  "Tracy, CA": {
+    "lat": 45.6735384,
+    "lng": -66.6845417
+  },
+  "Auburn, CA": {
+    "lat": 38.8945939,
+    "lng": -121.0739897
+  },
+  "Omaha": {
+    "lat": 41.2587459,
+    "lng": -95.9383758
+  },
+  "Vancouver, WA": {
+    "lat": 45.6306954,
+    "lng": -122.6744557
+  },
+  "Topeka, Ks": {
+    "lat": 39.049011,
+    "lng": -95.677556
+  },
+  "LA": {
+    "lat": 20.0171109,
+    "lng": 103.378253
+  },
+  "Salem, OR": {
+    "lat": 44.9391565,
+    "lng": -123.033121
+  },
+  "san bernardino": {
+    "lat": 34.8253019,
+    "lng": -116.0833144
+  },
+  "Santa Rosa, California": {
+    "lat": 38.4404925,
+    "lng": -122.7141049
+  },
+  "Parrish, FL": {
+    "lat": 27.5875357,
+    "lng": -82.4250941
+  },
+  "Pendleton ,Oregon": {
+    "lat": 45.672075,
+    "lng": -118.7885967
+  },
+  "Sydney, Australia": {
+    "lat": -33.8698439,
+    "lng": 151.2082848
+  },
+  "Rockingham, Perth WA": {
+    "lat": 39.7972366,
+    "lng": -75.5291542
+  },
+  "Quitman,MS": {
+    "lat": 34.1920186,
+    "lng": -90.2946542
+  },
+  "Ridgewood, Queens, NYC": {
+    "lat": 40.7080556,
+    "lng": -73.9141667
+  },
+  "Cincinnati, OH": {
+    "lat": 39.1014537,
+    "lng": -84.5124602
+  },
+  "South glens falls": {
+    "lat": 43.299447,
+    "lng": -73.635178
+  },
+  "Vernal, Utah": {
+    "lat": 40.4556825,
+    "lng": -109.528474
+  },
+  "Cottage hills": {
+    "lat": 38.9031029,
+    "lng": -90.0701061
+  },
+  "Plymouth": {
+    "lat": 50.3714122,
+    "lng": -4.1424451
+  },
+  "Dayton, Ohio": {
+    "lat": 39.7589478,
+    "lng": -84.1916069
+  },
+  "Pensacola, Florida": {
+    "lat": 30.421309,
+    "lng": -87.2169149
+  },
+  "Lafayette CO": {
+    "lat": 29.9978185,
+    "lng": -83.2221527
+  },
+  "Warwick, Rhode Island": {
+    "lat": 41.6992717,
+    "lng": -71.4586114
+  },
+  "Bushwick, Brooklyn NYC": {
+    "lat": 40.6942696,
+    "lng": -73.9187482
+  },
+  "TORONTO “": {
+    "lat": 43.6534817,
+    "lng": -79.3839347
+  },
+  "Newton": {
+    "lat": 30.8118989,
+    "lng": -93.740504
+  },
+  "Newcastle upon-tyne": {
+    "lat": 54.9738474,
+    "lng": -1.6131572
+  },
+  "Wildomar": {
+    "lat": 33.5939372,
+    "lng": -117.2414989
+  },
+  "St George": {
+    "lat": 37.1098772,
+    "lng": -113.5832063
+  },
+  "harlow, essex": {
+    "lat": 51.7685568,
+    "lng": 0.0949036
+  },
+  "Fort Lauderdale Florida": {
+    "lat": 26.1223084,
+    "lng": -80.1433786
+  },
+  "Dundee": {
+    "lat": 56.4605938,
+    "lng": -2.97019
+  },
+  "Regina, Saskatchewan": {
+    "lat": 50.4479733,
+    "lng": -104.6158764
+  },
+  "Nashua NH": {
+    "lat": 42.7656251,
+    "lng": -71.4677032
+  },
+  "Fort scott": {
+    "lat": 37.8399791,
+    "lng": -94.7082882
+  },
+  "Hampton, VA": {
+    "lat": 37.0264414,
+    "lng": -76.3442846
+  },
+  "Sisters": {
+    "lat": 44.290948,
+    "lng": -121.549251
+  },
+  "London🇬🇧": {
+    "lat": 51.5074456,
+    "lng": -0.1277653
+  },
+  "New haven": {
+    "lat": 41.3082138,
+    "lng": -72.9250518
+  },
+  "Chippenham": {
+    "lat": 51.4587621,
+    "lng": -2.1159032
+  },
+  "Conway": {
+    "lat": 35.0891932,
+    "lng": -92.4398402
+  },
+  "Weatherford/DFW": null,
+  "DMV": {
+    "lat": 25.9068705,
+    "lng": 93.7284592
+  },
+  "Long Island NY": {
+    "lat": 40.8514971,
+    "lng": -73.0994297
+  },
+  "Rockledge,Fl": {
+    "lat": 28.330831,
+    "lng": -80.7349162
+  },
+  "Uppermarlboro": null,
+  "Blu": {
+    "lat": -26.9195567,
+    "lng": -49.0658025
+  },
+  "Valdese, North Carolina": {
+    "lat": 35.7431562,
+    "lng": -81.5633738
+  },
+  "Los Angeles/compton": {
+    "lat": 33.894927,
+    "lng": -118.226624
+  },
+  "Regina": {
+    "lat": 50.4479733,
+    "lng": -104.6158764
+  },
+  "Milwaukee - Chicago": {
+    "lat": 41.8964776,
+    "lng": -87.6555967
+  },
+  "Molalla": {
+    "lat": 45.1473445,
+    "lng": -122.577032
+  },
+  "New Britain ct": {
+    "lat": 35.7766937,
+    "lng": -78.7989202
+  },
+  "Sherwood park": {
+    "lat": 53.5256963,
+    "lng": -113.296631
+  },
+  "Silverlake, LA": {
+    "lat": 34.1029139,
+    "lng": -118.2584416
+  },
+  "Perth amboy": {
+    "lat": 40.5133218,
+    "lng": -74.2724241
   }
 }
